@@ -1,0 +1,84 @@
+<form [formGroup]="registrationForm" (ngSubmit)="addPerson()">
+
+  Value: {{ registrationForm.value | json }}
+
+  <div class="center">
+
+    <div class="">
+      <mat-form-field color="accent" appearance="outline">
+        <input matInput type="string" placeholder="Ime" formControlName="name">
+      </mat-form-field>
+      <mat-form-field color="accent" appearance="outline">
+        <input matInput type="string" placeholder="Prezime" formControlName="surname">
+      </mat-form-field>
+    </div>
+
+    <div class="big-field">
+      <mat-form-field color="accent" appearance="outline">
+        <input matInput type="string" placeholder="E-mail" formControlName="email">
+        <mat-error *ngIf="email.invalid && email.touched">
+          Neispravan e-mail!
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="">
+      <mat-form-field color="accent" appearance="outline">
+        <input matInput type="string" placeholder="Grad" formControlName="city">
+      </mat-form-field>
+      <mat-form-field color="accent" appearance="outline">
+        <input matInput type="string" placeholder="Država" formControlName="country">
+      </mat-form-field>
+    </div>
+
+    <div class="big-field">
+      <mat-form-field color="accent" appearance="outline">
+        <input matInput type="string" placeholder="Lozinka" formControlName="password">
+        <mat-hint align="end">
+          Lozinka mora sadržavati barem jedno slovo i jedan broj!
+        </mat-hint>
+        <mat-error *ngIf="password.invalid && password.touched">
+          Neispravna lozinka!
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <h4>Datum rođenja</h4>
+
+    <p>
+      Da biste se registrirali morate imati najmanje 18 godina.
+    </p>
+    <p>
+      Drugi korisnici neće vidjeti vaš datum rođenja.
+    </p>
+
+    <div class="">
+      <mat-form-field class="day-field" color="accent" appearance="outline">
+        <mat-select placeholder="Dan" formControlName="day">
+          <mat-option>1</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="month-field" color="accent" appearance="outline">
+        <mat-select placeholder="Mjesec" formControlName="month">
+          <mat-option>Siječanj</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="year-field" color="accent" appearance="outline">
+        <mat-select placeholder="Godina" formControlName="year">
+          <mat-option>1990</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="center">
+      <mat-checkbox formControlName="terms">Prihvačam uvjete korištenja</mat-checkbox>
+    </div>
+
+    <div class="center">
+        <button mat-raised-button [disabled]="registrationForm.invalid" color="accent" type="submit">Registracija</button>
+    </div>
+
+  </div>
+
+
+</form>

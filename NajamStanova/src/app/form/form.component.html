@@ -1,0 +1,515 @@
+<mat-horizontal-stepper id="outer-stepper" labelPosition="bottom" >
+  <mat-step label="Osnovni podaci">
+
+    <mat-horizontal-stepper id="inner-stepper">
+      <mat-step label="Vrtsa prostora">
+
+        <mat-progress-bar
+            [color]="accent"
+            [mode]="determinate"
+            [value]=20
+            [bufferValue]=75>
+        </mat-progress-bar>
+
+          <form class="container"> <!--[formGroup]="this.postService.form" (ngSubmit)="onSubmit()"-->
+
+              <h3>Koju vrstu prostora oglašavate?</h3>
+
+              <input type="hidden" formControlName="$key">
+            <mat-form-field color="accent" appearance="outline">
+              <mat-select placeholder="Stan">
+                <mat-option>Stan</mat-option>
+                <mat-option>Studio</mat-option>
+                <mat-option>Kuća</mat-option>
+                <!--<mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>-->
+              </mat-select>
+            </mat-form-field>
+
+            <div>
+              <button mat-raised-button color="accent" matStepperNext>Sljedeće</button>
+            </div>
+
+          </form>
+      </mat-step>
+
+
+      <mat-step label="Pojedinosti">
+
+        <mat-progress-bar
+            [color]="primary"
+            [mode]="determinate"
+            [value]=40
+            [bufferValue]=75>
+        </mat-progress-bar>
+
+        <form class="container" >
+
+          <h3>Koliko je kupaonica?</h3>
+
+            <mat-form-field color="accent" appearance="outline">
+              <input matInput type="number" placeholder="Kupaonica">
+            </mat-form-field>
+
+            <h3>Koliko podstanara vaš smještaj može primiti?</h3>
+
+              <mat-form-field color="accent" appearance="outline">
+                <input matInput type="number" placeholder="Osobe">
+              </mat-form-field>
+
+              <p>Koliko je spavačih soba na raspolaganju?</p>
+
+              <mat-form-field color="accent" appearance="outline">
+                <mat-select placeholder="Soba">
+                  <mat-option>jednosoban stan</mat-option>
+                  <mat-option>dvosoban stan</mat-option>
+                  <mat-option>trosoban stan</mat-option>
+                  <mat-option>četverosoban stan</mat-option>
+                  <mat-option>petosoban stan</mat-option>
+                  <mat-option>šestsoban stan</mat-option>
+                  <!--<mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>-->
+                </mat-select>
+              </mat-form-field>
+
+              <h3>Koliko je kreveta?</h3>
+
+                <mat-form-field color="accent" appearance="outline">
+                  <input matInput type="number" placeholder="Kreveti">
+                </mat-form-field>
+
+                <h3>Da li primate kućne ljubimce?</h3>
+
+                <mat-checkbox>Primam kućne kljubimce</mat-checkbox>
+
+
+          <div>
+            <button mat-button color="accent" matStepperPrevious>Natrag</button>
+            <button mat-raised-button color="accent" matStepperNext>Sljedeće</button>
+          </div>
+
+        </form>
+      </mat-step>
+      <mat-step label="Sadržaj">
+
+        <mat-progress-bar
+            [color]="primary"
+            [mode]="determinate"
+            [value]=60
+            [bufferValue]=75>
+        </mat-progress-bar>
+
+        <form class="container" >
+
+          <h3>Što sve sadrži vaš smještaj?</h3>
+
+          <mat-checkbox>Wi-Fi</mat-checkbox>
+          <mat-checkbox>Grijanje</mat-checkbox>
+          <mat-checkbox>Zaseban ulaz</mat-checkbox>
+          <mat-checkbox>Brojilo za struju</mat-checkbox>
+          <mat-checkbox>Parking mjesto</mat-checkbox>
+          <mat-checkbox>Namještaj</mat-checkbox>
+
+          <div>
+              <button mat-raised-button matStepperNext class="later">To ću kasnije</button>
+          </div>
+
+
+
+          <div>
+            <button mat-button color="accent" matStepperPrevious>Natrag</button>
+            <button mat-raised-button color="accent" matStepperNext>Sljedeće</button>
+          </div>
+
+        </form>
+      </mat-step>
+      <mat-step label="Regija">
+
+        <mat-progress-bar
+            [color]="primary"
+            [mode]="determinate"
+            [value]=80
+            [bufferValue]=75>
+        </mat-progress-bar>
+
+        <form class="container" >
+
+          <h3>Gdje se nalazi vaša nekretnina?</h3>
+          <p>Država/regija</p>
+
+          <mat-form-field color="accent" appearance="outline">
+            <mat-select placeholder="Hrvatska">
+              <mat-option>Hrvatska</mat-option>
+              <mat-option>Slovenija</mat-option>
+              <mat-option>Italija</mat-option>
+              <!--<mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>-->
+            </mat-select>
+          </mat-form-field>
+
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Ulica i kućni broj</mat-label>
+              <input matInput placeholder="Placeholder">
+              <mat-hint>npr. Ulica Jurja Dobrile 1</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Stan, zgrada</mat-label>
+              <input matInput placeholder="Placeholder">
+              <mat-hint>npr. br 7</mat-hint>
+            </mat-form-field>
+
+          <table>
+              <tr>
+                <td>
+                  <p>
+                    <mat-form-field color="accent" appearance="outline">
+                      <mat-label>Mjesto</mat-label>
+                      <input matInput placeholder="Placeholder">
+                      <mat-hint>npr. Vodnjan</mat-hint>
+                    </mat-form-field>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    <mat-form-field color="accent" appearance="outline">
+                      <mat-label>Savezna država</mat-label>
+                      <input matInput placeholder="Placeholder">
+                      <mat-hint>npr. Grad Pula</mat-hint>
+                    </mat-form-field>
+                  </p>
+                </td>
+              </tr>
+          </table>
+
+          <p>
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Poštanski broj</mat-label>
+              <input matInput placeholder="Placeholder">
+              <mat-hint>npr. 52100</mat-hint>
+            </mat-form-field>
+          </p>
+
+          <div>
+            <button mat-button color="accent" matStepperPrevious>Natrag</button>
+            <button mat-raised-button color="accent" matStepperNext>Sljedeće</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step label="Dostupnost">
+
+        <mat-progress-bar
+            [color]="primary"
+            [mode]="determinate"
+            [value]=100
+            [bufferValue]=75>
+        </mat-progress-bar>
+
+        <form class="container" >
+
+          <h3>U kojem razdoblju je slobodna vaša nekretnina?</h3>
+          <mat-checkbox>Peko cijele godine</mat-checkbox>
+
+          <mat-form-field color="accent" class="example-full-width">
+            <input matInput [matDatepicker]="picker" placeholder="Datum dostupnosti">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field color="accent" class="example-full-width">
+            <input matInput [matDatepicker]="picker2" placeholder="Datum odlaska">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker2></mat-datepicker>
+          </mat-form-field>
+
+          <div>
+              <button mat-raised-button matStepperNext class="later">To ću kasnije</button>
+          </div>
+
+          <div>
+            <button mat-button color="accent" matStepperPrevious>Natrag</button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+
+  </mat-step>
+  <mat-step label="Uređenje prostora">
+    <mat-horizontal-stepper id="inner-stepper">
+
+      <mat-step label="Fotografije">
+
+        <mat-progress-bar
+            [color]="accent"
+            [mode]="determinate"
+            [value]=50
+            [bufferValue]=75>
+        </mat-progress-bar>
+
+        <form class="container">
+
+          <div>
+            <button mat-button color="accent" matStepperPrevious>Natrag</button>
+            <button mat-raised-button color="accent" matStepperNext>Sljedeće</button>
+          </div>
+        </form>
+
+      </mat-step>
+
+      <mat-step label="Oglas">
+
+        <mat-progress-bar
+            [color]="accent"
+            [mode]="determinate"
+            [value]=100
+            [bufferValue]=75>
+        </mat-progress-bar>
+
+        <form class="container">
+          <mat-form-field color="accent" appearance="outline">
+            <mat-label>Odredite naziv oglasa</mat-label>
+            <input matInput placeholder="Placeholder">
+          </mat-form-field>
+          <mat-form-field color="accent" appearance="outline">
+            <mat-label>Uredite opis</mat-label>
+            <input matInput placeholder="Placeholder">
+          </mat-form-field>
+
+          <div>
+            <button mat-button color="accent" matStepperPrevious>Natrag</button>
+            <button mat-raised-button color="accent" matStepperNext>Sljedeće</button>
+          </div>
+
+        </form>
+
+      </mat-step>
+
+    </mat-horizontal-stepper>
+  </mat-step>
+  <mat-step label="Postavke za najam">
+
+    <mat-horizontal-stepper id="inner-stepper">
+      <mat-step label="Posjeta">
+
+        <mat-progress-bar
+            [color]="accent"
+            [mode]="determinate"
+            [value]=35
+            [bufferValue]=75>
+        </mat-progress-bar>
+
+        <form class="container">
+            <h3>Vrijeme posjeta</h3>
+
+            <table>
+              <tr>
+                <td>
+                  <button mat-raised-button color="basic">Označi/Odznači</button>
+                </td>
+                <td>
+                  <button mat-raised-button color="basic" matStepperNext>To ću kasnije</button>
+                </td>
+              </tr>
+            </table>
+
+            <table>
+                <th></th>
+                <th colspan="7"><mat-checkbox [(ngModel)]="checked">Ujutro</mat-checkbox></th>
+                <th colspan="7"><mat-checkbox>Popodne</mat-checkbox></th>
+                <tr>
+                  <th>Dan/Sati</th>
+                  <th>8:00</th>
+                  <th>9:00</th>
+                  <th>10:00</th>
+                  <th>11:00</th>
+                  <th>12:00</th>
+                  <th>13:00</th>
+                  <th>14:00</th>
+                  <th>15:00</th>
+                  <th>16:00</th>
+                  <th>17:00</th>
+                  <th>18:00</th>
+                  <th>19:00</th>
+                  <th>20:00</th>
+                  <th>21:00</th>
+                </tr>
+                <tr>
+                  <th>Ponedjeljak</th>
+                  <td><mat-checkbox [(ngModel)]="checked"></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                </tr>
+                <tr>
+                  <th>Utorak</th>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                </tr>
+                <tr>
+                  <th>Srijeda</th>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                </tr>
+                <tr>
+                  <th>Četvrtak</th>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                </tr>
+                <tr>
+                  <th>Petak</th>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                </tr>
+                <tr>
+                  <th>Subota</th>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                </tr>
+                <tr>
+                  <th>Nedjelja</th>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                  <td><mat-checkbox></mat-checkbox></td>
+                </tr>
+            </table>
+        </form>
+
+      </mat-step>
+
+      <mat-step label="Najamnina">
+
+        <mat-progress-bar
+            [color]="accent"
+            [mode]="determinate"
+            [value]=70
+            [bufferValue]=75>
+        </mat-progress-bar>
+
+        <form class="container">
+            <h3>Iznos mjesečne najamnine</h3>
+
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Iznos mjesečne najamnine</mat-label>
+              <input matInput placeholder="0,00kn">
+            </mat-form-field>
+
+            <mat-checkbox>Režije uključene u cijenu</mat-checkbox>
+
+            <table>
+                <tr>
+                  <td><p>Režija</p></td>
+                  <td><p>Iznos</p></td>
+                  <td><button mat-raised-button color="basic" >Dodaj režiju</button></td>
+                </tr>
+            </table>
+        </form>
+
+      </mat-step>
+
+      <mat-step label="Ugovor">
+
+        <mat-progress-bar
+            [color]="accent"
+            [mode]="determinate"
+            [value]=100
+            [bufferValue]=75>
+        </mat-progress-bar>
+
+        <form class="container">
+            <!--<h3>Pametan ugovor</h3>-->
+
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Kapara</mat-label>
+              <input matInput placeholder="0,00kn">
+            </mat-form-field>
+        </form>
+
+      </mat-step>
+    </mat-horizontal-stepper>
+
+  </mat-step>
+</mat-horizontal-stepper>

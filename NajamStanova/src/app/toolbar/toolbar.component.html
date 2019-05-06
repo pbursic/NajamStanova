@@ -1,0 +1,41 @@
+<mat-toolbar class="toolbar">
+  <mat-toolbar-row>
+      <a routerLink="">
+        <!--<img src="assets/images/logo60x30.png" style="padding-top: 5px;" /> -->
+        <img src="assets/images/logoflat.png" style="padding-top: 5px; width:100px;" />
+      </a>
+      <!--<span>Third Line</span>-->
+      <!--<a routerLink="">
+        <img src="assets/images/title.png" class="title" />
+      </a>-->
+      <span class="example-spacer"></span>
+
+      <mat-nav-list>
+        <mat-list-item class="list-item" routerLink="view">PREGLED</mat-list-item>
+        <mat-list-item class="list-item" (click)="openDialogLogin()">PRIJAVA</mat-list-item>
+        <mat-list-item class="list-item" routerLink="registration">REGISTRACIJA</mat-list-item> <!-- (click)="openDialogRegistration()" -->
+        <mat-list-item class="list-item" routerLink="form">NOVI OGLAS</mat-list-item>
+        <mat-list-item class="list-item" routerLink="map">KARTA</mat-list-item>
+      </mat-nav-list>
+
+      <!--<mat-list role="list">
+        <a routerLink=""><mat-list-item role="listitem" class="list-item">PREGLED</mat-list-item></a>
+        <a routerLink=""><mat-list-item role="listitem" class="list-item">MOJ OGLAS</mat-list-item></a>
+        <a routerLink=""><mat-list-item role="listitem" class="list-item">KARTA</mat-list-item></a>
+        <a routerLink=""><mat-list-item role="listitem" class="list-item">KONTAKT</mat-list-item></a>
+      </mat-list>-->
+
+      <!--<mat-icon class="example-icon">favorite</mat-icon>-->
+
+      <span class="example-spacer"></span>
+      <mat-card class="user"> <!-- class="span-row-2" -->
+        <mat-card-header ><!--class="user-grid center"-->
+          <div mat-card-avatar class="header-image"></div>
+          <!--<mat-card-title>Pero Perić</mat-card-title>-->
+        </mat-card-header>
+      </mat-card>
+      <!--<a routerLink="">
+        <img src="assets/images/facebook.png" class="example-icon face-icon"  />
+      </a>-->
+  </mat-toolbar-row>
+</mat-toolbar>

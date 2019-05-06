@@ -1,0 +1,95 @@
+::ng-deep .mat-step-header .mat-step-icon {
+    background-color: #e91e63ff;
+    color: #fff;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+  //background-color: #ff4081;
+  background-color: #e91e63ff;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  //background-color: #ff80ab;
+  background-color: #F6F6F6;
+}
+
+/*::ng-deep .mat-form-field.mat-focused .mat-form-field-label{
+  color: #ff4081;
+}
+
+
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: #ff4081;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-underline {
+  color: #ff4081;
+  background-color: #ff4081;
+}
+
+::ng-deep .mat-form-field-appearance-legacy.mat-focused .mat-form-field-underline {
+  background-color: #ff4081;
+  color: #ff4081;
+}*/
+
+#inner-stepper ::ng-deep .mat-step-header {
+  //display: none;
+  height: 50px !important;
+}
+
+#inner-stepper ::ng-deep .mat-horizontal-stepper-header .mat-step-icon,
+#inner-stepper ::ng-deep .mat-horizontal-stepper-header .mat-step-icon-not-touched {
+  display: none;
+}
+
+#inner-stepper ::ng-deep .mat-stepper-horizontal-line {
+  border-top-style: none !important;
+}
+
+
+  ::ng-deep .mat-step-label {
+    margin-top: 16px;
+    width: 100%;
+  }
+  ::ng-deep .mat-step-text-label {
+    text-align: center;
+  }
+
+  ::ng-deep .mat-stepper-horizontal {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  ::ng-deep .mat-horizontal-stepper-header {
+    flex-direction: column;
+    flex: 1;
+    height: 104px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  ::ng-deep .mat-horizontal-stepper-header .mat-step-icon,
+  ::ng-deep .mat-horizontal-stepper-header .mat-step-icon-not-touched {
+    margin-top: 24px;
+    margin-right: 0 !important;
+  }
+
+  ::ng-deep .mat-stepper-horizontal .mat-horizontal-content-container {
+    padding: 0 50px 24px 50px;
+  }
+
+  form {
+    margin-left: 35%;
+    margin-top: 30px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-raised-button {
+  float: right;
+  position: relative;
+}
+
+.later {
+  float: left;
+  //border-color: #8e44adff;
+}

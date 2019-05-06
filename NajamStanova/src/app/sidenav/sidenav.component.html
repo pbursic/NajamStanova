@@ -1,0 +1,31 @@
+<mat-drawer-container class="example-container" autosize [hasBackdrop]="true">
+<mat-drawer #drawer class="example-sidenav" mode="over">
+  
+  <ul>
+    <li>
+      <a routerLink="">PREGLED</a>
+    </li>
+    <li>
+      <a routerLink="">MOJ OGLAS</a>
+    </li>
+    <li>
+      <a routerLink="">KARTA</a>
+    </li>
+    <li>
+      <a routerLink="">KONTAKT</a>
+    </li>
+  </ul>
+  <!--<p>Auto-resizing sidenav</p>
+  <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+  <button (click)="showFiller = !showFiller" mat-raised-button>
+    Toggle extra text
+  </button>-->
+</mat-drawer>
+
+<div class="example-sidenav-content">
+  <button type="button" mat-button (click)="drawer.toggle()">
+    Toggle sidenav
+  </button>
+</div>
+
+</mat-drawer-container>
