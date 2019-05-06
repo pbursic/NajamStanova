@@ -8,10 +8,22 @@ mat-grid-tile {
   background-color: #000000;
 }
 
+.anemities {
+  display: inline;
+  margin: 3%;
+}
+
+.anemities-icon {
+  width: 24px;
+  position: relative;
+  top: 5px;
+  right: 5px;
+}
+
 .detail {
   width: 500px;
   //padding-right: 100px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   //display: inline-block;
   //grid-template-columns: repeat(3, 1fr);
   //grid-gap: 10px;
@@ -22,22 +34,26 @@ mat-grid-tile {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 }
-.span-col-2{grid-column: span 2 / auto;}
-.span-row-2{grid-row: span 2 / auto;}
+.span-col-2 {
+  grid-column: span 2 / auto;
+}
+.span-row-2 {
+  grid-row: span 2 / auto;
+}
 
 .grid {
   padding-top: 50px;
   padding-left: 100px;
   padding-right: 100px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 30px;
 }
 
 .bool {
-  display: grid;
+  /*display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-gap: 10px;
+  grid-gap: 50px;*/
 }
 
 .user-grid {
@@ -47,7 +63,7 @@ mat-grid-tile {
 }
 
 .user {
-
+  //margin-left: auto;
 }
 
 .center {
@@ -56,7 +72,6 @@ mat-grid-tile {
 }
 
 .map {
-
 }
 
 .mat-card {
@@ -69,20 +84,21 @@ mat-grid-tile {
 }
 
 .header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
-  margin-left: 8px;
+  //margin: auto;
 }
-
 
 .zoom {
   //padding: 50px;
-  transition: transform .2s; /* Animation */
+  transition: transform 0.2s; /* Animation */
   //width: 200px;
   //height: 200px;
   margin: 0 auto;
 }
 
 .zoom:hover {
-  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(
+    1.2
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }

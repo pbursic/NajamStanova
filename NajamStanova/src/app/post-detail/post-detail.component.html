@@ -1,97 +1,146 @@
 <mat-grid-list cols="4" rowHeight="150px">
   <mat-grid-tile
-      *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">
-    {{tile.text}}
-    <img mat-card-image class="zoom" src="assets/images/house.jpg" alt="Photo of a Shiba Inu">
+    *ngFor="let tile of tiles"
+    [colspan]="tile.cols"
+    [rowspan]="tile.rows"
+    [style.background]="tile.color"
+  >
+    {{ tile.text }}
+    <img
+      mat-card-image
+      class="zoom"
+      src="assets/images/house.jpg"
+      alt="Photo of a Shiba Inu"
+    />
   </mat-grid-tile>
 </mat-grid-list>
 
-<div class="grid" *ngFor="let post of post">
-
-
-  <div class="detail" >
-    <div class="title">
+<div class="grid center" *ngFor="let post of post">
+  <div class="detail">
+    <div class="title" style="margin-bottom:5%;">
       <h2>
-        {{post.title}}
+        {{ post.title }}
       </h2>
-      <h2 style="text-align: end;">{{post.price}}</h2>
-
-      <!--<mat-card class="span-row-2">
-        <mat-card-header class="user-grid">
-          <div mat-card-avatar class="header-image"></div>
-          <mat-card-title>{{post.name}} {{post.surname}}</mat-card-title>
-        </mat-card-header>
-      </mat-card>
-
-      <div>
-        <img mat-card-image src="assets/images/pulamap.png" alt="Photo of a Shiba Inu">
-      </div>-->
-      <h3>
-        {{post.type}}, {{post.squares}} m2
-      </h3>
-
+      <h2 style="text-align: end;">{{ post.price }}</h2>
+      <h3>{{ post.type }}, {{ post.squares }} m2</h3>
     </div>
 
-    <p class="span-col-2">
-      {{post.description}}
+    <p class="span-col-2" style="margin-bottom:5%;">
+      {{ post.description }}
     </p>
 
-    <p>
-      {{post.city}}, {{post.address}}
-    </p>
     <div class="bool">
-      <mat-checkbox
-              *ngIf="post.bills_included"
-              [checked]="post.bills_included"
-              onclick="return false;">Uključene režije</mat-checkbox>
-      <div *ngIf="post.furnished" >
-        <!--<div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"
-          title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"
-          title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>-->
-          <div class="center" style="display:inline">
-            <img src="assets/images/couch.svg" alt="Namijesten stan" style="width:24px; position:relative; top:5px; right:5px;">
-            </div>
-          <div class="center" style="display:inline">
-            <p style="display:inline">
-            Namiješten
-          </p>
-            </div>
+      <div>
+        <div class="center anemities">
+          <img
+            src="assets/images/maps-and-flags.svg"
+            alt="Lokacija"
+            class="anemities-icon"
+          />
+          <div class="center anemities">
+            <p class="anemities">{{ post.city }}, {{ post.address }}</p>
+          </div>
+        </div>
+
+        <div style="margin-bottom:3%;"></div>
+
+        <div *ngIf="post.bills_included">
+          <div class="center anemities">
+            <img
+              src="assets/images/bill.svg"
+              alt="Rezije"
+              class="anemities-icon"
+            />
+          </div>
+          <div class="center anemities">
+            <p class="anemities">
+              Uključene režije
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-bottom:3%;"></div>
+
+        <div *ngIf="post.furnished">
+          <div class="center anemities">
+            <img
+              src="assets/images/couch.svg"
+              alt="Namijesten stan"
+              class="anemities-icon"
+            />
+          </div>
+          <div class="center anemities">
+            <p class="anemities">
+              Namiješten
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-bottom:3%;"></div>
+
+        <div *ngIf="post.pet">
+          <div class="center anemities">
+            <img
+              src="assets/images/pawprint.svg"
+              alt="Zivotinje"
+              class="anemities-icon"
+            />
+          </div>
+          <div class="center anemities">
+            <p class="anemities">
+              Kućni ljubimci
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-bottom:3%;"></div>
+
+        <div *ngIf="post.parking">
+          <div class="center anemities">
+            <img
+              src="assets/images/parking.svg"
+              alt="Parking"
+              class="anemities-icon"
+            />
+          </div>
+          <div class="center anemities">
+            <p class="anemities">
+              Parking
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-bottom:3%;"></div>
       </div>
 
-
-      <mat-checkbox
-              [checked]="post.furnished"
-              onclick="return false;">Namiješten</mat-checkbox>
-      <mat-checkbox
-              [checked]="post.pet"
-              onclick="return false;">Kućni ljubimci</mat-checkbox>
-      <mat-checkbox
-              [checked]="post.parking"
-              onclick="return false;">Parking</mat-checkbox>
+      <p>
+        {{ post.available_date }}
+        {{ post.walkout_date }}
+        {{ post.bed }}
+        {{ post.room }}
+      </p>
     </div>
-
-    <p>
-      {{post.available_date}}
-      {{post.walkout_date}}
-      {{post.bed}}
-      {{post.room}}
-    </p>
-
   </div>
-
-    <mat-card class="user"> <!-- class="span-row-2" -->
-      <mat-card-header class="user-grid center">
-        <div mat-card-avatar class="header-image"></div>
-        <mat-card-title>{{post.name}} {{post.surname}}</mat-card-title>
-      </mat-card-header>
-    </mat-card>
-
-    <div class="map center">
-      <img mat-card-image style="width:300px; height:200px;" src="assets/images/pulamap.png" alt="Photo of a Shiba Inu">
-    </div>
-
-
+  <mat-card class="user">
+    <mat-card-header class="user-grid center">
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title
+        ><!--<div class="center anemities">
+          <img
+            src="assets/images/call-answer.svg"
+            alt="Telefon"
+            class="anemities-icon"
+          />
+        </div>-->
+        {{ post.name }} {{ post.surname }}</mat-card-title
+      >
+      <mat-card-subtitle>
+        <!--<div class="center anemities">
+          <p class="anemities">
+            +385 91 234 4567
+          </p>
+        </div>-->+385 91 234 4567</mat-card-subtitle
+      >
+    </mat-card-header>
+  </mat-card>
 </div>

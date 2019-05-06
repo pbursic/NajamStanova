@@ -1,6 +1,6 @@
 <mat-drawer-container class="example-container" autosize [hasBackdrop]="true">
-<mat-drawer #drawer class="example-sidenav" mode="over">
-  <!--<ul>
+  <mat-drawer #drawer class="example-sidenav" mode="over">
+    <!--<ul>
     <li>
       <a routerLink="">PREGLED</a>
     </li>
@@ -14,36 +14,57 @@
       <a routerLink="">KONTAKT</a>
     </li>
   </ul>-->
-  <mat-toolbar></mat-toolbar>
-  <img src="assets/images/logo.png" class="center sidenav-logo" width="50" height="55"/>
-  <mat-list role="list">
-    <a routerLink=""><mat-list-item role="listitem" class="list-item">PREGLED</mat-list-item></a>
-    <a routerLink=""><mat-list-item role="listitem" class="list-item">MOJ OGLAS</mat-list-item></a>
-    <a routerLink=""><mat-list-item role="listitem" class="list-item">KARTA</mat-list-item></a>
-    <a routerLink=""><mat-list-item role="listitem" class="list-item">KONTAKT</mat-list-item></a>
-  </mat-list>
-</mat-drawer>
+    <mat-toolbar></mat-toolbar>
+    <img
+      src="assets/images/logo.png"
+      class="center sidenav-logo"
+      width="50"
+      height="55"
+    />
+    <mat-list role="list">
+      <a routerLink=""
+        ><mat-list-item role="listitem" class="list-item"
+          >PREGLED</mat-list-item
+        ></a
+      >
+      <a routerLink=""
+        ><mat-list-item role="listitem" class="list-item"
+          >MOJ OGLAS</mat-list-item
+        ></a
+      >
+      <a routerLink=""
+        ><mat-list-item role="listitem" class="list-item"
+          >KARTA</mat-list-item
+        ></a
+      >
+      <a routerLink=""
+        ><mat-list-item role="listitem" class="list-item"
+          >KONTAKT</mat-list-item
+        ></a
+      >
+    </mat-list>
+  </mat-drawer>
 
-<div class="example-sidenav-content">
+  <div class="example-sidenav-content">
+    <div id="container">
+      <app-toolbar></app-toolbar>
 
-  <div id="container">
+      <!--<button
+        type="button"
+        class="sidenav"
+        mat-button
+        (click)="drawer.toggle()"
+      >
+        Toggle sidenav
+      </button>-->
 
-    <app-toolbar></app-toolbar>
-
-    <button type="button" class="sidenav" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button>
-
-    <div id="content">
-      <router-outlet>  </router-outlet>
+      <div id="content">
+        <router-outlet> </router-outlet>
+      </div>
     </div>
-  </div>
 
-  <!--<div id="footer">
+    <!--<div id="footer">
     <app-footer></app-footer>
   </div>-->
-
-
-</div>
-
+  </div>
 </mat-drawer-container>
