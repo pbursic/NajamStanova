@@ -1,47 +1,83 @@
-const express = require('express');
-const { Client } = require('pg');
+const express = require("express");
+const { Client } = require("pg");
 const router = express.Router();
-const bodyParser = require('body-parser');
-const app = express();
+const bodyParser = require("body-parser");
+const queries = require("../db/queries");
 
-//app.use(express.bodyParser());
-router.use(bodyParser.urlencoded({extended: false}));
+router.use(bodyParser.urlencoded({ extended: false }));
 var jsonParser = bodyParser.json();
 
-// GET POST
-router.get('/:id', (req, res) => {
+router.get("/:id", (req, res) => {
   const client = new Client();
-  client.connect().then(posts => {
-    const sql = `select distinct users.name, users.surname from posts, users where posts.user_id = $1`;
-//'SELECT distinct person.id, person.name, person.surname FROM posts, person where person.id = $1;';
-
-    let params = [req.params.id];
-    console.log("PERSON: " + params);
-    return client.query(sql, params);
-  })
-  .then((results) => {
-    //res.send(results);
-    res.status(200).json(results);
-  })
-  .catch((err) => {
-    console.log('error', err);
-  });
-
-});
-
-router.post('/', jsonParser, (req, res) => {
-
-  const client = new Client();
-  client.connect()
+  client
+    .connect()
     .then(() => {
-      const sql = 'INSERT INTO person ("user_id", "name", "surname", "birth_date", "email", "country", "city") VALUES ($1, $2, $3, $4, $5, $6, $7);';
-      const params = [1, req.body.name, req.body.surname, '1990-01-01', req.body.email, req.body.country, req.body.city];
+      const sql = queries.getUser;
+      let params = [req.params.id];
+
       return client.query(sql, params);
     })
-    .catch((err) => {
-      //console.log('err', err);
-      console.log('error', err);
-    });
+    .then(results => {
+      //res.send(results);
+      res.status(200).json(results);
+    })
+    .catch(err => {
+      console.log("error", err);
+    })
+    .finally(() => client.end());
+});
+
+// Users can login to the app with valid email/password
+// Users cannot login to the app with a blank or missing email
+// Users cannot login to the app with a blank or incorrect password
+
+function validUser(user) {
+  const validEmail = typeof user.email == "string" && user.email.trim() != "";
+  const validPassword =
+    typeof user.password == "string" &&
+    user.email.trim() != "" &&
+    user.password.trim().length >= 8;
+
+  return validEmail && validPassword;
+}
+
+router.post("/", jsonParser, (req, res, next) => {
+  const client = new Client();
+
+  if (validUser(req.body)) {
+    client
+      .connect()
+      .then(() => {
+        // Unique email
+        const sql = queries.getEmail;
+        let params = [req.body.email];
+        return client.query(sql, params);
+      })
+      .then(results => {
+        if (results.rowCount === 0) {
+          const sql = queries.postUser;
+          let params = [
+            req.body.email,
+            req.body.password,
+            req.body.name,
+            req.body.surname,
+            "1990-01-01",
+            req.body.country,
+            req.body.city,
+            req.body.phone
+          ];
+
+          return client.query(sql, params);
+        } else {
+          next(new Error("Email in use!"));
+        }
+      })
+      .catch(err => {
+        console.log("error", err);
+      });
+  } else {
+    next(new Error("Invalid user!"));
+  }
 });
 
 module.exports = router;

@@ -1,21 +1,23 @@
-const express = require('express');
-const { Client } = require('pg');
+const express = require("express");
+const { Client } = require("pg");
 const router = express.Router();
+const queries = require("../db/queries");
 
-// GET ALL POSTS
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   const client = new Client();
-  client.connect().then(posts => {
-    return client.query('SELECT * FROM posts WHERE posts.status = true;');
-  })
-  .then((results) => {
-    //res.send(results);
-    res.status(200).json(results);
-  })
-  .catch((err) => {
-    console.log('error', err);
-  });
-
+  client
+    .connect()
+    .then(() => {
+      return client.query(queries.getPosts);
+    })
+    .then(results => {
+      //res.send(results);
+      res.status(200).json(results);
+    })
+    .catch(err => {
+      console.log("error", err);
+    })
+    .finally(() => client.end());
 });
 
 module.exports = router;
