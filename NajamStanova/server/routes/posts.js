@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
     .catch(err => {
       console.log("error", err);
     })
-    .finally(() => client.end());
+    .then(() => client.end());
 });
 
 module.exports = router;

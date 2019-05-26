@@ -7,11 +7,11 @@ import { Observable } from "rxjs";
 @Injectable({
   providedIn: "root"
 })
-export class RegistrationService {
+export class LoginService {
   constructor(private http: HttpClient) {}
 
-  addPerson(person: Person): Observable<any> {
-    return this.http.post<any>("/registration", person).pipe(
+  getUser(person: Person): Observable<any> {
+    return this.http.post<any>("/", person).pipe(
       map(res => {
         console.log(res);
         return res.rows;

@@ -8,26 +8,6 @@ const bcrypt = require("bcrypt");
 router.use(bodyParser.urlencoded({ extended: false }));
 var jsonParser = bodyParser.json();
 
-router.get("/:id", (req, res) => {
-  const client = new Client();
-  client
-    .connect()
-    .then(() => {
-      const sql = queries.getUser;
-      let params = [req.params.id];
-
-      return client.query(sql, params);
-    })
-    .then(results => {
-      //res.send(results);
-      res.status(200).json(results);
-    })
-    .catch(err => {
-      console.log("error", err);
-    })
-    .finally(() => client.end());
-});
-
 // Users can login to the app with valid email/password
 // Users cannot login to the app with a blank or missing email
 // Users cannot login to the app with a blank or incorrect password
@@ -42,7 +22,7 @@ function validUser(user) {
   return validEmail && validPassword;
 }
 
-router.post("/registration", jsonParser, (req, res, next) => {
+router.post("/", jsonParser, (req, res, next) => {
   const client = new Client();
 
   if (validUser(req.body)) {
@@ -76,7 +56,7 @@ router.post("/registration", jsonParser, (req, res, next) => {
               return client.query(sql, params);
             })
             .then(id => {
-              //console.log(id);
+              console.log(id);
               res.status(200).json(id);
             })
             .catch(err => {
@@ -88,28 +68,6 @@ router.post("/registration", jsonParser, (req, res, next) => {
       })
       .catch(err => {
         console.log("error", err);
-      });
-  } else {
-    next(new Error("Invalid user!"));
-  }
-});
-
-router.post("/login", jsonParser, (req, res, next) => {
-  const client = new Client();
-  if (validUser(req.body)) {
-    client
-      .connect()
-      .then(() => {
-        const sql = queries.getEmail;
-        let params = [req.body.email];
-        return client.query(sql, params);
-      })
-      .then(user => {
-        if (results.rowCount === 0) {
-          console.log("User does not exist!");
-        } else {
-          console.log("USER: ", user);
-        }
       });
   } else {
     next(new Error("Invalid user!"));

@@ -1,12 +1,13 @@
 const express = require("express");
-//const { Client } = require("pg");
 const path = require("path");
 const app = express();
+var cookieParser = require("cookie-parser");
 
-// Getting out POSTS routes
 const posts = require("./server/routes/posts");
 const postDetail = require("./server/routes/post-detail");
 const person = require("./server/routes/person");
+const registration = require("./server/routes/registration");
+const login = require("./server/routes/login");
 
 //app.use(express.static('src'));
 app.use(express.static(path.join(__dirname, "dist/NajamStanova")));
@@ -14,7 +15,12 @@ app.use(express.static(path.join(__dirname, "dist/NajamStanova")));
 // Using middleware
 app.use("/view", posts);
 app.use("/view/post-detail", postDetail);
-app.use("/registration", person);
+app.use("/registration", registration);
+app.use("/", login);
+
+app.use(cookieParser());
+//app.use(cookieParser("keyboard_cat"));
+//app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // Catch all other routes request and return it to the index
 /*app.get('*', (req, res) => {

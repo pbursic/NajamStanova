@@ -5,10 +5,26 @@ module.exports = {
             FROM posts, users 
             WHERE posts.user_id = $1`,
 
+  getLoginUser: `SELECT 
+            email,
+            password
+          FROM users
+          WHERE email = $1`,
+
   getEmail: `SELECT 
                 email
               FROM users
               WHERE email = $1`,
+
+  getPassword: `SELECT 
+                password
+              FROM users
+              WHERE password = $1`,
+
+  updateUser: `UPDATE 
+                users 
+                SET login_status = true 
+                WHERE email = $1`,
 
   getPosts: `SELECT * FROM posts WHERE posts.status = true`,
 

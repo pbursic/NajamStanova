@@ -1,22 +1,43 @@
-<h2 class="center">Prijava</h2>
+<form [formGroup]="loginForm" (ngSubmit)="getUser()">
+  <h2 class="center">Prijava</h2>
 
-<div class="big-field">
-  <mat-form-field color="accent" appearance="outline">
-    <input matInput type="string" placeholder="E-mail" />
-  </mat-form-field>
-</div>
+  <div class="big-field">
+    <mat-form-field color="accent" appearance="outline">
+      <input
+        matInput
+        type="string"
+        placeholder="E-mail"
+        formControlName="email"
+      />
+      <!--<mat-error *ngIf="email.invalid && email.touched">
+      Neispravan e-mail!
+    </mat-error>-->
+    </mat-form-field>
+  </div>
 
-<div class="big-field">
-  <mat-form-field color="accent" appearance="outline">
-    <input matInput type="string" placeholder="Lozinka" />
-  </mat-form-field>
-</div>
+  <div class="big-field">
+    <mat-form-field color="accent" appearance="outline">
+      <input
+        matInput
+        type="string"
+        placeholder="Lozinka"
+        formControlName="password"
+      />
+      <!--<mat-hint align="end">
+      Lozinka mora sadržavati barem jedno slovo i jedan broj!
+    </mat-hint>
+    <mat-error *ngIf="password.invalid && password.touched">
+      Neispravna lozinka!
+    </mat-error>-->
+    </mat-form-field>
+  </div>
 
-<div class="center">
-  <button mat-raised-button color="accent">Prijava</button>
-</div>
+  <div class="center">
+    <button mat-raised-button color="accent" type="submit">Prijava</button>
+  </div>
 
-<div class="registration">
-  <p>Niste registirani?</p>
-  <a>Kreirajte račun</a>
-</div>
+  <div class="registration">
+    <p>Niste registirani?</p>
+    <a>Kreirajte račun</a>
+  </div>
+</form>
