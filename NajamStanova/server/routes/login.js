@@ -50,10 +50,17 @@ router.post("/", jsonParser, (req, res, next) => {
                   //signed: true
                 });
                 console.log("Logged in!");
+                const update = queries.updateUser;
+                let params = [req.body.email];
+                return client.query(update, params);
                 // PUT update user status to true
               } else {
                 next(new Error("Invalid login!"));
               }
+            })
+            .then(results => {
+              console.log(results);
+              res.status(200).json(results);
             });
         }
       })
