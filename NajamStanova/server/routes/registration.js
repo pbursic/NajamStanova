@@ -4,28 +4,15 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const queries = require("../db/queries");
 const bcrypt = require("bcrypt");
+const middleware = require("./middleware");
 
 router.use(bodyParser.urlencoded({ extended: false }));
 var jsonParser = bodyParser.json();
 
-// Users can login to the app with valid email/password
-// Users cannot login to the app with a blank or missing email
-// Users cannot login to the app with a blank or incorrect password
-
-function validUser(user) {
-  const validEmail = typeof user.email == "string" && user.email.trim() != "";
-  const validPassword =
-    typeof user.password == "string" &&
-    user.email.trim() != "" &&
-    user.password.trim().length >= 8;
-
-  return validEmail && validPassword;
-}
-
 router.post("/", jsonParser, (req, res, next) => {
   const client = new Client();
 
-  if (validUser(req.body)) {
+  if (middleware.validUser(req.body)) {
     client
       .connect()
       .then(() => {

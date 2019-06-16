@@ -3,69 +3,62 @@ const { Client } = require("pg");
 const router = express.Router();
 const bodyParser = require("body-parser");
 const queries = require("../db/queries");
+const transaction = require("../db/transaction");
 const bcrypt = require("bcrypt");
+const middleware = require("./middleware");
 
 router.use(bodyParser.urlencoded({ extended: false }));
 var jsonParser = bodyParser.json();
 
-// Users can login to the app with valid email/password
-// Users cannot login to the app with a blank or missing email
-// Users cannot login to the app with a blank or incorrect password
-
-function validUser(user) {
-  const validEmail = typeof user.email == "string" && user.email.trim() != "";
-  const validPassword =
-    typeof user.password == "string" &&
-    user.email.trim() != "" &&
-    user.password.trim().length >= 8;
-
-  return validEmail && validPassword;
-}
-
 router.post("/", jsonParser, (req, res, next) => {
-  const client = new Client();
-  if (validUser(req.body)) {
-    client
+  if (middleware.validUser(req.body)) {
+    transaction
+      .getPool()
       .connect()
-      .then(() => {
-        const sql = queries.getLoginUser;
-        let params = [req.body.email];
-        return client.query(sql, params);
-      })
-      .then(user => {
-        if (user.rowCount === 0) {
-          //console.log("User does not exist!");
-          next(new Error("Invalid login!"));
-        } else {
-          // compare password with hash password
-          bcrypt
-            .compare(req.body.password, user.rows[0].password)
-            .then(result => {
-              // if passwords match
-              if (result) {
-                // setting the 'set-cookie' header
-                res.cookie("user_email", user.rows[0].email, {
-                  httpOnly: true //,
-                  //secure: true, // WHEN IN PRODUCTION
-                  //signed: true
+      .then(client => {
+        client
+          .query(queries.begin)
+          .then(() => {
+            const sql = queries.getLoginUser;
+            let params = [req.body.email];
+            return client.query(sql, params);
+          })
+          .then(user => {
+            if (user.rowCount === 0) {
+              next(new Error("Invalid login!"));
+            } else {
+              bcrypt
+                .compare(req.body.password, user.rows[0].password)
+                .then(result => {
+                  if (result) {
+                    res.cookie("user_email", user.rows[0].email, {
+                      httpOnly: true,
+                      secure: false //true, // WHEN IN PRODUCTION
+                      //signed: true
+                    });
+                    const update = queries.updateUser;
+                    let params = [req.body.email];
+                    return client.query(update, params);
+                  } else {
+                    next(new Error("Invalid login!"));
+                  }
+                })
+                .then(results => {
+                  console.log(results);
+                  res.status(200).json(results);
+
+                  transaction.commit(client);
                 });
-                console.log("Logged in!");
-                const update = queries.updateUser;
-                let params = [req.body.email];
-                return client.query(update, params);
-                // PUT update user status to true
-              } else {
-                next(new Error("Invalid login!"));
-              }
-            })
-            .then(results => {
-              console.log(results);
-              res.status(200).json(results);
-            });
-        }
-      })
-      .catch(err => {
-        console.log("error", err);
+            }
+          })
+          .catch(err => {
+            console.log("error", err);
+
+            transaction.rollback(client);
+          })
+          .then(() => {
+            client.release();
+          });
       });
   } else {
     next(new Error("Invalid user!"));

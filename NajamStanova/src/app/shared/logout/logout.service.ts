@@ -7,17 +7,8 @@ import { Observable } from "rxjs";
 @Injectable({
   providedIn: "root"
 })
-export class LoginService {
+export class LogoutService {
   constructor(private http: HttpClient) {}
-
-  getUser(person: Person): Observable<any> {
-    return this.http.post<any>("/", person).pipe(
-      map(res => {
-        console.log(res);
-        return res.rows;
-      })
-    );
-  }
 
   logoutUser(person: Person): Observable<any> {
     return this.http.post<any>("/", person).pipe(

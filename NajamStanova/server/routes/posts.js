@@ -2,8 +2,9 @@ const express = require("express");
 const { Client } = require("pg");
 const router = express.Router();
 const queries = require("../db/queries");
+const middleware = require("./middleware");
 
-router.get("/", (req, res) => {
+router.get("/", middleware.isLoggedIn, (req, res) => {
   const client = new Client();
   client
     .connect()

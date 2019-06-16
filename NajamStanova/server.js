@@ -8,19 +8,21 @@ const postDetail = require("./server/routes/post-detail");
 const person = require("./server/routes/person");
 const registration = require("./server/routes/registration");
 const login = require("./server/routes/login");
+const logout = require("./server/routes/logout");
 
 //app.use(express.static('src'));
 app.use(express.static(path.join(__dirname, "dist/NajamStanova")));
+
+app.use(cookieParser());
+//app.use(cookieParser("keyboard_cat"));
+//app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // Using middleware
 app.use("/view", posts);
 app.use("/view/post-detail", postDetail);
 app.use("/registration", registration);
 app.use("/", login);
-
-app.use(cookieParser());
-//app.use(cookieParser("keyboard_cat"));
-//app.use(cookieParser(process.env.COOKIE_SECRET));
+//app.use("/", logout);
 
 // Catch all other routes request and return it to the index
 /*app.get('*', (req, res) => {

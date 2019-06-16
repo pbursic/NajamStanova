@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   apiKey: "AIzaSyBF3WYXdZkLPu12n-v2lscMeybJYFBRSc8",
-  database: 'petra',
-  username: 'postgres',
-  password: 'postgres',
-  host: 'localhost',
+  database: "petra",
+  username: "postgres",
+  password: "postgres",
+  host: "localhost",
   port: 5432,
-  dialect: 'postgres',
+  dialect: "postgres",
   pool: {
     max: 5,
     min: 0,

@@ -1,4 +1,12 @@
 module.exports = {
+  begin: "BEGIN",
+
+  end: "END",
+
+  commit: "COMMIT",
+
+  rollback: "ROLLBACK",
+
   getUser: `SELECT DISTINCT 
               users.name, 
               users.surname 
@@ -24,6 +32,11 @@ module.exports = {
   updateUser: `UPDATE 
                 users 
                 SET login_status = true 
+                WHERE email = $1`,
+
+  logoutUser: `UPDATE 
+                users 
+                SET login_status = false 
                 WHERE email = $1`,
 
   getPosts: `SELECT * FROM posts WHERE posts.status = true`,
