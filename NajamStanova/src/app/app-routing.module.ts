@@ -1,30 +1,42 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LandingComponent } from './landing/landing.component';
-import { MapComponent } from './map/map.component';
-import { FormComponent } from './form/form.component';
-import { ViewComponent } from './view/view.component';
-import { PostDetailComponent } from './post-detail/post-detail.component';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { LandingComponent } from "./landing/landing.component";
+import { MapComponent } from "./map/map.component";
+import { FormComponent } from "./form/form.component";
+import { ViewComponent } from "./view/view.component";
+import { UserPostsComponent } from "./user-posts/user-posts.component";
+import { PostDetailComponent } from "./post-detail/post-detail.component";
+import { AuthGuardService } from "./shared/auth-guard/auth-guard.service";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: LandingComponent
   },
-  {
-    path: 'map',
+  /*{
+    path: "map",
     component: MapComponent
+  },*/
+  {
+    path: "form",
+    component: FormComponent,
+    canActivate: [AuthGuardService]
   },
   {
-    path: 'form',
-    component: FormComponent
-  },
-  {
-    path: 'view',
+    path: "view",
     component: ViewComponent
   },
   {
-    path: 'view/post-detail/:id',
+    path: "user-posts",
+    component: UserPostsComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: "view/post-detail/:id",
+    component: PostDetailComponent
+  },
+  {
+    path: "user-posts/post-detail/:id",
     component: PostDetailComponent
   }
 ];
@@ -33,4 +45,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

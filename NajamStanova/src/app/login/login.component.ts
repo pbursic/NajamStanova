@@ -2,6 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { LoginService } from "../shared/login/login.service";
 import { Person } from "../models/person";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  ActivatedRouteSnapshot
+} from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -14,7 +20,11 @@ export class LoginComponent implements OnInit {
   person: Person;
   submitted = false;
 
-  constructor(private loginService: LoginService, private fb: FormBuilder) {}
+  constructor(
+    private loginService: LoginService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -29,7 +39,7 @@ export class LoginComponent implements OnInit {
       ]
     });
 
-    this.loginForm.valueChanges.subscribe(console.log);
+    //this.loginForm.valueChanges.subscribe(console.log);
   }
 
   getUser() {
@@ -40,14 +50,15 @@ export class LoginComponent implements OnInit {
     }
 
     this.person = this.loginForm.value;
-    console.log(this.person);
 
     this.save();
   }
 
   private save(): void {
-    console.log(this.person);
-    this.loginService.getUser(this.person).subscribe();
+    this.loginService.getUser(this.person).subscribe(() => {
+      localStorage.setItem("user", this.person.email);
+    });
+    this.router.navigate(["/view"]);
   }
 
   get email() {

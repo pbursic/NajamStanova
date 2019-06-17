@@ -25,7 +25,8 @@ import { environment } from "src/environments/environment";
 import { PostDetailComponent } from "./post-detail/post-detail.component";
 import { RegistrationComponent } from "./registration/registration.component";
 import { LoginComponent } from "./login/login.component";
-import { ProfileToolbarComponent } from './profile-toolbar/profile-toolbar.component';
+import { ProfileToolbarComponent } from "./profile-toolbar/profile-toolbar.component";
+import { UserPostsComponent } from "./user-posts/user-posts.component";
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent
+  },
+  {
+    path: "user-posts",
+    component: UserPostsComponent
   }
 ];
 
@@ -67,7 +72,8 @@ const routes: Routes = [
     PostDetailComponent,
     RegistrationComponent,
     LoginComponent,
-    ProfileToolbarComponent
+    ProfileToolbarComponent,
+    UserPostsComponent
   ],
   imports: [
     BrowserModule,

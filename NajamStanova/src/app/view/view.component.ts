@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from '../shared/post/post.service';
-import { IPosts } from '../models/posts'
-import { Observable } from 'rxjs/Observable';
+import { Component, OnInit } from "@angular/core";
+import { PostService } from "../shared/post/post.service";
+import { IPosts } from "../models/posts";
+import { Observable } from "rxjs/Observable";
 
 @Component({
-  selector: 'app-view',
-  templateUrl: './view.component.html',
-  styleUrls: ['./view.component.scss'],
+  selector: "app-view",
+  templateUrl: "./view.component.html",
+  styleUrls: ["./view.component.scss"],
   providers: [PostService]
 })
 export class ViewComponent implements OnInit {
-
   posts: IPosts[];
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService) {}
 
   ngOnInit() {
     this.postService.getAllPosts().subscribe(posts => {
@@ -34,5 +33,4 @@ export class ViewComponent implements OnInit {
   prevStep() {
     this.step--;
   }
-
 }

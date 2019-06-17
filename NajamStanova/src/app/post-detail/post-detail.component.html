@@ -16,6 +16,13 @@
 </mat-grid-list>
 
 <div class="grid center" *ngFor="let post of post">
+  <div>
+    <div *ngIf="editable">
+      <button mat-raised-button color="accent" style="float: right">
+        Uredi
+      </button>
+    </div>
+  </div>
   <div class="detail">
     <div class="title" style="margin-bottom:5%;">
       <h2>
@@ -121,26 +128,28 @@
       </p>
     </div>
   </div>
-  <mat-card class="user">
-    <mat-card-header class="user-grid center">
-      <div mat-card-avatar class="header-image"></div>
-      <mat-card-title
-        ><!--<div class="center anemities">
-          <img
-            src="assets/images/call-answer.svg"
-            alt="Telefon"
-            class="anemities-icon"
-          />
-        </div>-->
-        {{ post.name }} {{ post.surname }}</mat-card-title
-      >
-      <mat-card-subtitle>
-        <!--<div class="center anemities">
-          <p class="anemities">
-            +385 91 234 4567
-          </p>
-        </div>-->+385 91 234 4567</mat-card-subtitle
-      >
-    </mat-card-header>
-  </mat-card>
+  <div *ngIf="isLoggedIn">
+    <mat-card class="user">
+      <mat-card-header class="user-grid center">
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title
+          ><!--<div class="center anemities">
+            <img
+              src="assets/images/call-answer.svg"
+              alt="Telefon"
+              class="anemities-icon"
+            />
+          </div>-->
+          {{ post.name }} {{ post.surname }}</mat-card-title
+        >
+        <mat-card-subtitle>
+          <!--<div class="center anemities">
+            <p class="anemities">
+              +385 91 234 4567
+            </p>
+          </div>-->+385 91 234 4567</mat-card-subtitle
+        >
+      </mat-card-header>
+    </mat-card>
+  </div>
 </div>

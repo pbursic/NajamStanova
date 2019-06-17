@@ -46,7 +46,7 @@ mat-grid-tile {
   padding-left: 100px;
   padding-right: 100px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
 }
 
@@ -68,7 +68,7 @@ mat-grid-tile {
 
 .center {
   margin: auto;
-  width: 50%;
+  //width: 50%;
 }
 
 .map {

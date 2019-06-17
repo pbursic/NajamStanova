@@ -22,11 +22,11 @@ function isLoggedIn(req, res, next) {
   if (req.headers.cookie) {
     next();
   } else {
-    //res.status(401);
-    //next(new Error("Un-Authorized"));
-    console.log("REDIRECT!");
+    res.status(401);
+    next(new Error("Un-Authorized"));
+    //console.log("REDIRECT!");
     //app.use(express.static(path.join(__dirname, "dist/NajamStanova")));
-    res.redirect("/");
+    //res.redirect("/view");
   }
 }
 

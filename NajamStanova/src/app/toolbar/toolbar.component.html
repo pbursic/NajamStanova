@@ -14,6 +14,12 @@
       <mat-list-item class="list-item" routerLink="form"
         >Objavi oglas</mat-list-item
       >
+      <mat-list-item
+        class="list-item"
+        routerLink="user-posts"
+        *ngIf="isLoggedIn"
+        >Tvoji oglasi</mat-list-item
+      >
     </mat-nav-list>
 
     <span class="example-spacer"></span>
@@ -25,10 +31,10 @@
       </mat-card-header>
     </mat-card>
     <mat-menu #menu="matMenu">
+      <button mat-menu-item>Profil</button>
       <button mat-menu-item (click)="logoutUser()">
         Odjava
       </button>
-      <button mat-menu-item>Item 2</button>
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>

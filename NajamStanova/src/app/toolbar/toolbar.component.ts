@@ -14,10 +14,13 @@ import { LoginService } from "../shared/login/login.service";
 export class ToolbarComponent implements OnInit {
   person: Person;
   submitted = false;
+  isLoggedIn;
 
   constructor(private logoutService: LoginService, public dialog: MatDialog) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isLoggedIn = localStorage.getItem("user");
+  }
 
   logoutUser() {
     this.submitted = true;

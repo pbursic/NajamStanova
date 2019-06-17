@@ -14,6 +14,7 @@ module.exports = {
             WHERE posts.user_id = $1`,
 
   getLoginUser: `SELECT 
+            id,
             email,
             password
           FROM users

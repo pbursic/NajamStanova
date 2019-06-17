@@ -36,7 +36,6 @@ router.post("/", jsonParser, (req, res, next) => {
                       secure: false //true, // WHEN IN PRODUCTION
                       //signed: true
                     });
-
                     const update = queries.updateUser;
                     let params = [req.body.email];
                     return client.query(update, params);

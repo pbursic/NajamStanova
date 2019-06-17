@@ -4,7 +4,7 @@ const router = express.Router();
 const queries = require("../db/queries");
 const middleware = require("./middleware");
 
-router.get("/", middleware.isLoggedIn, (req, res) => {
+router.get("/", (req, res) => {
   const client = new Client();
   client
     .connect()

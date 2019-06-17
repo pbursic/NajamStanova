@@ -13,7 +13,6 @@ export class LoginService {
   getUser(person: Person): Observable<any> {
     return this.http.post<any>("/", person).pipe(
       map(res => {
-        console.log(res);
         return res.rows;
       })
     );
@@ -22,7 +21,6 @@ export class LoginService {
   logoutUser(person: Person): Observable<any> {
     return this.http.post<any>("/", person).pipe(
       map(res => {
-        console.log(res);
         return res.rows;
       })
     );

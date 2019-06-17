@@ -1,0 +1,28 @@
+<div class="content_view">
+  <div class="grid">
+    <mat-card
+      class="example-card"
+      *ngFor="let post of posts"
+      method="GET"
+      routerLink="post-detail/{{ post.id }}"
+    >
+      <img
+        mat-card-image
+        src="assets/images/house.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+      <!-- https://material.angular.io/assets/img/examples/shiba2.jpg-->
+      <mat-card-header>
+        <div class="grid2">
+          <mat-card-title
+            >{{ post.title }}, {{ post.squares }} m2</mat-card-title
+          >
+          <mat-card-subtitle>{{ post.price }}</mat-card-subtitle>
+          <mat-card-subtitle
+            >{{ post.city }}, {{ post.address }}</mat-card-subtitle
+          >
+        </div>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>
