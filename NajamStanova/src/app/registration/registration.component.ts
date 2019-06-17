@@ -17,6 +17,7 @@ export class RegistrationComponent implements OnInit {
   //person: IPerson[];
   person: Person;
   submitted = false;
+  isLoggedIn;
 
   constructor(
     private registrationService: RegistrationService,
@@ -24,27 +25,53 @@ export class RegistrationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.registrationForm = this.fb.group({
-      name: "Marko",
-      surname: "Maric",
-      email: ["marko@gmail.com", [Validators.required, Validators.email]],
-      city: "Rovinj",
-      country: "Hrvatska",
-      password: [
-        "lozinka9",
-        [
-          Validators.required,
-          Validators.pattern("^(?=.*[0-9])(?=.[a-zA-Z])([a-zA-Z0-9]+)$"),
-          Validators.minLength(6)
-        ]
-      ],
-      day: [1, [Validators.required, Validators.min(1), Validators.max(31)]],
-      month: 1,
-      year: 1995,
-      terms: [false, [Validators.requiredTrue]]
-    });
+    this.isLoggedIn = localStorage.getItem("user");
 
-    this.registrationForm.valueChanges.subscribe(console.log);
+    if (this.isLoggedIn) {
+      this.registrationForm = this.fb.group({
+        name: "Marko",
+        surname: "Maric",
+        email: ["marko@gmail.com", [Validators.required, Validators.email]],
+        city: "Rovinj",
+        country: "Hrvatska",
+        password: [
+          "lozinka9",
+          [
+            Validators.required,
+            Validators.pattern("^(?=.*[0-9])(?=.[a-zA-Z])([a-zA-Z0-9]+)$"),
+            Validators.minLength(6)
+          ]
+        ],
+        day: [1, [Validators.required, Validators.min(1), Validators.max(31)]],
+        month: 1,
+        year: 1995,
+        terms: [false, [Validators.requiredTrue]]
+      });
+
+      //this.registrationForm.valueChanges.subscribe(console.log);
+    } else {
+      this.registrationForm = this.fb.group({
+        name: "",
+        surname: "",
+        email: ["", [Validators.required, Validators.email]],
+        city: "",
+        country: "",
+        password: [
+          "",
+          [
+            Validators.required,
+            Validators.pattern("^(?=.*[0-9])(?=.[a-zA-Z])([a-zA-Z0-9]+)$"),
+            Validators.minLength(6)
+          ]
+        ],
+        day: [1, [Validators.required, Validators.min(1), Validators.max(31)]],
+        month: 1,
+        year: 1995,
+        terms: [false, [Validators.requiredTrue]]
+      });
+
+      //this.registrationForm.valueChanges.subscribe(console.log);
+    }
   }
 
   addPerson() {

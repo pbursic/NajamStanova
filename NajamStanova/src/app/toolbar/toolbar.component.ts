@@ -4,6 +4,12 @@ import { LoginComponent } from "../login/login.component";
 import { Person } from "../models/person";
 import { MatDialog } from "@angular/material";
 import { LoginService } from "../shared/login/login.service";
+import {
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  ActivatedRouteSnapshot
+} from "@angular/router";
 
 @Component({
   selector: "app-toolbar",
@@ -16,18 +22,25 @@ export class ToolbarComponent implements OnInit {
   submitted = false;
   isLoggedIn;
 
-  constructor(private logoutService: LoginService, public dialog: MatDialog) {}
+  constructor(
+    private logoutService: LoginService,
+    public dialog: MatDialog,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.isLoggedIn = localStorage.getItem("user");
   }
 
   logoutUser() {
-    this.submitted = true;
+    localStorage.clear();
+    this.router.navigate([""]);
+
+    /*this.submitted = true;
 
     console.log(this.person);
 
-    this.save();
+    this.save();*/
   }
 
   private save(): void {

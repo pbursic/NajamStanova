@@ -25,13 +25,13 @@
     <span class="example-spacer"></span>
 
     <span class="example-spacer"></span>
-    <mat-card class="user" [matMenuTriggerFor]="menu">
+    <mat-card class="user" [matMenuTriggerFor]="menu" *ngIf="isLoggedIn">
       <mat-card-header>
         <div mat-card-avatar class="header-image"></div>
       </mat-card-header>
     </mat-card>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Profil</button>
+      <button mat-menu-item routerLink="profile">Profil</button>
       <button mat-menu-item (click)="logoutUser()">
         Odjava
       </button>

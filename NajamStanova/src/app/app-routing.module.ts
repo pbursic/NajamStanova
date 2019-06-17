@@ -6,6 +6,7 @@ import { FormComponent } from "./form/form.component";
 import { ViewComponent } from "./view/view.component";
 import { UserPostsComponent } from "./user-posts/user-posts.component";
 import { PostDetailComponent } from "./post-detail/post-detail.component";
+import { ProfileComponent } from "./profile/profile.component";
 import { AuthGuardService } from "./shared/auth-guard/auth-guard.service";
 
 const routes: Routes = [
@@ -38,6 +39,11 @@ const routes: Routes = [
   {
     path: "user-posts/post-detail/:id",
     component: PostDetailComponent
+  },
+  {
+    path: "profile",
+    component: ProfileComponent,
+    canActivate: [AuthGuardService]
   }
 ];
 

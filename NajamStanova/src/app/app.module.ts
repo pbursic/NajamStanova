@@ -27,6 +27,7 @@ import { RegistrationComponent } from "./registration/registration.component";
 import { LoginComponent } from "./login/login.component";
 import { ProfileToolbarComponent } from "./profile-toolbar/profile-toolbar.component";
 import { UserPostsComponent } from "./user-posts/user-posts.component";
+import { ProfileComponent } from "./profile/profile.component";
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: "user-posts",
     component: UserPostsComponent
+  },
+  {
+    path: "profile",
+    component: ProfileComponent
   }
 ];
 
@@ -73,7 +78,8 @@ const routes: Routes = [
     RegistrationComponent,
     LoginComponent,
     ProfileToolbarComponent,
-    UserPostsComponent
+    UserPostsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,9 @@
 
   <div class="grid">
     <div class="center">
-      <h2 class="center">Registracija</h2>
+      <h2 class="center">
+        {{ isLoggedIn ? "Profil" : "Registracija" }}
+      </h2>
       <button mat-stroked-button color="accent" class="center">
         Upload
       </button>
@@ -50,31 +52,41 @@
         </mat-form-field>
       </div>
 
-      <h4>Datum rođenja</h4>
+      <div *ngIf="!isLoggedIn">
+        <h4>Datum rođenja</h4>
 
-      <p>
-        Da biste se registrirali morate imati najmanje 18 godina.
-      </p>
-      <p>
-        Drugi korisnici neće vidjeti vaš datum rođenja.
-      </p>
+        <p>
+          Da biste se registrirali morate imati najmanje 18 godina.
+        </p>
+        <p>
+          Drugi korisnici neće vidjeti vaš datum rođenja.
+        </p>
 
-      <div class="">
-        <mat-form-field class="day-field" color="accent" appearance="outline">
-          <mat-select placeholder="Dan" formControlName="day">
-            <mat-option>1</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field class="month-field" color="accent" appearance="outline">
-          <mat-select placeholder="Mjesec" formControlName="month">
-            <mat-option>Siječanj</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field class="year-field" color="accent" appearance="outline">
-          <mat-select placeholder="Godina" formControlName="year">
-            <mat-option>1990</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div class="">
+          <mat-form-field class="day-field" color="accent" appearance="outline">
+            <mat-select placeholder="Dan" formControlName="day">
+              <mat-option>1</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field
+            class="month-field"
+            color="accent"
+            appearance="outline"
+          >
+            <mat-select placeholder="Mjesec" formControlName="month">
+              <mat-option>Siječanj</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field
+            class="year-field"
+            color="accent"
+            appearance="outline"
+          >
+            <mat-select placeholder="Godina" formControlName="year">
+              <mat-option>1990</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
 
       <h4>Kontakt informacije</h4>
@@ -144,7 +156,7 @@
           </mat-error>-->
         </mat-form-field>
       </div>
-      <div>
+      <div *ngIf="!isLoggedIn">
         <mat-checkbox formControlName="terms"
           >Prihvačam uvjete korištenja</mat-checkbox
         >
@@ -155,12 +167,12 @@
   <div class="center">
     <button
       mat-raised-button
-      [disabled]="registrationForm.invalid"
+      [disabled]="registrationForm.invalid && !isLoggedIn"
       color="accent"
       type="submit"
       class="center"
     >
-      Registracija
+      {{ isLoggedIn ? "Spremi" : "Registracija" }}
     </button>
   </div>
 </form>
