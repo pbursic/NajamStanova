@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PostService } from "../shared/post/post.service";
-import { IPosts } from "../models/posts";
+import { Posts } from "../models/posts";
 import { Observable } from "rxjs/Observable";
 import { ActivatedRoute, Params } from "@angular/router";
 
@@ -18,7 +18,7 @@ export interface Tile {
   providers: [PostService]
 })
 export class PostDetailComponent implements OnInit {
-  post: IPosts[];
+  post: Posts;
   editable: boolean = false;
   contactVisible: boolean = false;
   isLoggedIn;

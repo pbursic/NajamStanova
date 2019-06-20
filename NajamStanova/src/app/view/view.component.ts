@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PostService } from "../shared/post/post.service";
-import { IPosts } from "../models/posts";
+import { Posts } from "../models/posts";
 import { Observable } from "rxjs/Observable";
 
 @Component({
@@ -10,7 +10,7 @@ import { Observable } from "rxjs/Observable";
   providers: [PostService]
 })
 export class ViewComponent implements OnInit {
-  posts: IPosts[];
+  posts: Posts;
 
   constructor(private postService: PostService) {}
 

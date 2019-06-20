@@ -1,8 +1,12 @@
 const express = require("express");
 const { Client } = require("pg");
 const router = express.Router();
+const bodyParser = require("body-parser");
 const queries = require("../db/queries");
 const middleware = require("./middleware");
+
+router.use(bodyParser.urlencoded({ extended: false }));
+var jsonParser = bodyParser.json();
 
 router.get("/", (req, res) => {
   const client = new Client();
@@ -20,5 +24,7 @@ router.get("/", (req, res) => {
     })
     .then(() => client.end());
 });
+
+router.post("/", jsonParser, (req, res, next) => {});
 
 module.exports = router;

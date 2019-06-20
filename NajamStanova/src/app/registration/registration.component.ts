@@ -14,7 +14,6 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 })
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
-  //person: IPerson[];
   person: Person;
   submitted = false;
   isLoggedIn;
@@ -74,7 +73,7 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-  addPerson() {
+  onSubmit() {
     this.submitted = true;
 
     if (this.registrationForm.invalid) {
@@ -88,14 +87,20 @@ export class RegistrationComponent implements OnInit {
 
     //this.person.name = this.registrationForm.value.name;
     this.person = this.registrationForm.value;
-    console.log(this.person);
+    //console.log(this.person);
 
     this.save();
   }
 
   private save(): void {
     console.log(this.person);
+
     this.registrationService.addPerson(this.person).subscribe();
+
+    /*if (this.isLoggedIn) {
+    } else {
+      this.registrationService.addPerson(this.person).subscribe();
+    }*/
   }
 
   get name() {

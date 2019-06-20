@@ -1,6 +1,6 @@
-export interface IPosts {
+export class Posts {
   id: number;
-  person_id: number;
+  user_id: number;
   status: boolean;
   title: string;
   description: string;
