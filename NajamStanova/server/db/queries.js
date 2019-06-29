@@ -49,9 +49,14 @@ module.exports = {
                     AND posts.user_id = users.id`,
 
   postUser: `INSERT INTO users
-              ("email", "password", "name", "surname", "birth_date", "country", "city", "phone")
+              ("email", "password", "name", "surname", "birth_date", "country", "city", "phone", "image")
             VALUES
-              ($1, $2, $3, $4, $5, $6, $7, $8)`,
+              ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
 
-  insertPost: ``
+  insertPost: `INSERT INTO posts
+              ("user_id", "status", "title", "description", "bills_included", "country", "city", "address", "price",
+              "squares", "type", "available_date", "walkout_date", "furnished", "bed", "room", "pet", "parking")
+              VALUES
+              ($1, $2, $3, $4, $5, $6, $7, $8, $9,
+              $10, $11, $12, $13, $14, $15, $16, $17, $18);`
 };

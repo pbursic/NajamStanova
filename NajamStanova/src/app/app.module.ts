@@ -28,6 +28,7 @@ import { LoginComponent } from "./login/login.component";
 import { ProfileToolbarComponent } from "./profile-toolbar/profile-toolbar.component";
 import { UserPostsComponent } from "./user-posts/user-posts.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { ProfileImageUploadComponent } from './profile-image-upload/profile-image-upload.component';
 
 const routes: Routes = [
   {
@@ -79,7 +80,8 @@ const routes: Routes = [
     LoginComponent,
     ProfileToolbarComponent,
     UserPostsComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileImageUploadComponent
   ],
   imports: [
     BrowserModule,

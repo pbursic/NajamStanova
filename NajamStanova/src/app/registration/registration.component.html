@@ -1,4 +1,8 @@
-<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+<form
+  [formGroup]="registrationForm"
+  enctype="multipart/form-data"
+  (ngSubmit)="onSubmit()"
+>
   <!--Value: {{ registrationForm.value | json }} -->
 
   <div class="grid">
@@ -6,9 +10,45 @@
       <h2 class="center">
         {{ isLoggedIn ? "Profil" : "Registracija" }}
       </h2>
-      <button mat-stroked-button color="accent" class="center">
-        Upload
-      </button>
+
+      <div class="center" style="width: 150px;">
+        <div>
+          <img [src]="imageUrl" style="width: 150px; height: 120px;" />
+        </div>
+        <div>
+          <input
+            type="file"
+            accept="image/*"
+            style="display: none;"
+            #image
+            name="image"
+            (change)="onFileSelected($event.target.files)"
+            formControlName="image"
+            required
+          />
+          <button
+            mat-stroked-button
+            color="accent"
+            style="width: 100%;"
+            (click)="image.click()"
+          >
+            Odaberi sliku
+          </button>
+        </div>
+        <div>
+          <button
+            mat-raised-button
+            color="accent"
+            style="width: 100%;"
+            (click)="onUpload()"
+            [disabled]="image.value == ''"
+          >
+            Učitaj
+          </button>
+        </div>
+      </div>
+
+      <!--<app-profile-image-upload></app-profile-image-upload>-->
     </div>
 
     <div class="span-col-2">

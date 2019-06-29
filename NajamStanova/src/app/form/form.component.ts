@@ -3,6 +3,11 @@ import { PostService } from "../shared/post/post.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Posts } from "../models/posts";
 
+export interface IType {
+  value: String;
+  viewValue: String;
+}
+
 @Component({
   selector: "app-form",
   templateUrl: "./form.component.html",
@@ -13,6 +18,12 @@ export class FormComponent implements OnInit {
   postsForm: FormGroup;
   posts: Posts;
   submitted = false;
+
+  types: IType[] = [
+    { value: "stan", viewValue: "Stan" },
+    { value: "studio", viewValue: "Studio" },
+    { value: "kuca", viewValue: "Kuća" }
+  ];
 
   constructor(private postService: PostService, private fb: FormBuilder) {}
   //formControls = this.postService.form.controls;
@@ -39,7 +50,7 @@ export class FormComponent implements OnInit {
     });
   }
 
-  addPost() {
+  onSubmit() {
     this.submitted = true;
 
     if (this.postsForm.invalid) {

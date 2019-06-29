@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 var cookieParser = require("cookie-parser");
+const fileUpload = require("express-fileupload");
 
 const posts = require("./server/routes/posts");
 const postDetail = require("./server/routes/post-detail");
@@ -18,6 +19,8 @@ app.use(express.static(path.join(__dirname, "dist/NajamStanova")));
 app.use(cookieParser());
 //app.use(cookieParser("keyboard_cat"));
 //app.use(cookieParser(process.env.COOKIE_SECRET));
+
+app.use(fileUpload());
 
 // Using middleware
 app.use("/view", posts);

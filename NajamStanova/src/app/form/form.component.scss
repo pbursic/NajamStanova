@@ -1,6 +1,11 @@
+.form {
+  width: 100%;
+  margin-left: 0%;
+}
+
 ::ng-deep .mat-step-header .mat-step-icon {
-    background-color: #e91e63ff;
-    color: #fff;
+  background-color: #e91e63ff;
+  color: #fff;
 }
 
 ::ng-deep .mat-progress-bar-fill::after {
@@ -10,7 +15,7 @@
 
 ::ng-deep .mat-progress-bar-buffer {
   //background-color: #ff80ab;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
 }
 
 /*::ng-deep .mat-form-field.mat-focused .mat-form-field-label{
@@ -46,42 +51,47 @@
   border-top-style: none !important;
 }
 
+::ng-deep .mat-step-label {
+  margin-top: 16px;
+  width: 100%;
+}
+::ng-deep .mat-step-text-label {
+  text-align: center;
+}
 
-  ::ng-deep .mat-step-label {
-    margin-top: 16px;
-    width: 100%;
-  }
-  ::ng-deep .mat-step-text-label {
-    text-align: center;
-  }
+::ng-deep .mat-stepper-horizontal {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+::ng-deep .mat-horizontal-stepper-header {
+  flex-direction: column;
+  flex: 1;
+  height: 104px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+::ng-deep .mat-horizontal-stepper-header .mat-step-icon,
+::ng-deep .mat-horizontal-stepper-header .mat-step-icon-not-touched {
+  margin-top: 24px;
+  margin-right: 0 !important;
+}
 
-  ::ng-deep .mat-stepper-horizontal {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-  ::ng-deep .mat-horizontal-stepper-header {
-    flex-direction: column;
-    flex: 1;
-    height: 104px !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
-  ::ng-deep .mat-horizontal-stepper-header .mat-step-icon,
-  ::ng-deep .mat-horizontal-stepper-header .mat-step-icon-not-touched {
-    margin-top: 24px;
-    margin-right: 0 !important;
-  }
+::ng-deep .mat-stepper-horizontal .mat-horizontal-content-container {
+  padding: 0 50px 24px 50px;
+}
 
-  ::ng-deep .mat-stepper-horizontal .mat-horizontal-content-container {
-    padding: 0 50px 24px 50px;
-  }
+form {
+  width: 100%;
+  margin-left: 0%;
+  margin-top: 1.8%
+}
 
-  form {
-    margin-left: 35%;
-    margin-top: 30px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
+.container {
+  margin-left: 35%;
+  margin-top: 30px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 .mat-raised-button {

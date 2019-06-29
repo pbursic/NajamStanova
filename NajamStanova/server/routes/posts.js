@@ -25,6 +25,4 @@ router.get("/", (req, res) => {
     .then(() => client.end());
 });
 
-router.post("/", jsonParser, (req, res, next) => {});
-
 module.exports = router;
