@@ -25,6 +25,18 @@
     <span class="example-spacer"></span>
 
     <span class="example-spacer"></span>
+
+    <mat-nav-list *ngIf="!isLoggedIn">
+      <mat-card class="user list-item">
+        <mat-card-header>
+          <div mat-card-avatar class="header-image"></div>
+        </mat-card-header>
+      </mat-card>
+
+      <mat-list-item class="list-item">Prijava</mat-list-item
+      ><!--routerLink="login"-->
+    </mat-nav-list>
+
     <mat-card class="user" [matMenuTriggerFor]="menu" *ngIf="isLoggedIn">
       <mat-card-header>
         <div mat-card-avatar class="header-image"></div>

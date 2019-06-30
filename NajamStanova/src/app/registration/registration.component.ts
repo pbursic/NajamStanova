@@ -17,7 +17,7 @@ export class RegistrationComponent implements OnInit {
   person: Person;
   submitted = false;
   isLoggedIn;
-  imageUrl: String = "/assets/images/mobile.png";
+  imageUrl: String = "../../assets/images/UserIcon@2x.svg";
   selectedFile: File = null;
 
   constructor(
@@ -53,13 +53,13 @@ export class RegistrationComponent implements OnInit {
       //this.registrationForm.valueChanges.subscribe(console.log);
     } else {
       this.registrationForm = this.fb.group({
-        name: "Marko",
-        surname: "Maric",
-        email: ["test9@gmail.com", [Validators.required, Validators.email]],
-        city: "Rovinj",
-        country: "Hrvatska",
+        name: "",
+        surname: "",
+        email: ["", [Validators.required, Validators.email]],
+        city: "",
+        country: "",
         password: [
-          "lozinka9",
+          "",
           [
             Validators.required,
             Validators.pattern("^(?=.*[0-9])(?=.[a-zA-Z])([a-zA-Z0-9]+)$"),

@@ -32,10 +32,10 @@
             style="width: 100%;"
             (click)="image.click()"
           >
-            Odaberi sliku
+            Učitaj sliku
           </button>
         </div>
-        <div>
+        <!--<div>
           <button
             mat-raised-button
             color="accent"
@@ -45,7 +45,7 @@
           >
             Učitaj
           </button>
-        </div>
+        </div>-->
       </div>
 
       <!--<app-profile-image-upload></app-profile-image-upload>-->
@@ -212,6 +212,7 @@
       type="submit"
       class="center"
     >
+      <!--[disabled]="registrationForm.invalid && !isLoggedIn" -->
       {{ isLoggedIn ? "Spremi" : "Registracija" }}
     </button>
   </div>
