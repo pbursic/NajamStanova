@@ -16,6 +16,14 @@ export class PostService {
     );
   }
 
+  getUserPosts(id: number): Observable<Posts> {
+    return this.http.get<any>(`/user-posts/${id}`).pipe(
+      map(res => {
+        return res.rows;
+      })
+    );
+  }
+
   getPost(id: number): Observable<Posts> {
     return this.http.get<any>(`/view/post-detail/${id}`).pipe(
       map(res => {

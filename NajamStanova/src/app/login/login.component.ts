@@ -51,7 +51,8 @@ export class LoginComponent implements OnInit {
   private save(): void {
     this.loginService.getUser(this.person).subscribe(() => {
       localStorage.setItem("user", this.person.email);
-      this.router.navigate(["/user-posts"]);
+      //this.router.navigate(["/user-posts/" + this.person.id]);
+      this.router.navigate(["/view"]);
     });
   }
 

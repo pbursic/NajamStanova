@@ -13,6 +13,10 @@ module.exports = {
             FROM posts, users 
             WHERE posts.user_id = $1`,
 
+  getUserPosts: `select * from posts, users where posts.user_id = $1 AND posts.user_id = users.id`,
+
+  //get: `select * from posts post, users us where us.email = $1 and post.user_id = us.id`,
+
   getLoginUser: `SELECT 
             id,
             email,
@@ -20,7 +24,7 @@ module.exports = {
           FROM users
           WHERE email = $1`,
 
-  getEmail: `SELECT 
+  /*getEmail: `SELECT 
                 email
               FROM users
               WHERE email = $1`,
@@ -28,7 +32,7 @@ module.exports = {
   getPassword: `SELECT 
                 password
               FROM users
-              WHERE password = $1`,
+              WHERE password = $1`,*/
 
   updateUser: `UPDATE 
                 users 

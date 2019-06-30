@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 
 const posts = require("./server/routes/posts");
+const userPosts = require("./server/routes/user-posts");
 const postDetail = require("./server/routes/post-detail");
 const person = require("./server/routes/person");
 const registration = require("./server/routes/registration");
@@ -25,6 +26,7 @@ app.use(fileUpload());
 // Using middleware
 app.use("/view", posts);
 app.use("/view/post-detail", postDetail);
+app.use("/user-posts", userPosts);
 app.use("/user-posts/post-detail", middleware.isLoggedIn, postDetail);
 app.use("/registration", registration);
 app.use("/", login);
