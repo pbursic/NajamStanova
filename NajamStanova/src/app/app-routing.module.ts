@@ -29,7 +29,7 @@ const routes: Routes = [
     component: ViewComponent
   },
   {
-    path: "user-posts/:id",
+    path: "user-posts",
     component: UserPostsComponent,
     canActivate: [AuthGuardService]
   },

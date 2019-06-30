@@ -16,8 +16,8 @@ export class PostService {
     );
   }
 
-  getUserPosts(id: number): Observable<Posts> {
-    return this.http.get<any>(`/user-posts/${id}`).pipe(
+  getUserPosts(): Observable<Posts> {
+    return this.http.get<any>(`/user-posts`).pipe(
       map(res => {
         return res.rows;
       })
