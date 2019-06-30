@@ -102,8 +102,22 @@
           Drugi korisnici neće vidjeti vaš datum rođenja.
         </p>
 
-        <div class="">
-          <mat-form-field class="day-field" color="accent" appearance="outline">
+        <div>
+          <mat-form-field>
+            <input
+              matInput
+              [matDatepicker]="picker1"
+              placeholder="Datum rođenja"
+              [formControl]="birth_date"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+          <!--<mat-form-field class="day-field" color="accent" appearance="outline">
             <mat-select placeholder="Dan" formControlName="day">
               <mat-option>1</mat-option>
             </mat-select>
@@ -125,7 +139,7 @@
             <mat-select placeholder="Godina" formControlName="year">
               <mat-option>1990</mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field>-->
         </div>
       </div>
 
@@ -137,11 +151,8 @@
             matInput
             type="string"
             placeholder="Broj telefona"
-            formControlName="email"
+            formControlName="phone"
           />
-          <!--<mat-error *ngIf="email.invalid && email.touched">
-            Neispravan e-mail!
-          </mat-error>-->
         </mat-form-field>
       </div>
 

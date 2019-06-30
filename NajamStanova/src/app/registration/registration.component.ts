@@ -32,6 +32,7 @@ export class RegistrationComponent implements OnInit {
       this.registrationForm = this.fb.group({
         name: "Marko",
         surname: "Maric",
+        phone: [],
         email: ["marko@gmail.com", [Validators.required, Validators.email]],
         city: "Rovinj",
         country: "Hrvatska",
@@ -43,9 +44,10 @@ export class RegistrationComponent implements OnInit {
             Validators.minLength(6)
           ]
         ],
-        day: [1, [Validators.required, Validators.min(1), Validators.max(31)]],
+        birth_date: [],
+        /*day: [1, [Validators.required, Validators.min(1), Validators.max(31)]],
         month: 1,
-        year: 1995,
+        year: 1995,*/
         terms: [false, [Validators.requiredTrue]],
         image: []
       });
@@ -55,6 +57,7 @@ export class RegistrationComponent implements OnInit {
       this.registrationForm = this.fb.group({
         name: "",
         surname: "",
+        phone: [],
         email: ["", [Validators.required, Validators.email]],
         city: "",
         country: "",
@@ -66,9 +69,10 @@ export class RegistrationComponent implements OnInit {
             Validators.minLength(6)
           ]
         ],
-        day: [1, [Validators.required, Validators.min(1), Validators.max(31)]],
+        birth_date: [],
+        /*day: [1, [Validators.required, Validators.min(1), Validators.max(31)]],
         month: 1,
-        year: 1995,
+        year: 1995,*/
         terms: [false, [Validators.requiredTrue]],
         image: []
       });
@@ -84,28 +88,17 @@ export class RegistrationComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageUrl = event.target.result;
-      console.log("imageUrl2: ", this.imageUrl);
+      //console.log("imageUrl2: ", this.imageUrl);
     };
     reader.readAsDataURL(this.selectedFile);
-
-    console.log("imageUrl: ", this.imageUrl);
-    console.log("selectedFile: ", this.selectedFile);
   }
 
-  onUpload() {
+  /*onUpload() {
     console.log("imageUrl: ", this.imageUrl);
     console.log("selectedFile: ", this.selectedFile);
     const fd = new FormData();
     fd.append("image", this.selectedFile);
-    /*this.http
-      .post("/registration", this.selectedFile, {
-        reportProgress: true,
-        observe: "events"
-      })
-      .subscribe(event => {
-        console.log(event);
-      });*/
-  }
+  }*/
 
   onSubmit() {
     this.submitted = true;
@@ -114,21 +107,14 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
-    //let Params = new HttpParams();
-
-    //Params = Params.append('name', this.registrationForm.value.name);
-    //console.log(Params);
-
-    //this.person.name = this.registrationForm.value.name;
     this.person = this.registrationForm.value;
     this.person.image = this.selectedFile;
-    //console.log(this.person);
 
     this.save();
   }
 
   private save(): void {
-    console.log(this.person);
+    //console.log(this.person);
 
     this.registrationService.addPerson(this.person).subscribe();
 
@@ -166,7 +152,7 @@ export class RegistrationComponent implements OnInit {
     return this.registrationForm.get("password");
   }
 
-  get day() {
+  /*get day() {
     return this.registrationForm.get("day");
   }
 
@@ -176,6 +162,14 @@ export class RegistrationComponent implements OnInit {
 
   get year() {
     return this.registrationForm.get("year");
+  }*/
+
+  get phone() {
+    return this.registrationForm.get("phone");
+  }
+
+  get birth_date() {
+    return this.registrationForm.get("birth_date");
   }
 
   get terms() {
