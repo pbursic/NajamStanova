@@ -10,9 +10,6 @@
           placeholder="E-mail"
           formControlName="email"
         />
-        <!--<mat-error *ngIf="email.invalid && email.touched">
-        Neispravan e-mail!
-      </mat-error>-->
       </mat-form-field>
     </div>
 
@@ -20,16 +17,19 @@
       <mat-form-field color="accent" appearance="outline">
         <input
           matInput
-          type="string"
+          [type]="hide ? 'password' : 'text'"
           placeholder="Lozinka"
           formControlName="password"
         />
-        <!--<mat-hint align="end">
-        Lozinka mora sadržavati barem jedno slovo i jedan broj!
-      </mat-hint>
-      <mat-error *ngIf="password.invalid && password.touched">
-        Neispravna lozinka!
-      </mat-error>-->
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
       </mat-form-field>
     </div>
 

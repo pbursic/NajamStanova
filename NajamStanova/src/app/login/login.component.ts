@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   person: Person;
   submitted = false;
+  hide = true;
 
   constructor(
     private loginService: LoginService,
@@ -28,15 +29,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      email: ["marko@gmail.com", [Validators.required, Validators.email]],
-      password: [
-        "lozinka9",
-        [
-          Validators.required
-          /*Validators.pattern("^(?=.*[0-9])(?=.[a-zA-Z])([a-zA-Z0-9]+)$"),
-          Validators.minLength(6)*/
-        ]
-      ]
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required]]
     });
 
     //this.loginForm.valueChanges.subscribe(console.log);
