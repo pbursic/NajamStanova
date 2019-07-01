@@ -30,10 +30,10 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.postsForm = this.fb.group({
-      status: false,
+      status: [false],
       title: [],
       description: [],
-      bills_included: false,
+      bills_included: [false],
       country: [],
       city: [],
       address: [],
@@ -42,11 +42,11 @@ export class FormComponent implements OnInit {
       type: [],
       available_date: [],
       walkout_date: [],
-      furnished: false,
+      furnished: [false],
       bed: [],
       room: [],
-      pet: false,
-      parking: false
+      pet: [false],
+      parking: [false]
     });
   }
 

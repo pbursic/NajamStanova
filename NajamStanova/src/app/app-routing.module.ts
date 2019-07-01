@@ -42,6 +42,10 @@ const routes: Routes = [
     component: PostDetailComponent
   },
   {
+    path: "user-posts/post-detail/:id/form",
+    component: FormComponent
+  },
+  {
     path: "profile",
     component: ProfileComponent,
     canActivate: [AuthGuardService]

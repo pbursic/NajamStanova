@@ -13,7 +13,18 @@ module.exports = {
             FROM posts, users 
             WHERE posts.user_id = $1`,
 
-  getUserPosts: `select posts.id from posts, users where posts.user_id = $1 AND posts.user_id = users.id`,
+  getUserPosts: `SELECT 
+                  posts.id,
+                  posts.title,
+                  posts.squares,
+                  posts.price,
+                  posts.city,
+                  posts.address 
+                FROM 
+                  posts, 
+                  users 
+                WHERE posts.user_id = $1 
+                AND posts.user_id = users.id`,
 
   //get: `select * from posts post, users us where us.email = $1 and post.user_id = us.id`,
 

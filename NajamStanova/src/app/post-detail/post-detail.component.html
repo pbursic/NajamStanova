@@ -18,7 +18,12 @@
 <div class="grid center" *ngFor="let post of post">
   <div>
     <div *ngIf="editable">
-      <button mat-raised-button color="accent" style="float: right">
+      <button
+        mat-raised-button
+        color="accent"
+        style="float: right"
+        routerLink="form"
+      >
         Uredi
       </button>
     </div>

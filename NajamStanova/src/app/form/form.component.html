@@ -21,9 +21,6 @@
             <!--formControlName="$key"-->
             <mat-form-field color="accent" appearance="outline">
               <mat-select placeholder="Stan" formControlName="type">
-                <!--<mat-option>Stan</mat-option>
-                <mat-option>Studio</mat-option>
-                <mat-option>Kuća</mat-option>-->
                 <mat-option *ngFor="let type of types" [value]="type.value">
                   {{ type.viewValue }}
                 </mat-option>
@@ -47,23 +44,23 @@
           >
           </mat-progress-bar>
 
-          <form class="container">
-            <h3>Koliko je kupaonica?</h3>
+          <form class="container" [formGroup]="postsForm">
+            <!--<h3>Koliko je kupaonica?</h3>
 
             <mat-form-field color="accent" appearance="outline">
-              <input matInput type="number" placeholder="Kupaonica" />
+              <input matInput type="number" placeholder="Kupaonica"/>
             </mat-form-field>
 
             <h3>Koliko podstanara vaš smještaj može primiti?</h3>
 
             <mat-form-field color="accent" appearance="outline">
               <input matInput type="number" placeholder="Osobe" />
-            </mat-form-field>
+            </mat-form-field>-->
 
             <p>Koliko je spavačih soba na raspolaganju?</p>
 
             <mat-form-field color="accent" appearance="outline">
-              <mat-select placeholder="Soba">
+              <mat-select placeholder="Soba" formControlName="room">
                 <mat-option>jednosoban stan</mat-option>
                 <mat-option>dvosoban stan</mat-option>
                 <mat-option>trosoban stan</mat-option>
@@ -79,12 +76,19 @@
             <h3>Koliko je kreveta?</h3>
 
             <mat-form-field color="accent" appearance="outline">
-              <input matInput type="number" placeholder="Kreveti" />
+              <input
+                matInput
+                type="number"
+                placeholder="Kreveti"
+                formControlName="bed"
+              />
             </mat-form-field>
 
             <h3>Da li primate kućne ljubimce?</h3>
 
-            <mat-checkbox>Primam kućne kljubimce</mat-checkbox>
+            <mat-checkbox formControlName="pet"
+              >Primam kućne kljubimce</mat-checkbox
+            >
 
             <div>
               <button mat-button color="accent" matStepperPrevious>
@@ -105,15 +109,17 @@
           >
           </mat-progress-bar>
 
-          <form class="container">
+          <form class="container" [formGroup]="postsForm">
             <h3>Što sve sadrži vaš smještaj?</h3>
 
             <mat-checkbox>Wi-Fi</mat-checkbox>
             <mat-checkbox>Grijanje</mat-checkbox>
             <mat-checkbox>Zaseban ulaz</mat-checkbox>
             <mat-checkbox>Brojilo za struju</mat-checkbox>
-            <mat-checkbox>Parking mjesto</mat-checkbox>
-            <mat-checkbox>Namještaj</mat-checkbox>
+            <mat-checkbox formControlName="parking"
+              >Parking mjesto</mat-checkbox
+            >
+            <mat-checkbox formControlName="furnished">Namještaj</mat-checkbox>
 
             <div>
               <button mat-raised-button matStepperNext class="later">
@@ -140,12 +146,12 @@
           >
           </mat-progress-bar>
 
-          <form class="container">
+          <form class="container" [formGroup]="postsForm">
             <h3>Gdje se nalazi vaša nekretnina?</h3>
             <p>Država/regija</p>
 
             <mat-form-field color="accent" appearance="outline">
-              <mat-select placeholder="Hrvatska">
+              <mat-select placeholder="Hrvatska" formControlName="country">
                 <mat-option>Hrvatska</mat-option>
                 <mat-option>Slovenija</mat-option>
                 <mat-option>Italija</mat-option>
@@ -157,7 +163,11 @@
 
             <mat-form-field color="accent" appearance="outline">
               <mat-label>Ulica i kućni broj</mat-label>
-              <input matInput placeholder="Placeholder" />
+              <input
+                matInput
+                placeholder="Placeholder"
+                formControlName="address"
+              />
               <mat-hint>npr. Ulica Jurja Dobrile 1</mat-hint>
             </mat-form-field>
 
@@ -173,7 +183,11 @@
                   <p>
                     <mat-form-field color="accent" appearance="outline">
                       <mat-label>Mjesto</mat-label>
-                      <input matInput placeholder="Placeholder" />
+                      <input
+                        matInput
+                        placeholder="Placeholder"
+                        formControlName="city"
+                      />
                       <mat-hint>npr. Vodnjan</mat-hint>
                     </mat-form-field>
                   </p>
@@ -217,7 +231,7 @@
           >
           </mat-progress-bar>
 
-          <form class="container">
+          <form class="container" [formGroup]="postsForm">
             <h3>U kojem razdoblju je slobodna vaša nekretnina?</h3>
             <mat-checkbox>Peko cijele godine</mat-checkbox>
 
@@ -226,6 +240,7 @@
                 matInput
                 [matDatepicker]="picker"
                 placeholder="Datum dostupnosti"
+                formControlName="available_date"
               />
               <mat-datepicker-toggle
                 matSuffix
@@ -239,6 +254,7 @@
                 matInput
                 [matDatepicker]="picker2"
                 placeholder="Datum odlaska"
+                formControlName="walkout_date"
               />
               <mat-datepicker-toggle
                 matSuffix
@@ -273,7 +289,7 @@
           >
           </mat-progress-bar>
 
-          <form class="container">
+          <form class="container" [formGroup]="postsForm">
             <div>
               <button mat-button color="accent" matStepperPrevious>
                 Natrag
@@ -294,14 +310,22 @@
           >
           </mat-progress-bar>
 
-          <form class="container">
+          <form class="container" [formGroup]="postsForm">
             <mat-form-field color="accent" appearance="outline">
               <mat-label>Odredite naziv oglasa</mat-label>
-              <input matInput placeholder="Placeholder" />
+              <input
+                matInput
+                placeholder="Placeholder"
+                formControlName="title"
+              />
             </mat-form-field>
             <mat-form-field color="accent" appearance="outline">
               <mat-label>Uredite opis</mat-label>
-              <input matInput placeholder="Placeholder" />
+              <input
+                matInput
+                placeholder="Placeholder"
+                formControlName="description"
+              />
             </mat-form-field>
 
             <div>
@@ -327,7 +351,7 @@
           >
           </mat-progress-bar>
 
-          <form class="container">
+          <form class="container" [formGroup]="postsForm">
             <h3>Vrijeme posjeta</h3>
 
             <button
@@ -509,12 +533,12 @@
           >
           </mat-progress-bar>
 
-          <form class="container">
+          <form class="container" [formGroup]="postsForm">
             <h3>Iznos mjesečne najamnine</h3>
 
             <mat-form-field color="accent" appearance="outline">
               <mat-label>Iznos mjesečne najamnine</mat-label>
-              <input matInput placeholder="0,00kn" />
+              <input matInput placeholder="0,00kn" formControlName="price" />
             </mat-form-field>
 
             <mat-checkbox>Režije uključene u cijenu</mat-checkbox>
@@ -540,7 +564,7 @@
           >
           </mat-progress-bar>
 
-          <form class="container">
+          <form class="container" [formGroup]="postsForm">
             <!--<h3>Pametan ugovor</h3>-->
 
             <mat-form-field color="accent" appearance="outline">
