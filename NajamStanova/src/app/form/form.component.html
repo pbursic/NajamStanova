@@ -17,7 +17,7 @@
 
             <h3>Koju vrstu prostora oglašavate?</h3>
 
-            <input type="hidden" />
+            <!--<input type="hidden" />-->
             <!--formControlName="$key"-->
             <mat-form-field color="accent" appearance="outline">
               <mat-select placeholder="Stan" formControlName="type">
@@ -25,6 +25,17 @@
                   {{ type.viewValue }}
                 </mat-option>
               </mat-select>
+            </mat-form-field>
+
+            <p>Površina m2</p>
+
+            <mat-form-field color="accent" appearance="outline">
+              <input
+                matInput
+                type="number"
+                placeholder="Površina"
+                formControlName="squares"
+              />
             </mat-form-field>
 
             <div>
@@ -60,6 +71,15 @@
             <p>Koliko je spavačih soba na raspolaganju?</p>
 
             <mat-form-field color="accent" appearance="outline">
+              <input
+                matInput
+                type="number"
+                placeholder="Sobe"
+                formControlName="room"
+              />
+            </mat-form-field>
+
+            <!--<mat-form-field color="accent" appearance="outline">
               <mat-select placeholder="Soba" formControlName="room">
                 <mat-option>jednosoban stan</mat-option>
                 <mat-option>dvosoban stan</mat-option>
@@ -67,11 +87,11 @@
                 <mat-option>četverosoban stan</mat-option>
                 <mat-option>petosoban stan</mat-option>
                 <mat-option>šestsoban stan</mat-option>
-                <!--<mat-option *ngFor="let food of foods" [value]="food.value">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
                         {{food.viewValue}}
-                      </mat-option>-->
+                      </mat-option>
               </mat-select>
-            </mat-form-field>
+            </mat-form-field>-->
 
             <h3>Koliko je kreveta?</h3>
 
@@ -113,19 +133,19 @@
             <h3>Što sve sadrži vaš smještaj?</h3>
 
             <mat-checkbox>Wi-Fi</mat-checkbox>
-            <mat-checkbox>Grijanje</mat-checkbox>
+            <!--<mat-checkbox>Grijanje</mat-checkbox>
             <mat-checkbox>Zaseban ulaz</mat-checkbox>
-            <mat-checkbox>Brojilo za struju</mat-checkbox>
+            <mat-checkbox>Brojilo za struju</mat-checkbox>-->
             <mat-checkbox formControlName="parking"
               >Parking mjesto</mat-checkbox
             >
             <mat-checkbox formControlName="furnished">Namještaj</mat-checkbox>
 
-            <div>
+            <!--<div>
               <button mat-raised-button matStepperNext class="later">
                 To ću kasnije
               </button>
-            </div>
+            </div>-->
 
             <div>
               <button mat-button color="accent" matStepperPrevious>
@@ -171,11 +191,11 @@
               <mat-hint>npr. Ulica Jurja Dobrile 1</mat-hint>
             </mat-form-field>
 
-            <mat-form-field color="accent" appearance="outline">
+            <!--<mat-form-field color="accent" appearance="outline">
               <mat-label>Stan, zgrada</mat-label>
               <input matInput placeholder="Placeholder" />
               <mat-hint>npr. br 7</mat-hint>
-            </mat-form-field>
+            </mat-form-field>-->
 
             <table>
               <tr>
@@ -192,7 +212,7 @@
                     </mat-form-field>
                   </p>
                 </td>
-                <td>
+                <!--<td>
                   <p>
                     <mat-form-field color="accent" appearance="outline">
                       <mat-label>Savezna država</mat-label>
@@ -200,17 +220,17 @@
                       <mat-hint>npr. Grad Pula</mat-hint>
                     </mat-form-field>
                   </p>
-                </td>
+                </td>-->
               </tr>
             </table>
 
-            <p>
+            <!--<p>
               <mat-form-field color="accent" appearance="outline">
                 <mat-label>Poštanski broj</mat-label>
                 <input matInput placeholder="Placeholder" />
                 <mat-hint>npr. 52100</mat-hint>
               </mat-form-field>
-            </p>
+            </p>-->
 
             <div>
               <button mat-button color="accent" matStepperPrevious>
@@ -263,11 +283,11 @@
               <mat-datepicker touchUi #picker2></mat-datepicker>
             </mat-form-field>
 
-            <div>
+            <!--<div>
               <button mat-raised-button matStepperNext class="later">
                 To ću kasnije
               </button>
-            </div>
+            </div>-->
 
             <div>
               <button mat-button color="accent" matStepperPrevious>
@@ -342,7 +362,7 @@
     </mat-step>
     <mat-step label="Postavke za najam">
       <mat-horizontal-stepper id="inner-stepper">
-        <mat-step label="Posjeta">
+        <!--<mat-step label="Posjeta">
           <mat-progress-bar
             [color]="accent"
             [mode]="determinate"
@@ -363,7 +383,7 @@
               Spremi
             </button>
 
-            <!--<table>
+            <table>
             <tr>
               <td>
                 <button mat-raised-button color="basic">
@@ -520,15 +540,15 @@
               <td><mat-checkbox></mat-checkbox></td>
               <td><mat-checkbox></mat-checkbox></td>
             </tr>
-          </table>-->
+          </table>
           </form>
-        </mat-step>
+        </mat-step>-->
 
         <mat-step label="Najamnina">
           <mat-progress-bar
             [color]="accent"
             [mode]="determinate"
-            [value]="70"
+            [value]="50"
             [bufferValue]="75"
           >
           </mat-progress-bar>
@@ -565,7 +585,7 @@
           </mat-progress-bar>
 
           <form class="container" [formGroup]="postsForm">
-            <!--<h3>Pametan ugovor</h3>-->
+            <h3>Kapara</h3>
 
             <mat-form-field color="accent" appearance="outline">
               <mat-label>Kapara</mat-label>

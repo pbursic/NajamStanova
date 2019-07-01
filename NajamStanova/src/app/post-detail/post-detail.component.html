@@ -71,6 +71,23 @@
           </div>
         </div>
 
+        <!--<div style="margin-bottom:3%;"></div>
+
+        <div *ngIf="post.wifi">
+          <div class="center anemities">
+            <img
+              src="assets/images/wifi.svg"
+              alt="Rezije"
+              class="anemities-icon"
+            />
+          </div>
+          <div class="center anemities">
+            <p class="anemities">
+              Wifi
+            </p>
+          </div>
+        </div>-->
+
         <div style="margin-bottom:3%;"></div>
 
         <div *ngIf="post.furnished">
@@ -87,6 +104,40 @@
             </p>
           </div>
         </div>
+
+        <!--<div style="margin-bottom:3%;"></div>
+
+        <div *ngIf="post.room">
+          <div class="center anemities">
+            <img
+              src="assets/images/room.svg"
+              alt="Rezije"
+              class="anemities-icon"
+            />
+          </div>
+          <div class="center anemities">
+            <p class="anemities">
+              {{ post.room }} soba
+            </p>
+          </div>
+        </div>-->
+
+        <!--<div style="margin-bottom:3%;"></div>
+
+        <div *ngIf="post.bed">
+          <div class="center anemities">
+            <img
+              src="assets/images/bed.svg"
+              alt="Rezije"
+              class="anemities-icon"
+            />
+          </div>
+          <div class="center anemities">
+            <p class="anemities">
+              {{ post.bed }} kreveta
+            </p>
+          </div>
+        </div>-->
 
         <div style="margin-bottom:3%;"></div>
 
@@ -150,9 +201,9 @@
         <mat-card-subtitle>
           <!--<div class="center anemities">
             <p class="anemities">
-              +385 91 234 4567
+              {{ post.phone }}
             </p>
-          </div>-->+385 91 234 4567</mat-card-subtitle
+          </div>-->{{ post.phone }}</mat-card-subtitle
         >
       </mat-card-header>
     </mat-card>
