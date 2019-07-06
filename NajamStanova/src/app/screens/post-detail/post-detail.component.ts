@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { PostService } from "../shared/post/post.service";
-import { Posts } from "../models/posts";
+import { PostService } from "../../services/post/post.service";
+import { Posts } from "../../models/posts";
 import { Observable } from "rxjs/Observable";
 import { ActivatedRoute, Params } from "@angular/router";
 

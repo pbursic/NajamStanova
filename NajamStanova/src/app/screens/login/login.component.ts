@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { LoginService } from "../shared/login/login.service";
-import { Person } from "../models/person";
+import { LoginService } from "../../services/login/login.service";
+import { Person } from "../../models/person";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {
   CanActivate,

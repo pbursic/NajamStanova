@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { RegistrationService } from "../shared/registration/registration.service";
-import { Person } from "../models/person";
+import { RegistrationService } from "../../services/registration/registration.service";
+import { Person } from "../../models/person";
 import { Observable } from "rxjs/Observable";
 import { ActivatedRoute, Params } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { PostService } from "../shared/post/post.service";
+import { PostService } from "../../services/post/post.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Posts } from "../models/posts";
+import { Posts } from "../../models/posts";
 
 export interface IType {
   value: String;

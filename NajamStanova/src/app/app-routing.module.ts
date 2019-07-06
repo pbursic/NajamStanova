@@ -1,14 +1,14 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { LandingComponent } from "./landing/landing.component";
-import { MapComponent } from "./map/map.component";
-import { FormComponent } from "./form/form.component";
-import { ViewComponent } from "./view/view.component";
-import { UserPostsComponent } from "./user-posts/user-posts.component";
-import { PostDetailComponent } from "./post-detail/post-detail.component";
-import { ProfileComponent } from "./profile/profile.component";
-import { AuthGuardService } from "./shared/auth-guard/auth-guard.service";
-import { LoginComponent } from "./login/login.component";
+import { LandingComponent } from "./screens/landing/landing.component";
+import { MapComponent } from "./screens/map/map.component";
+import { FormComponent } from "./screens/form/form.component";
+import { ViewComponent } from "./screens/view/view.component";
+import { UserPostsComponent } from "./screens/user-posts/user-posts.component";
+import { PostDetailComponent } from "./screens/post-detail/post-detail.component";
+import { ProfileComponent } from "./screens/profile/profile.component";
+import { AuthGuardService } from "./services/auth-guard/auth-guard.service";
+import { LoginComponent } from "./screens/login/login.component";
 
 const routes: Routes = [
   {

@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { RegistrationComponent } from "../registration/registration.component";
-import { LoginComponent } from "../login/login.component";
-import { Person } from "../models/person";
+import { RegistrationComponent } from "../../screens/registration/registration.component";
+import { LoginComponent } from "../../screens/login/login.component";
+import { Person } from "../../models/person";
 import { MatDialog } from "@angular/material";
-import { LoginService } from "../shared/login/login.service";
+import { LoginService } from "../../services/login/login.service";
 import {
   CanActivate,
   Router,

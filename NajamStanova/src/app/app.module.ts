@@ -9,26 +9,26 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { ToolbarComponent } from "./toolbar/toolbar.component";
-import { FooterComponent } from "./footer/footer.component";
-import { LandingComponent } from "./landing/landing.component";
-import { MapComponent } from "./map/map.component";
-import { SidenavComponent } from "./sidenav/sidenav.component";
-import { FormComponent } from "./form/form.component";
-import { ViewComponent } from "./view/view.component";
+import { ToolbarComponent } from "./components/toolbar/toolbar.component";
+import { FooterComponent } from "./screens/footer/footer.component";
+import { LandingComponent } from "./screens/landing/landing.component";
+import { MapComponent } from "./screens/map/map.component";
+import { SidenavComponent } from "./components/sidenav/sidenav.component";
+import { FormComponent } from "./screens/form/form.component";
+import { ViewComponent } from "./screens/view/view.component";
 
-import { PostService } from "./shared/post/post.service";
+import { PostService } from "./services/post/post.service";
 import { HttpClientModule } from "@angular/common/http";
 //import {AngularFireModule} from 'angularfire2';
 //import {AngularFireDatabaseModule} from 'angularfire2/database';
 import { environment } from "src/environments/environment";
-import { PostDetailComponent } from "./post-detail/post-detail.component";
-import { RegistrationComponent } from "./registration/registration.component";
-import { LoginComponent } from "./login/login.component";
-import { ProfileToolbarComponent } from "./profile-toolbar/profile-toolbar.component";
-import { UserPostsComponent } from "./user-posts/user-posts.component";
-import { ProfileComponent } from "./profile/profile.component";
-import { ProfileImageUploadComponent } from './profile-image-upload/profile-image-upload.component';
+import { PostDetailComponent } from "./screens/post-detail/post-detail.component";
+import { RegistrationComponent } from "./screens/registration/registration.component";
+import { LoginComponent } from "./screens/login/login.component";
+import { ProfileToolbarComponent } from "./components/profile-toolbar/profile-toolbar.component";
+import { UserPostsComponent } from "./screens/user-posts/user-posts.component";
+import { ProfileComponent } from "./screens/profile/profile.component";
+import { ProfileImageUploadComponent } from "./components/profile-image-upload/profile-image-upload.component";
 
 const routes: Routes = [
   {

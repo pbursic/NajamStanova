@@ -50,28 +50,15 @@ mat-grid-tile {
   grid-gap: 30px;
 }
 
-.bool {
-  /*display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 50px;*/
-}
-
 .user-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 10px;
 }
 
-.user {
-  //margin-left: auto;
-}
-
 .center {
   margin: auto;
   //width: 50%;
-}
-
-.map {
 }
 
 .mat-card {
@@ -85,7 +72,7 @@ mat-grid-tile {
 
 .header-image {
   //background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-  background-image: url("../../assets/images/UserIcon@2x.svg");
+  background-image: url("../../../assets/images/UserIcon@2x.svg");
   background-size: cover;
   //margin: auto;
 }
