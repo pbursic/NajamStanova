@@ -13,6 +13,10 @@ module.exports = {
             FROM posts, users 
             WHERE posts.user_id = $1`,
 
+  getUserDetail: `SELECT *
+                  FROM users
+                  WHERE email = $1`,
+
   getUserPosts: `SELECT 
                   posts.id,
                   posts.title,
@@ -26,24 +30,12 @@ module.exports = {
                 WHERE posts.user_id = $1 
                 AND posts.user_id = users.id`,
 
-  //get: `select * from posts post, users us where us.email = $1 and post.user_id = us.id`,
-
   getLoginUser: `SELECT 
             id,
             email,
             password
           FROM users
           WHERE email = $1`,
-
-  /*getEmail: `SELECT 
-                email
-              FROM users
-              WHERE email = $1`,
-
-  getPassword: `SELECT 
-                password
-              FROM users
-              WHERE password = $1`,*/
 
   updateUser: `UPDATE 
                 users 
@@ -67,6 +59,17 @@ module.exports = {
               ("email", "password", "name", "surname", "birth_date", "country", "city", "phone", "image")
             VALUES
               ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+
+  updateUserDetail: `UPDATE
+                      users
+                      SET 
+                      "name" = $2,
+                      "surname" = $3,
+                      "country" = $4,
+                      "city" = $5,
+                      "phone" = $6,
+                      "image" = $7
+                      WHERE "email" = $1`,
 
   insertPost: `INSERT INTO posts
               ("user_id", "status", "title", "description", "bills_included", "country", "city", "address", "price",

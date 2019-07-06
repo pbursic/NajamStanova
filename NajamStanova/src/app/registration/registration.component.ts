@@ -30,14 +30,13 @@ export class RegistrationComponent implements OnInit {
 
     if (this.isLoggedIn) {
       this.registrationForm = this.fb.group({
-        name: "Marko",
-        surname: "Maric",
+        name: [],
+        surname: [],
         phone: [],
-        email: ["marko@gmail.com", [Validators.required, Validators.email]],
-        city: "Rovinj",
-        country: "Hrvatska",
+        email: [[Validators.required, Validators.email]],
+        city: [],
+        country: [],
         password: [
-          "lozinka9",
           [
             Validators.required,
             Validators.pattern("^(?=.*[0-9])(?=.[a-zA-Z])([a-zA-Z0-9]+)$"),
@@ -45,10 +44,7 @@ export class RegistrationComponent implements OnInit {
           ]
         ],
         birth_date: [],
-        /*day: [1, [Validators.required, Validators.min(1), Validators.max(31)]],
-        month: 1,
-        year: 1995,*/
-        terms: [false, [Validators.requiredTrue]],
+        terms: [[Validators.requiredTrue]],
         image: []
       });
 
@@ -88,17 +84,17 @@ export class RegistrationComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageUrl = event.target.result;
-      //console.log("imageUrl2: ", this.imageUrl);
+      console.log("imageUrl2: ", this.imageUrl);
     };
     reader.readAsDataURL(this.selectedFile);
   }
 
-  /*onUpload() {
+  onUpload() {
     console.log("imageUrl: ", this.imageUrl);
     console.log("selectedFile: ", this.selectedFile);
     const fd = new FormData();
     fd.append("image", this.selectedFile);
-  }*/
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -151,18 +147,6 @@ export class RegistrationComponent implements OnInit {
   get password() {
     return this.registrationForm.get("password");
   }
-
-  /*get day() {
-    return this.registrationForm.get("day");
-  }
-
-  get month() {
-    return this.registrationForm.get("month");
-  }
-
-  get year() {
-    return this.registrationForm.get("year");
-  }*/
 
   get phone() {
     return this.registrationForm.get("phone");

@@ -29,6 +29,7 @@ app.use("/view/post-detail", postDetail);
 app.use("/user-posts", userPosts);
 app.use("/user-posts/post-detail", middleware.isLoggedIn, postDetail);
 app.use("/registration", registration);
+app.use("/profile", registration);
 app.use("/", login);
 //app.use("/", logout);
 app.use("/form", middleware.isLoggedIn, form);

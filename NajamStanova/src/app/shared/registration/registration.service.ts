@@ -10,6 +10,16 @@ import { Observable } from "rxjs";
 export class RegistrationService {
   constructor(private http: HttpClient) {}
 
+  getPerson(email: string): Observable<Person> {
+    return this.http.get<any>(`/profile/${email}`).pipe(
+      map(res => {
+        //console.log("getPerson", res.rows);
+        //console.log("getPerson image", res.rows.image);
+        return res.rows;
+      })
+    );
+  }
+
   addPerson(person: Person): Observable<any> {
     var fd = new FormData();
 

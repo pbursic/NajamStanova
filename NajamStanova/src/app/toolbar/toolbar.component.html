@@ -43,7 +43,9 @@
       </mat-card-header>
     </mat-card>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="profile">Profil</button>
+      <button mat-menu-item routerLink="profile/{{ isLoggedIn }}">
+        Profil
+      </button>
       <button mat-menu-item (click)="logoutUser()">
         Odjava
       </button>

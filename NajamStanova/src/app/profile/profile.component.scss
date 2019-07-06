@@ -1,0 +1,55 @@
+.big-field ::ng-deep .mat-form-field-wrapper {
+  width: 510px;
+}
+
+.mat-form-field {
+  width: 250px;
+  margin-right: 10px;
+}
+
+.day-field {
+  width: 90px;
+}
+
+.month-field {
+  width: 200px;
+}
+
+.year-field {
+  width: 200px;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  margin-top: 0px;
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  margin-top: 20px;
+}
+.span-col-2 {
+  grid-column: span 2 / auto;
+}
+
+.mat-raised-button {
+  width: 220px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+}
+
+h4 {
+  font-family: "Roboto", sans-serif;
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+}

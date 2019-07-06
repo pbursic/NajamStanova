@@ -1,1 +1,124 @@
-<app-registration></app-registration>>
+<form
+  [formGroup]="registrationForm"
+  enctype="multipart/form-data"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="grid" *ngFor="let person of person">
+    <div class="center">
+      <h2 class="center">
+        Profil
+      </h2>
+
+      <div class="center" style="width: 150px;">
+        <div>
+          <img [src]="imageUrl" style="width: 150px; height: 120px;" />
+        </div>
+        <div>
+          <input
+            type="file"
+            accept="image/*"
+            style="display: none;"
+            #image
+            name="image"
+            (change)="onFileSelected($event.target.files)"
+            formControlName="image"
+            required
+          />
+          <button
+            mat-stroked-button
+            color="accent"
+            style="width: 100%;"
+            (click)="image.click()"
+          >
+            Učitaj sliku
+          </button>
+        </div>
+      </div>
+
+      <!--<app-profile-image-upload></app-profile-image-upload>-->
+    </div>
+
+    <div class="span-col-2">
+      <div class="">
+        <h4>Osobni podaci</h4>
+        <mat-form-field color="accent" appearance="outline">
+          <input
+            matInput
+            type="string"
+            placeholder="Ime"
+            formControlName="name"
+            [(ngModel)]="person.name"
+          />
+        </mat-form-field>
+        <mat-form-field color="accent" appearance="outline">
+          <input
+            matInput
+            type="string"
+            placeholder="Prezime"
+            formControlName="surname"
+            [(ngModel)]="person.surname"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="">
+        <mat-form-field color="accent" appearance="outline">
+          <input
+            matInput
+            type="string"
+            placeholder="Grad"
+            formControlName="city"
+            [(ngModel)]="person.city"
+          />
+        </mat-form-field>
+        <mat-form-field color="accent" appearance="outline">
+          <input
+            matInput
+            type="string"
+            placeholder="Država"
+            formControlName="country"
+            [(ngModel)]="person.country"
+          />
+        </mat-form-field>
+      </div>
+
+      <h4>Kontakt informacije</h4>
+
+      <div class="big-field">
+        <mat-form-field color="accent" appearance="outline">
+          <input
+            matInput
+            type="string"
+            placeholder="Broj telefona"
+            formControlName="phone"
+            [(ngModel)]="person.phone"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="big-field">
+        <mat-form-field color="accent" appearance="outline">
+          <input
+            matInput
+            type="string"
+            placeholder="E-mail"
+            formControlName="email"
+            [readonly]="true"
+            [(ngModel)]="person.email"
+          />
+          <mat-error *ngIf="email.invalid && email.touched">
+            Neispravan e-mail!
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <img [src]="'data:image/jpg;base64,' + person.image.data" />
+    </div>
+  </div>
+
+  <div class="center">
+    <button mat-raised-button color="accent" type="submit" class="center">
+      Spremi
+    </button>
+  </div>
+</form>

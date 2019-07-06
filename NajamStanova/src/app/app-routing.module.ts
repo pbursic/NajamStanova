@@ -46,7 +46,7 @@ const routes: Routes = [
     component: FormComponent
   },
   {
-    path: "profile",
+    path: "profile/:email",
     component: ProfileComponent,
     canActivate: [AuthGuardService]
   },
