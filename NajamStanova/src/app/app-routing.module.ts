@@ -9,6 +9,7 @@ import { PostDetailComponent } from "./screens/post-detail/post-detail.component
 import { ProfileComponent } from "./screens/profile/profile.component";
 import { AuthGuardService } from "./services/auth-guard/auth-guard.service";
 import { LoginComponent } from "./screens/login/login.component";
+import { PostEditComponent } from "./screens/post-edit/post-edit.component";
 
 const routes: Routes = [
   {
@@ -42,8 +43,8 @@ const routes: Routes = [
     component: PostDetailComponent
   },
   {
-    path: "user-posts/post-detail/:id/form",
-    component: FormComponent
+    path: "user-posts/post-detail/:id/post-edit",
+    component: PostEditComponent
   },
   {
     path: "profile/:email",

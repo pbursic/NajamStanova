@@ -1,0 +1,380 @@
+<form class="form" [formGroup]="postsForm" (ngSubmit)="onSubmit()">
+  <div *ngFor="let post of posts">
+    <mat-horizontal-stepper id="outer-stepper" labelPosition="bottom">
+      <mat-step label="Osnovni podaci">
+        <mat-horizontal-stepper id="inner-stepper">
+          <mat-step label="Vrtsa prostora">
+            <mat-progress-bar
+              [color]="accent"
+              [mode]="determinate"
+              [value]="20"
+              [bufferValue]="75"
+            >
+            </mat-progress-bar>
+
+            <form class="container" [formGroup]="postsForm">
+              <h3>Koju vrstu prostora oglašavate?</h3>
+
+              <mat-form-field color="accent" appearance="outline">
+                <mat-select
+                  placeholder="Stan"
+                  formControlName="type"
+                  [(ngModel)]="post.type"
+                >
+                  <mat-option *ngFor="let type of types" [value]="type.value">
+                    {{ type.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <p>Površina m2</p>
+
+              <mat-form-field color="accent" appearance="outline">
+                <input
+                  matInput
+                  type="number"
+                  placeholder="Površina"
+                  formControlName="squares"
+                  [(ngModel)]="post.squares"
+                />
+              </mat-form-field>
+
+              <div>
+                <button mat-raised-button color="accent" matStepperNext>
+                  Sljedeće
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step label="Pojedinosti">
+            <mat-progress-bar
+              [color]="primary"
+              [mode]="determinate"
+              [value]="40"
+              [bufferValue]="75"
+            >
+            </mat-progress-bar>
+
+            <form class="container" [formGroup]="postsForm">
+              <p>Koliko je spavačih soba na raspolaganju?</p>
+
+              <mat-form-field color="accent" appearance="outline">
+                <input
+                  matInput
+                  type="number"
+                  placeholder="Sobe"
+                  formControlName="room"
+                  [(ngModel)]="post.room"
+                />
+              </mat-form-field>
+
+              <h3>Koliko je kreveta?</h3>
+
+              <mat-form-field color="accent" appearance="outline">
+                <input
+                  matInput
+                  type="number"
+                  placeholder="Kreveti"
+                  formControlName="bed"
+                  [(ngModel)]="post.bed"
+                />
+              </mat-form-field>
+
+              <!--<h3>Da li primate kućne ljubimce?</h3>
+
+              <mat-checkbox formControlName="pet" [(ngModel)]="post.pet"
+                >Primam kućne kljubimce</mat-checkbox
+              >-->
+
+              <div>
+                <button mat-button color="accent" matStepperPrevious>
+                  Natrag
+                </button>
+                <button mat-raised-button color="accent" matStepperNext>
+                  Sljedeće
+                </button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step label="Sadržaj">
+            <mat-progress-bar
+              [color]="primary"
+              [mode]="determinate"
+              [value]="60"
+              [bufferValue]="75"
+            >
+            </mat-progress-bar>
+
+            <form class="container" [formGroup]="postsForm">
+              <h3>Da li primate kućne ljubimce?</h3>
+
+              <mat-checkbox formControlName="pet" [(ngModel)]="post.pet"
+                >Primam kućne kljubimce</mat-checkbox
+              >
+
+              <h3>Što sve sadrži vaš smještaj?</h3>
+
+              <mat-checkbox>Wi-Fi</mat-checkbox>
+              <mat-checkbox formControlName="parking" [(ngModel)]="post.parking"
+                >Parking mjesto</mat-checkbox
+              >
+              <mat-checkbox
+                formControlName="furnished"
+                [(ngModel)]="post.furnished"
+                >Namještaj</mat-checkbox
+              >
+
+              <div>
+                <button mat-button color="accent" matStepperPrevious>
+                  Natrag
+                </button>
+                <button mat-raised-button color="accent" matStepperNext>
+                  Sljedeće
+                </button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step label="Regija">
+            <mat-progress-bar
+              [color]="primary"
+              [mode]="determinate"
+              [value]="80"
+              [bufferValue]="75"
+            >
+            </mat-progress-bar>
+
+            <form class="container" [formGroup]="postsForm">
+              <h3>Gdje se nalazi vaša nekretnina?</h3>
+              <p>Država/regija</p>
+
+              <mat-form-field color="accent" appearance="outline">
+                <input
+                  matInput
+                  type="number"
+                  placeholder="Država"
+                  formControlName="country"
+                  [(ngModel)]="post.country"
+                />
+              </mat-form-field>
+
+              <mat-form-field color="accent" appearance="outline">
+                <mat-label>Ulica i kućni broj</mat-label>
+                <input
+                  matInput
+                  placeholder="Placeholder"
+                  formControlName="address"
+                  [(ngModel)]="post.address"
+                />
+              </mat-form-field>
+
+              <table>
+                <tr>
+                  <td>
+                    <p>
+                      <mat-form-field color="accent" appearance="outline">
+                        <mat-label>Mjesto</mat-label>
+                        <input
+                          matInput
+                          placeholder="Placeholder"
+                          formControlName="city"
+                          [(ngModel)]="post.city"
+                        />
+                      </mat-form-field>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+              <div>
+                <button mat-button color="accent" matStepperPrevious>
+                  Natrag
+                </button>
+                <button mat-raised-button color="accent" matStepperNext>
+                  Sljedeće
+                </button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step label="Dostupnost">
+            <mat-progress-bar
+              [color]="primary"
+              [mode]="determinate"
+              [value]="100"
+              [bufferValue]="75"
+            >
+            </mat-progress-bar>
+
+            <form class="container" [formGroup]="postsForm">
+              <h3>U kojem razdoblju je slobodna vaša nekretnina?</h3>
+              <mat-checkbox>Peko cijele godine</mat-checkbox>
+
+              <mat-form-field color="accent" class="example-full-width">
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  placeholder="Datum dostupnosti"
+                  formControlName="available_date"
+                  [(ngModel)]="post.available_date"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field color="accent" class="example-full-width">
+                <input
+                  matInput
+                  [matDatepicker]="picker2"
+                  placeholder="Datum odlaska"
+                  formControlName="walkout_date"
+                  [(ngModel)]="post.walkout_date"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker2"
+                ></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker2></mat-datepicker>
+              </mat-form-field>
+
+              <div>
+                <button mat-button color="accent" matStepperPrevious>
+                  Natrag
+                </button>
+              </div>
+            </form>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </mat-step>
+      <mat-step label="Uređenje prostora">
+        <mat-horizontal-stepper id="inner-stepper">
+          <mat-step label="Fotografije">
+            <mat-progress-bar
+              [color]="accent"
+              [mode]="determinate"
+              [value]="50"
+              [bufferValue]="75"
+            >
+            </mat-progress-bar>
+
+            <form class="container" [formGroup]="postsForm">
+              <div>
+                <button mat-button color="accent" matStepperPrevious>
+                  Natrag
+                </button>
+                <button mat-raised-button color="accent" matStepperNext>
+                  Sljedeće
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step label="Oglas">
+            <mat-progress-bar
+              [color]="accent"
+              [mode]="determinate"
+              [value]="100"
+              [bufferValue]="75"
+            >
+            </mat-progress-bar>
+
+            <form class="container" [formGroup]="postsForm">
+              <mat-form-field color="accent" appearance="outline">
+                <mat-label>Odredite naziv oglasa</mat-label>
+                <input
+                  matInput
+                  placeholder="Placeholder"
+                  formControlName="title"
+                  [(ngModel)]="post.title"
+                />
+              </mat-form-field>
+              <mat-form-field color="accent" appearance="outline">
+                <mat-label>Uredite opis</mat-label>
+                <input
+                  matInput
+                  placeholder="Placeholder"
+                  formControlName="description"
+                  [(ngModel)]="post.description"
+                />
+              </mat-form-field>
+
+              <div>
+                <button mat-button color="accent" matStepperPrevious>
+                  Natrag
+                </button>
+                <button mat-raised-button color="accent" matStepperNext>
+                  Sljedeće
+                </button>
+              </div>
+            </form>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </mat-step>
+      <mat-step label="Postavke za najam">
+        <mat-horizontal-stepper id="inner-stepper">
+          <mat-step label="Najamnina">
+            <mat-progress-bar
+              [color]="accent"
+              [mode]="determinate"
+              [value]="50"
+              [bufferValue]="75"
+            >
+            </mat-progress-bar>
+
+            <form class="container" [formGroup]="postsForm">
+              <h3>Iznos mjesečne najamnine</h3>
+
+              <mat-form-field color="accent" appearance="outline">
+                <mat-label>Iznos mjesečne najamnine</mat-label>
+                <input
+                  matInput
+                  placeholder="0,00kn"
+                  formControlName="price"
+                  [(ngModel)]="post.price"
+                />
+              </mat-form-field>
+
+              <mat-checkbox>Režije uključene u cijenu</mat-checkbox>
+
+              <table>
+                <tr>
+                  <td><p>Režija</p></td>
+                  <td><p>Iznos</p></td>
+                  <td>
+                    <button mat-raised-button color="basic">
+                      Dodaj režiju
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </mat-step>
+
+          <mat-step label="Ugovor">
+            <mat-progress-bar
+              [color]="accent"
+              [mode]="determinate"
+              [value]="100"
+              [bufferValue]="75"
+            >
+            </mat-progress-bar>
+
+            <form class="container" [formGroup]="postsForm">
+              <h3>Kapara</h3>
+
+              <mat-form-field color="accent" appearance="outline">
+                <mat-label>Kapara</mat-label>
+                <input matInput placeholder="0,00kn" />
+              </mat-form-field>
+            </form>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </mat-step>
+    </mat-horizontal-stepper>
+    <button mat-raised-button color="accent" type="submit" class="center">
+      Spremi
+    </button>
+  </div>
+</form>

@@ -17,16 +17,23 @@
 
 <div class="grid center" *ngFor="let post of post">
   <div>
-    <div *ngIf="editable">
-      <button
-        mat-raised-button
-        color="accent"
-        style="float: right"
-        routerLink="form"
-      >
+    <!--<div *ngIf="editable" style="float: right">
+      <h3>Ovaj oglas je {{ post.status ? "AKTIVAN" : "DEAKTIVAN" }}!</h3>
+      <div>
+        <button mat-fab color="accent" routerLink="post-edit">
+          {{ post.status ? "Deaktiviraj" : "Aktiviraj" }}
+        </button>
+        <div style="margin-bottom:3%;"></div>
+      </div>
+
+      <button mat-mini-fab routerLink="post-edit">
         Uredi
       </button>
-    </div>
+
+      <button mat-mini-fab color="warn" routerLink="post-edit">
+        Obriši
+      </button>
+    </div>-->
   </div>
   <div class="detail">
     <div class="title" style="margin-bottom:5%;">
@@ -174,14 +181,46 @@
         </div>
 
         <div style="margin-bottom:3%;"></div>
+
+        <p>
+          {{ post.bed }}
+          {{ post.room }}
+        </p>
       </div>
 
-      <p>
-        {{ post.available_date }}
-        {{ post.walkout_date }}
-        {{ post.bed }}
-        {{ post.room }}
-      </p>
+      <h3>Dostupnost:</h3>
+      <div style="margin-bottom:3%;"></div>
+      <mat-checkbox>Peko cijele godine</mat-checkbox>
+      <div style="margin-bottom:3%;"></div>
+      <div class="date-grid">
+        <p>Datum dostupnosti</p>
+        <div>
+          <input
+            matInput
+            placeholder="Datum dostupnosti"
+            [matDatepicker]="pickerAvailable"
+            [(ngModel)]="post.available_date"
+            [readonly]="true"
+          />
+          <mat-datepicker #pickerAvailable></mat-datepicker>
+        </div>
+      </div>
+      <div style="margin-bottom:3%;"></div>
+
+      <div class="date-grid">
+        <p>Datum odlaska</p>
+        <div>
+          <input
+            matInput
+            placeholder="Datum odlaska"
+            [matDatepicker]="pickerWalkout"
+            [(ngModel)]="post.walkout_date"
+            [readonly]="true"
+          />
+          <mat-datepicker #pickerWalkout></mat-datepicker>
+        </div>
+      </div>
+      <div style="margin-bottom:3%;"></div>
     </div>
   </div>
   <div *ngIf="isLoggedIn">
@@ -207,5 +246,38 @@
         >
       </mat-card-header>
     </mat-card>
+  </div>
+  <div *ngIf="editable" style="float: right">
+    <div>
+      <button
+        mat-mini-fab
+        color="warn"
+        matTooltip="Izbriši"
+        style="margin-left: 3%; float: right;"
+      >
+        Obriši
+      </button>
+    </div>
+
+    <div>
+      <button
+        mat-mini-fab
+        routerLink="post-edit"
+        style="background-color: whitesmoke; color: black; margin-left: 3%; float: right;"
+        matTooltip="Uredi"
+      >
+        Uredi
+      </button>
+    </div>
+
+    <div>
+      <button
+        mat-mini-fab
+        matTooltip="{{ post.status ? 'Deaktiviraj' : 'Aktiviraj' }}"
+        style="margin-left: 3%; float: right;"
+      >
+        {{ post.status ? "Deaktiviraj" : "Aktiviraj" }}
+      </button>
+    </div>
   </div>
 </div>

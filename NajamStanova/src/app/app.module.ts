@@ -29,6 +29,7 @@ import { ProfileToolbarComponent } from "./components/profile-toolbar/profile-to
 import { UserPostsComponent } from "./screens/user-posts/user-posts.component";
 import { ProfileComponent } from "./screens/profile/profile.component";
 import { ProfileImageUploadComponent } from "./components/profile-image-upload/profile-image-upload.component";
+import { PostEditComponent } from "./screens/post-edit/post-edit.component";
 
 const routes: Routes = [
   {
@@ -62,6 +63,10 @@ const routes: Routes = [
   {
     path: "profile",
     component: ProfileComponent
+  },
+  {
+    path: "post-edit",
+    component: PostEditComponent
   }
 ];
 
@@ -81,7 +86,8 @@ const routes: Routes = [
     ProfileToolbarComponent,
     UserPostsComponent,
     ProfileComponent,
-    ProfileImageUploadComponent
+    ProfileImageUploadComponent,
+    PostEditComponent
   ],
   imports: [
     BrowserModule,
