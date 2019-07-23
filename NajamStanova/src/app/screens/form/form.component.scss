@@ -43,7 +43,10 @@
 }
 
 #inner-stepper ::ng-deep .mat-horizontal-stepper-header .mat-step-icon,
-#inner-stepper ::ng-deep .mat-horizontal-stepper-header .mat-step-icon-not-touched {
+#inner-stepper
+  ::ng-deep
+  .mat-horizontal-stepper-header
+  .mat-step-icon-not-touched {
   display: none;
 }
 
@@ -83,7 +86,7 @@
 form {
   width: 100%;
   margin-left: 0%;
-  margin-top: 1.8%
+  margin-top: 1.8%;
 }
 
 .container {
@@ -102,4 +105,10 @@ form {
 .later {
   float: left;
   //border-color: #8e44adff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
 }

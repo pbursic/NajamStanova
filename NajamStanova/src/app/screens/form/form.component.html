@@ -309,9 +309,27 @@
           >
           </mat-progress-bar>
 
-          <form class="container" [formGroup]="postsForm">
-            <div>
-              <img [src]="imageUrl" style="width: 150px; height: 120px;" />
+          <form class="" [formGroup]="postsForm">
+            <!--<div>
+              <img [src]="imageUrl" style="width: 250px; height: 220px;" />
+            </div>-->
+
+            <div class="grid">
+              <div *ngFor="let image of images">
+                <img [src]="image" style="width: 250px; height: 220px;" />
+              </div>
+              <!--<div>
+                <img [src]="imageUrl" style="width: 250px; height: 220px;" />
+              </div>
+              <div>
+                <img [src]="imageUrl" style="width: 250px; height: 220px;" />
+              </div>
+              <div>
+                <img [src]="imageUrl" style="width: 250px; height: 220px;" />
+              </div>
+              <div>
+                <img [src]="imageUrl" style="width: 250px; height: 220px;" />
+              </div>-->
             </div>
             <div>
               <input
@@ -322,6 +340,7 @@
                 name="image"
                 (change)="onFileSelected($event.target.files)"
               /><!--formControlName="image"-->
+
               <button
                 mat-stroked-button
                 color="accent"

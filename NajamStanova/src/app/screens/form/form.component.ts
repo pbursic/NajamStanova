@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PostService } from "../../services/post/post.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Posts } from "../../models/posts";
+import { Images } from "../../models/images";
 
 export interface IType {
   value: String;
@@ -20,6 +21,8 @@ export class FormComponent implements OnInit {
   submitted = false;
   imageUrl: string = "../../assets/images/picture.svg";
   selectedFile: File = null;
+  arrayImages: File[] = [];
+  images: string[] = [];
 
   types: IType[] = [
     { value: "stan", viewValue: "Stan" },
@@ -54,13 +57,15 @@ export class FormComponent implements OnInit {
 
   onFileSelected(file: FileList) {
     this.selectedFile = file.item(0); // get first image
+    //this.arrayImages.push(this.selectedFile);
 
     //show image preview
     const reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageUrl = event.target.result;
-      //console.log("imageUrl2: ", this.imageUrl);
-      console.log("reader.result: ", reader.result);
+      console.log("imageUrl2: ", this.imageUrl);
+      this.images.push(this.imageUrl);
+      //console.log("reader.result: ", reader.result);
     };
     reader.readAsDataURL(this.selectedFile);
   }
@@ -73,6 +78,16 @@ export class FormComponent implements OnInit {
   }*/
 
   onSubmit() {
+    //console.log("imeges: ", this.arrayImages);
+    //console.log("imeges.length: ", this.arrayImages.length);
+    console.log("imeges: ", this.images);
+    //console.log("imeges.values: ", this.arrayImages.values);
+
+    /*for(let im of this.arrayImages){
+      this.images = this.arrayImages[im];
+    }*/
+    //this.images = this.arrayImages;
+
     this.submitted = true;
 
     if (this.postsForm.invalid) {
@@ -80,13 +95,16 @@ export class FormComponent implements OnInit {
     }
 
     this.posts = this.postsForm.value;
-    console.log(this.posts);
+    this.posts.images = this.images;
+    console.log("POSTS + IMAGES: ", this.posts);
 
     this.save();
   }
 
   private save() {
     this.postService.addPost(this.posts).subscribe();
+    //this.postService.addImages(this.images).subscribe();
+    //this.postService.addImages(this.arrayImages).subscribe();
   }
 
   get status() {

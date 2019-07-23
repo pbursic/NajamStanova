@@ -12,10 +12,13 @@ const registration = require("./server/routes/registration");
 const login = require("./server/routes/login");
 const logout = require("./server/routes/logout");
 const form = require("./server/routes/form");
+const images = require("./server/routes/images");
 const middleware = require("./server/routes/middleware");
 
 //app.use(express.static('src'));
 app.use(express.static(path.join(__dirname, "dist/NajamStanova")));
+
+//app.use(express.bodyParser({ limit: "50mb" }));
 
 app.use(cookieParser());
 //app.use(cookieParser("keyboard_cat"));
@@ -28,6 +31,7 @@ app.use("/view", posts);
 app.use("/view/post-detail", postDetail);
 app.use("/user-posts", userPosts);
 app.use("/user-posts/post-detail", middleware.isLoggedIn, postDetail);
+//app.use("/user-posts/post-detail", middleware.isLoggedIn, images);
 app.use("/registration", registration);
 app.use("/profile", registration);
 app.use("/", login);

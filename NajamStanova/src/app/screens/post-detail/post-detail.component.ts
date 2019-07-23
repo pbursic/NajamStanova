@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PostService } from "../../services/post/post.service";
 import { Posts } from "../../models/posts";
+import { Images } from "../../models/images";
 import { Observable } from "rxjs/Observable";
 import { ActivatedRoute, Params } from "@angular/router";
 
@@ -22,6 +23,7 @@ export class PostDetailComponent implements OnInit {
   editable: boolean = false;
   contactVisible: boolean = false;
   isLoggedIn;
+  images: Images;
 
   tiles: Tile[] = [
     { text: "One", cols: 2, rows: 2, color: "#f9f9f9ff" },
@@ -42,6 +44,11 @@ export class PostDetailComponent implements OnInit {
     this.postService.getPost(id).subscribe(post => {
       this.post = post;
     });
+
+    /*this.postService.getImages(id).subscribe(images => {
+      console.log("images: ", images);
+      this.images = images;
+    });*/
 
     if (window.location.href.length > 40) {
       this.editable = true;

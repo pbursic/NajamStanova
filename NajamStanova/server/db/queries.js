@@ -78,8 +78,20 @@ module.exports = {
 
   insertPost: `INSERT INTO posts
               ("user_id", "status", "title", "description", "bills_included", "country", "city", "address", "price",
-              "squares", "type", "available_date", "walkout_date", "furnished", "bed", "room", "pet", "parking")
+              "squares", "type", "furnished", "bed", "room", "pet", "parking")
               VALUES
               ($1, $2, $3, $4, $5, $6, $7, $8, $9,
-              $10, $11, $12, $13, $14, $15, $16, $17, $18);`
+              $10, $11, $12, $13, $14, $15, $16)
+              RETURNING id`, // "available_date", "walkout_date", , $17, $18
+  // "status", , $16
+  getImages: `SELECT * FROM images WHERE post_id = $1`,
+
+  insertImages: `INSERT INTO images
+                  ("post_id", "image")
+                  VALUES
+                  %L`,
+
+  updateImages: ``,
+
+  deleteImages: ``
 };

@@ -1,4 +1,4 @@
-<mat-grid-list cols="4" rowHeight="150px">
+<mat-grid-list cols="4" rowHeight="150px" *ngFor="let images of images">
   <mat-grid-tile
     *ngFor="let tile of tiles"
     [colspan]="tile.cols"
@@ -9,9 +9,9 @@
     <img
       mat-card-image
       class="zoom"
-      src="assets/images/house.jpg"
+      [src]="images.image"
       alt="Photo of a Shiba Inu"
-    />
+    /><!--assets/images/house.jpg-->
   </mat-grid-tile>
 </mat-grid-list>
 

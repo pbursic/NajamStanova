@@ -18,4 +18,5 @@ export class Posts {
   room: number;
   pet: boolean;
   parking: boolean;
+  images: string[];
 }

@@ -6,9 +6,12 @@ const queries = require("../db/queries");
 const transaction = require("../db/transaction");
 const bcrypt = require("bcrypt");
 const middleware = require("./middleware");
+const formatSQL = require("pg-format");
 
 router.use(bodyParser.urlencoded({ extended: false }));
-const jsonParser = bodyParser.json();
+const jsonParser = bodyParser.json({ limit: "5mb", extended: true });
+
+// express.bodyParser({limit: '5mb'})
 
 router.post("/", jsonParser, (req, res, next) => {
   const user_id = req.cookies["user_id"];
@@ -23,7 +26,8 @@ router.post("/", jsonParser, (req, res, next) => {
           const sql = queries.insertPost;
           let params = [
             user_id,
-            req.body.status,
+            false,
+            //req.body.status,
             req.body.title,
             req.body.description,
             req.body.bills_included,
@@ -33,8 +37,8 @@ router.post("/", jsonParser, (req, res, next) => {
             req.body.price,
             req.body.squares,
             req.body.type,
-            new Date(req.body.available_date),
-            new Date(req.body.walkout_date),
+            //new Date(req.body.available_date),
+            //new Date(req.body.walkout_date),
             req.body.furnished,
             req.body.bed,
             req.body.room,
@@ -45,7 +49,19 @@ router.post("/", jsonParser, (req, res, next) => {
           return client.query(sql, params);
         })
         .then(results => {
-          res.status(200).json(results);
+          let post_id = results.rows[0].id;
+
+          const sql2 = queries.insertImages;
+          let arrayImages = [];
+          req.body.images.forEach(img => {
+            arrayImages.push([post_id, img]);
+          });
+          let sql = formatSQL(sql2, arrayImages);
+
+          return client.query(sql);
+        })
+        .then(results2 => {
+          res.status(200).json(results2);
           transaction.commit(client);
         })
         .catch(err => {
