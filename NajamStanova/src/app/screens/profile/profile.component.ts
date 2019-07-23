@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   person: Person;
   submitted = false;
   isLoggedIn;
-  imageUrl: String = "../../assets/images/UserIcon@2x.svg";
+  imageUrl: string = "../../assets/images/UserIcon@2x.svg";
   selectedFile: File = null;
 
   constructor(
@@ -39,14 +39,26 @@ export class ProfileComponent implements OnInit {
     });
 
     this.registrationService.getPerson(this.isLoggedIn).subscribe(user => {
-      //console.log("user", user[0].image);
+      console.log(user);
       const reader = new FileReader();
       reader.onload = (event: any) => {
         this.imageUrl = event.target.result;
         console.log("imageUrl: ", this.imageUrl);
       };
+      console.log("user.image ", user[0].image);
+      //console.log("user.image.data ", user[0].image.data);
+
       //reader.readAsDataURL(user[0].image.data);
-      this.person = user;
+      //reader.readAsDataURL(user[0].image);
+      this.person = user[0];
+      this.imageUrl = user[0].image;
+
+      //this.person.image = user[0].image; //.data;
+      console.log("this.person.image ", this.person.image);
+      //let object = "data:image/png;base64," + this.person.image;
+      /*var b = new Blob(user[0].image.data);
+      reader.readAsDataURL(b);*/
+      //   reader.readAsDataURL(this.person.image);
     });
 
     //this.registrationForm.valueChanges.subscribe(console.log);
@@ -59,7 +71,8 @@ export class ProfileComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageUrl = event.target.result;
-      //console.log("imageUrl2: ", this.imageUrl);
+      console.log("imageUrl2: ", this.imageUrl);
+      console.log("file: ", this.selectedFile);
     };
     reader.readAsDataURL(this.selectedFile);
   }
@@ -79,7 +92,7 @@ export class ProfileComponent implements OnInit {
     }
 
     this.person = this.registrationForm.value;
-    this.person.image = this.selectedFile;
+    this.person.image = this.imageUrl;
 
     this.save();
   }

@@ -63,7 +63,7 @@ router.post("/", (req, res, next) => {
               req.body.country,
               req.body.city,
               req.body.phone,
-              req.files.image
+              req.body.image
             ];
             return client.query(sql, params);
             /*bcrypt
@@ -113,6 +113,7 @@ router.post("/", (req, res, next) => {
           });
       });
   } else {
+    console.log("req.body: ", req.body);
     if (middleware.validUser(req.body)) {
       // INSERT user
       transaction
@@ -143,7 +144,7 @@ router.post("/", (req, res, next) => {
                       req.body.country,
                       req.body.city,
                       req.body.phone,
-                      req.files.image
+                      req.body.image
                     ];
 
                     return client.query(sql, params);

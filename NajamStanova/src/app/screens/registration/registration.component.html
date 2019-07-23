@@ -24,7 +24,6 @@
             name="image"
             (change)="onFileSelected($event.target.files)"
             formControlName="image"
-            required
           />
           <button
             mat-stroked-button
@@ -216,13 +215,7 @@
   </div>
 
   <div class="center">
-    <button
-      mat-raised-button
-      [disabled]="registrationForm.invalid && !isLoggedIn"
-      color="accent"
-      type="submit"
-      class="center"
-    >
+    <button mat-raised-button color="accent" type="submit" class="center">
       <!--[disabled]="registrationForm.invalid && !isLoggedIn" -->
       {{ isLoggedIn ? "Spremi" : "Registracija" }}
     </button>

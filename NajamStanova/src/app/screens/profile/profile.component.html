@@ -3,7 +3,8 @@
   enctype="multipart/form-data"
   (ngSubmit)="onSubmit()"
 >
-  <div class="grid" *ngFor="let person of person">
+  <div class="grid" *ngIf="person">
+    <!--*ngFor="let person of person"-->
     <div class="center">
       <h2 class="center">
         Profil
@@ -112,7 +113,7 @@
         </mat-form-field>
       </div>
 
-      <img [src]="'data:image/jpg;base64,' + person.image.data" />
+      <!--<img [src]="'data:image/jpg;base64,' + person.image.data" />-->
     </div>
   </div>
 

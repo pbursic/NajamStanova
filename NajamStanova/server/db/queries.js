@@ -7,13 +7,18 @@ module.exports = {
 
   rollback: "ROLLBACK",
 
+  getEmail: `SELECT 
+                email
+              FROM users
+              WHERE email = $1`,
+
   getUser: `SELECT DISTINCT 
               users.name, 
               users.surname 
             FROM posts, users 
             WHERE posts.user_id = $1`,
 
-  getUserDetail: `SELECT *
+  getUserDetail: `SELECT id, email, password, name, surname, birth_date, country, city, phone, encode(image::bytea, 'escape') image 
                   FROM users
                   WHERE email = $1`,
 

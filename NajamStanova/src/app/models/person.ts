@@ -10,5 +10,5 @@ export class Person {
   phone: string;
   login_status: boolean;
   register_date: Date;
-  image: File;
+  image: string;
 }

@@ -17,7 +17,7 @@ export class RegistrationComponent implements OnInit {
   person: Person;
   submitted = false;
   isLoggedIn;
-  imageUrl: String = "../../assets/images/UserIcon@2x.svg";
+  imageUrl: string = "../../assets/images/UserIcon@2x.svg";
   selectedFile: File = null;
 
   constructor(
@@ -53,7 +53,7 @@ export class RegistrationComponent implements OnInit {
       this.registrationForm = this.fb.group({
         name: "",
         surname: "",
-        phone: [],
+        phone: [""],
         email: ["", [Validators.required, Validators.email]],
         city: "",
         country: "",
@@ -84,33 +84,35 @@ export class RegistrationComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageUrl = event.target.result;
-      console.log("imageUrl2: ", this.imageUrl);
+      //console.log("imageUrl2: ", this.imageUrl);
+      console.log("reader.result: ", reader.result);
     };
     reader.readAsDataURL(this.selectedFile);
   }
 
-  onUpload() {
+  /*onUpload() {
     console.log("imageUrl: ", this.imageUrl);
     console.log("selectedFile: ", this.selectedFile);
     const fd = new FormData();
     fd.append("image", this.selectedFile);
-  }
+  }*/
 
   onSubmit() {
     this.submitted = true;
-
+    console.log("submitted ");
     if (this.registrationForm.invalid) {
       return;
     }
 
     this.person = this.registrationForm.value;
-    this.person.image = this.selectedFile;
+    //  this.person.image = this.selectedFile;
+    this.person.image = this.imageUrl;
 
     this.save();
   }
 
   private save(): void {
-    //console.log(this.person);
+    console.log("SAVE: ", this.person);
 
     this.registrationService.addPerson(this.person).subscribe();
 

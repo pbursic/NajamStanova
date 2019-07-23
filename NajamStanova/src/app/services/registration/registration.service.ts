@@ -47,4 +47,15 @@ export class RegistrationService {
       })
     );
   }
+
+  /*
+  addPost(post: Posts): Observable<any> {
+    return this.http.post<any>(`/form`, post).pipe(
+      map(res => {
+        console.log(res);
+        return res.rows;
+      })
+    );
+  }
+  */
 }

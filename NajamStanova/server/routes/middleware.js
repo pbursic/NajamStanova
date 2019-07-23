@@ -9,8 +9,9 @@ const app = express();
 function validUser(user) {
   const validEmail = typeof user.email == "string" && user.email.trim() != "";
   const validPassword =
-    typeof //user.password == "string" &&
-    user.email.trim() != "" && user.password.trim().length >= 8;
+    typeof user.password == "string" &&
+    user.email.trim() != "" &&
+    user.password.trim().length >= 8;
 
   return validEmail && validPassword;
 }

@@ -18,6 +18,8 @@ export class FormComponent implements OnInit {
   postsForm: FormGroup;
   posts: Posts;
   submitted = false;
+  imageUrl: string = "../../assets/images/picture.svg";
+  selectedFile: File = null;
 
   types: IType[] = [
     { value: "stan", viewValue: "Stan" },
@@ -49,6 +51,26 @@ export class FormComponent implements OnInit {
       parking: [false]
     });
   }
+
+  onFileSelected(file: FileList) {
+    this.selectedFile = file.item(0); // get first image
+
+    //show image preview
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imageUrl = event.target.result;
+      //console.log("imageUrl2: ", this.imageUrl);
+      console.log("reader.result: ", reader.result);
+    };
+    reader.readAsDataURL(this.selectedFile);
+  }
+
+  /*onUpload() {
+    console.log("imageUrl: ", this.imageUrl);
+    console.log("selectedFile: ", this.selectedFile);
+    const fd = new FormData();
+    fd.append("image", this.selectedFile);
+  }*/
 
   onSubmit() {
     this.submitted = true;
