@@ -1,21 +1,26 @@
-<mat-grid-list cols="4" rowHeight="150px" *ngFor="let images of images">
+<mat-grid-list cols="4" rowHeight="150px" role="list"
+  ><!--*ngFor="let images of post"-->
   <mat-grid-tile
     *ngFor="let tile of tiles"
     [colspan]="tile.cols"
     [rowspan]="tile.rows"
     [style.background]="tile.color"
   >
-    {{ tile.text }}
-    <img
-      mat-card-image
-      class="zoom"
-      [src]="images.image"
-      alt="Photo of a Shiba Inu"
-    /><!--assets/images/house.jpg-->
+    <!--{{ tile.text }}-->
+    <div>
+      <img
+        role="listitem"
+        mat-card-image
+        class="zoom"
+        [src]="tile.text"
+        alt="Slika prostora"
+      /><!--images.image assets/images/house.jpg-->
+    </div>
   </mat-grid-tile>
 </mat-grid-list>
 
-<div class="grid center" *ngFor="let post of post">
+<div class="grid center" *ngIf="post">
+  <!-- *ngFor="let post of post"-->
   <div>
     <!--<div *ngIf="editable" style="float: right">
       <h3>Ovaj oglas je {{ post.status ? "AKTIVAN" : "DEAKTIVAN" }}!</h3>

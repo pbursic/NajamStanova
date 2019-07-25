@@ -5,6 +5,7 @@ const queries = require("../db/queries");
 
 router.get("/:id", (req, res) => {
   const client = new Client();
+  let posts;
   client
     .connect()
     .then(() => {
@@ -12,9 +13,16 @@ router.get("/:id", (req, res) => {
       let params = [req.params.id];
       return client.query(sql, params);
     })
-    .then(results => {
-      //res.send(results);
-      res.status(200).json(results);
+    .then(post => {
+      posts = post;
+      //res.status(200).json(post);
+      const sql = queries.getImages;
+      let params = [req.params.id];
+      return client.query(sql, params);
+    })
+    .then(images => {
+      posts.rows[0].images = images.rows;
+      res.status(200).json(posts);
     })
     .catch(err => {
       console.log("error", err);

@@ -55,10 +55,10 @@ module.exports = {
   getPosts: `SELECT * FROM posts WHERE posts.status = true`,
 
   getPostDetails: `SELECT 
-                      * 
-                    FROM posts, users 
-                    WHERE posts.id = $1
-                    AND posts.user_id = users.id`,
+  * 
+FROM posts, users 
+WHERE posts.id = $1
+AND posts.user_id = users.id`,
 
   postUser: `INSERT INTO users
               ("email", "password", "name", "surname", "birth_date", "country", "city", "phone", "image")

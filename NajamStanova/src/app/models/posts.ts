@@ -1,3 +1,5 @@
+import { Images } from "./images";
+
 export class Posts {
   id: number;
   user_id: number;

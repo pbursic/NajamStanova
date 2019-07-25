@@ -20,7 +20,7 @@ import {
 export class ToolbarComponent implements OnInit {
   person: Person;
   submitted = false;
-  isLoggedIn;
+  //isLoggedIn;
 
   constructor(
     private logoutService: LoginService,
@@ -29,7 +29,11 @@ export class ToolbarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isLoggedIn = localStorage.getItem("user");
+    //this.isLoggedIn = localStorage.getItem("user");
+  }
+
+  isLoggedIn() {
+    return localStorage.getItem("user");
   }
 
   logoutUser() {

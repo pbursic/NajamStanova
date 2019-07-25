@@ -17,7 +17,7 @@
       <mat-list-item
         class="list-item"
         routerLink="user-posts"
-        *ngIf="isLoggedIn"
+        *ngIf="isLoggedIn()"
         >Tvoji oglasi</mat-list-item
       >
     </mat-nav-list>
@@ -26,7 +26,7 @@
 
     <span class="example-spacer"></span>
 
-    <mat-nav-list *ngIf="!isLoggedIn">
+    <mat-nav-list *ngIf="!isLoggedIn()">
       <mat-card class="user list-item">
         <mat-card-header>
           <div mat-card-avatar class="header-image"></div>
@@ -37,13 +37,13 @@
       ><!--routerLink="login"-->
     </mat-nav-list>
 
-    <mat-card class="user" [matMenuTriggerFor]="menu" *ngIf="isLoggedIn">
+    <mat-card class="user" [matMenuTriggerFor]="menu" *ngIf="isLoggedIn()">
       <mat-card-header>
         <div mat-card-avatar class="header-image"></div>
       </mat-card-header>
     </mat-card>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="profile/{{ isLoggedIn }}">
+      <button mat-menu-item routerLink="profile/{{ isLoggedIn() }}">
         Profil
       </button>
       <button mat-menu-item (click)="logoutUser()">

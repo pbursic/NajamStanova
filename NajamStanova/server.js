@@ -26,6 +26,25 @@ app.use(cookieParser());
 
 app.use(fileUpload());
 
+/*app.use(async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    // will only respond with JSON
+    ctx.status = err.statusCode || err.status || 500;
+    ctx.body = {
+      message: err.message
+    };
+  }
+});*/
+
+/*
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!!');
+});
+*/
+
 // Using middleware
 app.use("/view", posts);
 app.use("/view/post-detail", postDetail);
@@ -37,6 +56,11 @@ app.use("/profile", registration);
 app.use("/", login);
 //app.use("/", logout);
 app.use("/form", middleware.isLoggedIn, form);
+
+app.use(function(error, req, res, next) {
+  console.log("USEERRRORRRRRR!!!!!!!!!", error);
+  res.status(500).json(error.message);
+});
 
 // Catch all other routes request and return it to the index
 /*app.get('*', (req, res) => {

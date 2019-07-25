@@ -23,14 +23,13 @@ export class PostDetailComponent implements OnInit {
   editable: boolean = false;
   contactVisible: boolean = false;
   isLoggedIn;
-  images: Images;
 
   tiles: Tile[] = [
-    { text: "One", cols: 2, rows: 2, color: "#f9f9f9ff" },
-    { text: "Two", cols: 1, rows: 1, color: "#f9f9f9ff" },
-    { text: "Three", cols: 1, rows: 1, color: "#f9f9f9ff" },
-    { text: "Four", cols: 1, rows: 1, color: "#f9f9f9ff" },
-    { text: "Five", cols: 1, rows: 1, color: "#f9f9f9ff" }
+    { text: "", cols: 2, rows: 2, color: "#f9f9f9ff" }, // One
+    { text: "", cols: 1, rows: 1, color: "#f9f9f9ff" }, // Two
+    { text: "", cols: 1, rows: 1, color: "#f9f9f9ff" }, // Three
+    { text: "", cols: 1, rows: 1, color: "#f9f9f9ff" }, // Four
+    { text: "", cols: 1, rows: 1, color: "#f9f9f9ff" } // Five
   ];
 
   constructor(
@@ -42,13 +41,16 @@ export class PostDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get("id");
 
     this.postService.getPost(id).subscribe(post => {
+      console.log("POST: ", post);
       this.post = post;
-    });
 
-    /*this.postService.getImages(id).subscribe(images => {
-      console.log("images: ", images);
-      this.images = images;
-    });*/
+      //for (var po = 0; po < Object.keys(post).length; po++) {
+      for (var im = 0; im < post.images.length; im++) {
+        this.tiles[im].text = (<any>post.images[im]).image;
+      }
+
+      //}
+    });
 
     if (window.location.href.length > 40) {
       this.editable = true;

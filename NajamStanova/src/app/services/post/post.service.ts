@@ -1,13 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { map } from "rxjs/operators";
+import { map, catchError } from "rxjs/operators";
 import { Posts } from "../../models/posts";
 import { Images } from "../../models/images";
-import { Observable } from "rxjs";
+import { Observable, empty } from "rxjs";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class PostService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackbar: MatSnackBar) {}
 
   getAllPosts(): Observable<Posts> {
     return this.http.get<any>("/view").pipe(
@@ -21,6 +22,13 @@ export class PostService {
     return this.http.get<any>(`/user-posts`).pipe(
       map(res => {
         return res.rows;
+      }),
+      catchError((err, caught) => {
+        this.snackbar.open(err, null, {
+          duration: 3000
+        });
+
+        return Observable.throw(err);
       })
     );
   }
@@ -28,7 +36,7 @@ export class PostService {
   getPost(id: number): Observable<Posts> {
     return this.http.get<any>(`/view/post-detail/${id}`).pipe(
       map(res => {
-        return res.rows;
+        return res.rows[0];
       })
     );
   }
