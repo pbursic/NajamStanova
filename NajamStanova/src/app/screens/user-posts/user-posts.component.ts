@@ -11,6 +11,7 @@ import { ActivatedRoute, Params } from "@angular/router";
 })
 export class UserPostsComponent implements OnInit {
   posts: Posts;
+  image: string = "assets/images/picture.svg";
 
   constructor(
     private postService: PostService,
@@ -20,7 +21,6 @@ export class UserPostsComponent implements OnInit {
   ngOnInit() {
     this.postService.getUserPosts().subscribe(posts => {
       this.posts = posts;
-      console.log("Posts: ", this.posts);
     });
   }
 }

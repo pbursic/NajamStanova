@@ -8,8 +8,8 @@
     >
       <img
         mat-card-image
-        src="assets/images/house.jpg"
-        alt="Photo of a Shiba Inu"
+        [src]="post.image == null ? image : post.image"
+        alt="Slika prostora"
       />
       <mat-card-header>
         <div class="grid2">

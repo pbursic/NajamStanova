@@ -15,9 +15,10 @@ router.get("/", (req, res) => {
     .then(() => {
       return client.query(queries.getPosts);
     })
-    .then(results => {
+    .then(posts => {
+      //console.log("POSTS RESULT: ", posts);
       //res.send(results);
-      res.status(200).json(results);
+      res.status(200).json(posts);
     })
     .catch(err => {
       console.log("error", err);

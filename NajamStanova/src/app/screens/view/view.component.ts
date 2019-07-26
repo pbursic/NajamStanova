@@ -11,6 +11,7 @@ import { Observable } from "rxjs/Observable";
 })
 export class ViewComponent implements OnInit {
   posts: Posts;
+  image: string = "assets/images/picture.svg";
 
   constructor(private postService: PostService) {}
 
@@ -18,6 +19,10 @@ export class ViewComponent implements OnInit {
     this.postService.getAllPosts().subscribe(posts => {
       this.posts = posts;
     });
+  }
+
+  filter() {
+    console.log("FILTER: ", this.posts);
   }
 
   step = 0;

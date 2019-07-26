@@ -23,17 +23,14 @@ module.exports = {
                   WHERE email = $1`,
 
   getUserPosts: `SELECT 
-                  posts.id,
-                  posts.title,
-                  posts.squares,
-                  posts.price,
-                  posts.city,
-                  posts.address 
-                FROM 
-                  posts, 
-                  users 
-                WHERE posts.user_id = $1 
-                AND posts.user_id = users.id`,
+                  DISTINCT ON (p.id)  p.*, i.id image_id, i.post_id, i.image
+                  FROM 
+                    posts p
+                LEFT OUTER JOIN images i
+                on p.id = i.post_id,
+                    users u
+                  WHERE p.user_id = $1 
+                  AND p.user_id = u.id`,
 
   getLoginUser: `SELECT 
             id,
@@ -52,13 +49,19 @@ module.exports = {
                 SET login_status = false 
                 WHERE email = $1`,
 
-  getPosts: `SELECT * FROM posts WHERE posts.status = true`,
+  getPosts: `SELECT 
+	            DISTINCT ON (p.id) p.*, i.id image_id, i.post_id, i.image 
+              FROM
+                posts p
+                LEFT OUTER JOIN images i
+                on p.id = i.post_id
+              WHERE p.status = true`,
 
   getPostDetails: `SELECT 
-  * 
-FROM posts, users 
-WHERE posts.id = $1
-AND posts.user_id = users.id`,
+                    * 
+                  FROM posts, users 
+                  WHERE posts.id = $1
+                  AND posts.user_id = users.id`,
 
   postUser: `INSERT INTO users
               ("email", "password", "name", "surname", "birth_date", "country", "city", "phone", "image")
@@ -90,8 +93,6 @@ AND posts.user_id = users.id`,
                   ("post_id", "image")
                   VALUES
                   %L`,
-
-  updateImages: ``,
 
   deleteImages: ``
 };
