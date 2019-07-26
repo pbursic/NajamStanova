@@ -1,6 +1,6 @@
-<div class="filter">
+<form class="filter" [formGroup]="postsForm" (ngSubmit)="filter()">
   <div>
-    <button mat-raised-button color="accent" (click)="filter()">
+    <button mat-raised-button color="accent" type="submit">
       Filtriraj
     </button>
   </div>
@@ -16,6 +16,13 @@
           Regija
         </mat-panel-title>
       </mat-expansion-panel-header>
+
+      <h3>Iznos mjesečne najamnine</h3>
+
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Iznos mjesečne najamnine</mat-label>
+        <input matInput placeholder="0,00kn" formControlName="price" />
+      </mat-form-field>
 
       <p>Država/regija</p>
 
@@ -123,7 +130,7 @@
 
       <h3>Da li prima kućne ljubimce?</h3>
 
-      <mat-checkbox>Prima kućne kljubimce</mat-checkbox>
+      <mat-checkbox formControlName="pet">Prima kućne kljubimce</mat-checkbox>
 
       <mat-action-row>
         <button mat-button color="warn" (click)="prevStep()">Previous</button>
@@ -169,7 +176,7 @@
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
-</div>
+</form>
 
 <div class="content_view">
   <mat-tab-group color="accent">
@@ -177,7 +184,7 @@
       <div class="grid">
         <mat-card
           class="example-card"
-          *ngFor="let post of posts"
+          *ngFor="let post of array"
           method="GET"
           routerLink="post-detail/{{ post.id }}"
         >
