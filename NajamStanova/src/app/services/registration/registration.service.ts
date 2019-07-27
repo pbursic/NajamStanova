@@ -11,7 +11,7 @@ export class RegistrationService {
   constructor(private http: HttpClient) {}
 
   getPerson(email: string): Observable<Person> {
-    return this.http.get<any>(`/profile/${email}`).pipe(
+    return this.http.get<any>(`/api/profile/${email}`).pipe(
       map(res => {
         //console.log("getPerson", res.rows);
         //console.log("getPerson image", res.rows.image);
@@ -40,7 +40,7 @@ export class RegistrationService {
     console.log("fd: ", fd);*/
     /*console.log("person: ", person);*/
 
-    return this.http.post<any>("/registration", fd).pipe(
+    return this.http.post<any>("/api/registration", fd).pipe(
       map(res => {
         console.log(res);
         return res.rows;

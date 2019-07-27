@@ -46,16 +46,16 @@ app.use(function (err, req, res, next) {
 */
 
 // Using middleware
-app.use("/view", posts);
-app.use("/view/post-detail", postDetail);
-app.use("/user-posts", userPosts);
-app.use("/user-posts/post-detail", middleware.isLoggedIn, postDetail);
+app.use("/api/view", posts);
+app.use("/api/view/post-detail", postDetail);
+app.use("/api/user-posts", userPosts);
+app.use("/api/user-posts/post-detail", middleware.isLoggedIn, postDetail);
 //app.use("/user-posts/post-detail", middleware.isLoggedIn, images);
-app.use("/registration", registration);
-app.use("/profile", registration);
-app.use("/", login);
+app.use("/api/registration", registration);
+app.use("/api/profile", registration);
+app.use("/api/", login);
 //app.use("/", logout);
-app.use("/form", middleware.isLoggedIn, form);
+app.use("/api/form", middleware.isLoggedIn, form);
 
 app.use(function(error, req, res, next) {
   console.log("USEERRRORRRRRR!!!!!!!!!", error);
@@ -63,9 +63,9 @@ app.use(function(error, req, res, next) {
 });
 
 // Catch all other routes request and return it to the index
-/*app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/NajamStanova/index.html'));
-});*/
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist/NajamStanova/index.html"));
+});
 
 const port = process.env.PORT || 4200;
 app.listen(port, () => console.log(`Listening to port ${port}...`));

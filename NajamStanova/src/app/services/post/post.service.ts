@@ -11,7 +11,7 @@ export class PostService {
   constructor(private http: HttpClient, private snackbar: MatSnackBar) {}
 
   getAllPosts(): Observable<Posts> {
-    return this.http.get<any>("/view").pipe(
+    return this.http.get<any>("/api/view").pipe(
       map(res => {
         return res.rows;
       })
@@ -19,7 +19,7 @@ export class PostService {
   }
 
   getUserPosts(): Observable<Posts> {
-    return this.http.get<any>(`/user-posts`).pipe(
+    return this.http.get<any>(`/api/user-posts`).pipe(
       map(res => {
         return res.rows;
       }),
@@ -34,7 +34,7 @@ export class PostService {
   }
 
   getPost(id: number): Observable<Posts> {
-    return this.http.get<any>(`/view/post-detail/${id}`).pipe(
+    return this.http.get<any>(`/api/view/post-detail/${id}`).pipe(
       map(res => {
         return res.rows[0];
       })
@@ -42,7 +42,7 @@ export class PostService {
   }
 
   addPost(post: Posts): Observable<any> {
-    return this.http.post<any>(`/form`, post).pipe(
+    return this.http.post<any>(`/api/form`, post).pipe(
       map(res => {
         console.log(res);
         return res.rows;
@@ -51,7 +51,7 @@ export class PostService {
   }
 
   getImages(id: number): Observable<any> {
-    return this.http.get<any>(`/view/post-detail/${id}`).pipe(
+    return this.http.get<any>(`/api/view/post-detail/${id}`).pipe(
       map(res => {
         return res.rows;
       })

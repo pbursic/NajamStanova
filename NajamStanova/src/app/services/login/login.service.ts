@@ -12,7 +12,7 @@ export class LoginService {
   constructor(private http: HttpClient, private snackbar: MatSnackBar) {}
 
   getUser(person: Person): Observable<any> {
-    return this.http.post<any>("/", person).pipe(
+    return this.http.post<any>("/api/", person).pipe(
       map(res => {
         return res.rows;
       }),
@@ -29,7 +29,7 @@ export class LoginService {
   }
 
   logoutUser(person: Person): Observable<any> {
-    return this.http.post<any>("/", person).pipe(
+    return this.http.post<any>("/api/", person).pipe(
       map(res => {
         return res.rows;
       })

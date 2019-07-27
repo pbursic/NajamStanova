@@ -34,6 +34,8 @@ export class ViewComponent implements OnInit {
       for (let i = 0; i < keys.length; i++) {
         this.array.push(posts[i]);
       }
+
+      if (window.location.href.indexOf("?") > -1) this.getParams();
     });
 
     this.postsForm = this.fb.group({
@@ -57,47 +59,45 @@ export class ViewComponent implements OnInit {
     });
   }
 
-  filter() {
-    let keys_p = Object.keys(this.posts);
-
-    /*this.array = [];
-
-    for (let i = 0; i < keys_p.length; i++) {
-      if (this.fId(i)) this.array.push(this.posts[i]);
-    }*/
-
-    /*let keys_a = Object.keys(this.array);
-
-    for (let i = 0; i < keys_a.length; i++) {
-      this.posts = this.array[i];
-    }*/
-    console.log("array: ", this.array);
-    console.log(
-      "array: ",
-      this.array.filter(post => {
-        return post.id == 8;
-      })
-    );
-
-    this.array = this.array.filter(post => {
-      return post.id == 8;
+  getParams() {
+    return this.route.queryParams.subscribe(params => {
+      this.array = this.array.filter(post => {
+        this.postsForm.get("price").setValue(params["price"]);
+        return post.price == params["price"];
+      });
     });
-
-    console.log("array: ", this.array);
-
-    // https://www.tektutorialshub.com/angular/angular-pass-url-parameters-query-strings/
-    let params = new HttpParams().set("id", this.postsForm.get("room").value);
-
-    console.log("params: ", params.toString());
-
-    let href = window.location.href;
-    //window.location.href = href + "?" + params;
   }
 
-  fId(i: number) {
-    return this.postsForm.get("room").value
-      ? this.posts[i].id == this.postsForm.get("room").value
-      : false;
+  filter() {
+    window.history.replaceState(null, null, window.location.pathname);
+
+    let price = this.postsForm.get("price").value;
+    let hasDot = price.indexOf(".") > -1;
+    let hasDecimal = price.indexOf(",00") > -1;
+    let isFormated = price.indexOf(",00 kn") > -1;
+
+    let formatPrice =
+      hasDot && isFormated
+        ? price
+        : hasDecimal && hasDot
+        ? price + " kn"
+        : hasDot
+        ? price + ",00 kn"
+        : parseFloat(price)
+            .toFixed(2)
+            .replace(".", ",")
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") + " kn";
+
+    let params = new HttpParams().set("price", formatPrice);
+
+    let href = window.location.href;
+    if (href.indexOf("?") > -1) {
+      window.location.href = href + "&" + params;
+    } else {
+      window.location.href = href + "?" + params;
+    }
+
+    this.getParams();
   }
 
   step = 0;
