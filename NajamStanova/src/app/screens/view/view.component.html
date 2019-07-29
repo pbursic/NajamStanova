@@ -13,46 +13,40 @@
     >
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Regija
+          <h4>Opiši idealan prostor</h4>
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <h3>Iznos mjesečne najamnine</h3>
+      <p>Lokacija</p>
+
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Grad</mat-label>
+        <input matInput placeholder="Grad" formControlName="city" />
+      </mat-form-field>
+
+      <p>Vrsta prostora</p>
+
+      <mat-form-field color="accent" appearance="outline">
+        <mat-select placeholder="Sve" formControlName="type">
+          <mat-option>Sve</mat-option>
+          <mat-option *ngFor="let type of types" [value]="type.value">
+            {{ type.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h4>Iznos mjesečne najamnine</h4>
 
       <mat-form-field color="accent" appearance="outline">
         <mat-label>Iznos mjesečne najamnine</mat-label>
         <input matInput placeholder="0,00kn" formControlName="price" />
       </mat-form-field>
 
-      <p>Država/regija</p>
-
-      <mat-form-field color="accent" appearance="outline">
-        <mat-select placeholder="Hrvatska">
-          <mat-option>Hrvatska</mat-option>
-          <mat-option>Slovenija</mat-option>
-          <mat-option>Italija</mat-option>
-          <!--<mat-option *ngFor="let food of foods" [value]="food.value">
-          {{food.viewValue}}
-        </mat-option>-->
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field color="accent" appearance="outline">
-        <mat-select placeholder="Pula">
-          <mat-option>Pula</mat-option>
-          <mat-option>Rovinj</mat-option>
-          <mat-option>Vodnjan</mat-option>
-          <mat-option>Rijeka</mat-option>
-          <mat-option>Zagreb</mat-option>
-          <!--<mat-option *ngFor="let food of foods" [value]="food.value">
-          {{food.viewValue}}
-        </mat-option>-->
-        </mat-select>
-      </mat-form-field>
-
-      <mat-action-row>
-        <button mat-button color="primary" (click)="nextStep()">Next</button>
-      </mat-action-row>
+      <!--<mat-action-row>
+        <button mat-button type="button" color="primary" (click)="nextStep()">
+          Next
+        </button>
+      </mat-action-row>-->
     </mat-expansion-panel>
 
     <mat-expansion-panel
@@ -62,25 +56,44 @@
     >
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Vrsta prostora
+          <h4>Pojedinosti</h4>
         </mat-panel-title>
       </mat-expansion-panel-header>
 
+      <p>Koliko je spavačih soba na raspolaganju?</p>
+
       <mat-form-field color="accent" appearance="outline">
-        <mat-select placeholder="Stan">
-          <mat-option>Stan</mat-option>
-          <mat-option>Studio</mat-option>
-          <mat-option>Kuća</mat-option>
-          <!--<mat-option *ngFor="let food of foods" [value]="food.value">
-          {{food.viewValue}}
-        </mat-option>-->
-        </mat-select>
+        <input
+          matInput
+          type="number"
+          placeholder="Sobe"
+          formControlName="room"
+        />
       </mat-form-field>
 
-      <mat-action-row>
-        <button mat-button color="warn" (click)="prevStep()">Previous</button>
-        <button mat-button color="primary" (click)="nextStep()">Next</button>
-      </mat-action-row>
+      <p>Koliko je kreveta?</p>
+
+      <mat-form-field color="accent" appearance="outline">
+        <input
+          matInput
+          type="number"
+          placeholder="Kreveti"
+          formControlName="bed"
+        />
+      </mat-form-field>
+
+      <h4>Da li prima kućne ljubimce?</h4>
+
+      <mat-checkbox formControlName="pet">Prima kućne kljubimce</mat-checkbox>
+
+      <!--<mat-action-row>
+        <button mat-button type="button" color="warn" (click)="prevStep()">
+          Previous
+        </button>
+        <button mat-button type="button" color="primary" (click)="nextStep()">
+          Next
+        </button>
+      </mat-action-row>-->
     </mat-expansion-panel>
 
     <mat-expansion-panel
@@ -90,90 +103,28 @@
     >
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Pojedinosti
+          <h4>Što sve smještaj mora sadržati?</h4>
         </mat-panel-title>
       </mat-expansion-panel-header>
-
-      <h3>Koliko je kupaonica?</h3>
-
-      <mat-form-field color="accent" appearance="outline">
-        <input matInput type="number" placeholder="Kupaonica" />
-      </mat-form-field>
-
-      <h3>Koliko podstanara vaš smještaj može primiti?</h3>
-
-      <mat-form-field color="accent" appearance="outline">
-        <input matInput type="number" placeholder="Osobe" />
-      </mat-form-field>
-
-      <p>Koliko je spavačih soba na raspolaganju?</p>
-
-      <mat-form-field color="accent" appearance="outline">
-        <mat-select placeholder="Soba">
-          <mat-option>jednosoban stan</mat-option>
-          <mat-option>dvosoban stan</mat-option>
-          <mat-option>trosoban stan</mat-option>
-          <mat-option>četverosoban stan</mat-option>
-          <mat-option>petosoban stan</mat-option>
-          <mat-option>šestsoban stan</mat-option>
-          <!--<mat-option *ngFor="let food of foods" [value]="food.value">
-            {{food.viewValue}}
-          </mat-option>-->
-        </mat-select>
-      </mat-form-field>
-
-      <h3>Koliko je kreveta?</h3>
-
-      <mat-form-field color="accent" appearance="outline">
-        <input matInput type="number" placeholder="Kreveti" />
-      </mat-form-field>
-
-      <h3>Da li prima kućne ljubimce?</h3>
-
-      <mat-checkbox formControlName="pet">Prima kućne kljubimce</mat-checkbox>
-
-      <mat-action-row>
-        <button mat-button color="warn" (click)="prevStep()">Previous</button>
-        <button mat-button color="primary" (click)="nextStep()">Next</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel
-      [expanded]="step === 3"
-      (opened)="setStep(3)"
-      hideToggle
-    >
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Sadržaj
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-
-      <h3>Što sve smještaj mora sadržati?</h3>
 
       <div>
         <mat-checkbox>Wi-Fi</mat-checkbox>
       </div>
       <div>
-        <mat-checkbox>Grijanje</mat-checkbox>
+        <mat-checkbox formControlName="parking">Parking mjesto</mat-checkbox>
       </div>
       <div>
-        <mat-checkbox>Zaseban ulaz</mat-checkbox>
-      </div>
-      <div>
-        <mat-checkbox>Brojilo za struju</mat-checkbox>
-      </div>
-      <div>
-        <mat-checkbox>Parking mjesto</mat-checkbox>
-      </div>
-      <div>
-        <mat-checkbox>Namještaj</mat-checkbox>
+        <mat-checkbox formControlName="furnished">Namještaj</mat-checkbox>
       </div>
 
-      <mat-action-row>
-        <button mat-button color="warn" (click)="prevStep()">Previous</button>
-        <button mat-button color="primary" (click)="nextStep()">End</button>
-      </mat-action-row>
+      <!--<mat-action-row>
+        <button mat-button type="button" color="warn" (click)="prevStep()">
+          Previous
+        </button>
+        <button mat-button type="button" color="primary" (click)="nextStep()">
+          End
+        </button>
+      </mat-action-row>-->
     </mat-expansion-panel>
   </mat-accordion>
 </form>
@@ -182,6 +133,7 @@
   <mat-tab-group color="accent">
     <mat-tab label="OGLASI">
       <div class="grid">
+        <h3 *ngIf="noDataFound">Nema rezultata pretrage</h3>
         <mat-card
           class="example-card"
           *ngFor="let post of array"
