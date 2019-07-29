@@ -14,6 +14,7 @@ const logout = require("./server/routes/logout");
 const form = require("./server/routes/form");
 const images = require("./server/routes/images");
 const middleware = require("./server/routes/middleware");
+const stats = require("./server/routes/stats");
 
 //app.use(express.static('src'));
 app.use(express.static(path.join(__dirname, "dist/NajamStanova")));
@@ -53,9 +54,10 @@ app.use("/api/user-posts/post-detail", middleware.isLoggedIn, postDetail);
 //app.use("/user-posts/post-detail", middleware.isLoggedIn, images);
 app.use("/api/registration", registration);
 app.use("/api/profile", registration);
-app.use("/api/", login);
+app.use("/api/login", login);
 //app.use("/", logout);
 app.use("/api/form", middleware.isLoggedIn, form);
+app.use("/api/", stats);
 
 app.use(function(error, req, res, next) {
   console.log("USEERRRORRRRRR!!!!!!!!!", error);

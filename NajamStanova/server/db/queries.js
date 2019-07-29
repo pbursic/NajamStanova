@@ -94,5 +94,7 @@ module.exports = {
                   VALUES
                   %L`,
 
-  deleteImages: ``
+  deleteImages: ``,
+
+  getAvgPrice: `SELECT ROUND(AVG(price::numeric), 2) avg_price FROM posts WHERE posts.status = true`
 };

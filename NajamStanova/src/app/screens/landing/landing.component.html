@@ -1,8 +1,63 @@
-<app-login></app-login>
-<!--<div>
+<!--<app-login></app-login>-->
+<div>
   <div class="container">
     <div class="grid">
+      <mat-card
+        ><h4>Upiši grad</h4>
+        <form
+          [formGroup]="searchForm"
+          (ngSubmit)="search()"
+          style="margin-top: 5%"
+        >
+          <mat-form-field color="accent" appearance="outline">
+            <input
+              matInput
+              type="string"
+              placeholder="Grad"
+              formControlName="city"
+            />
+          </mat-form-field>
+          <button
+            mat-raised-button
+            style="margin-left: 20%"
+            color="accent"
+            type="submit"
+          >
+            Pretraži
+          </button>
+        </form>
+      </mat-card>
       <div>
+        <mat-card style="background-color: #e91e63ff; color: whiteSmoke"
+          ><h4>Prosječna cijena najma prostora</h4>
+          <p style="margin-top: 5%; text-align: end;">{{ avgPrice }}</p>
+          <p style="margin-top: 5%; text-align: end;">
+            Prosječna kvadratura: 40 m2
+          </p>
+          <p style="margin-top: 5%; text-align: end;">
+            Vrsta prostora: Stan
+          </p>
+          <!--<p style="margin-top: 5%; text-align: end;">
+            Prostori koji primaju kućne ljubimce: 5
+          </p>--></mat-card
+        >
+
+        <mat-card
+          ><h4>Prosječna cijena najma prostora</h4>
+          <p style="margin-top: 5%; text-align: end;">3.400,00 kn</p>
+          <p style="margin-top: 5%; text-align: end;">
+            Prosječna kvadratura: 40 m2
+          </p>
+          <p style="margin-top: 5%; text-align: end;">
+            Vrsta prostora: Stan
+          </p>
+          <!--<p style="margin-top: 5%; text-align: end;">
+            Prostori koji primaju kućne ljubimce: 5
+          </p>--></mat-card
+        >
+      </div>
+
+      <!--<div>
         <div style="margin-top: 50px;">
           <h1>Iznajmi</h1>
           <h3 class="subheader">Iznajmi svoju nekretninu</h3>
@@ -20,13 +75,13 @@
           </mat-form-field>
         </form>
       </div>
-      <app-login></app-login>
+      <app-login></app-login>-->
     </div>
   </div>
   <div style="margin: auto; width: 50%;">
     <p style="margin: auto; width: 150px;">Copyright 2019</p>
   </div>
-</div>-->
+</div>
 
 <!--  <div>
     <h1>Header</h1>
