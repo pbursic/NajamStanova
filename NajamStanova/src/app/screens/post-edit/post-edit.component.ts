@@ -19,6 +19,10 @@ export class PostEditComponent implements OnInit {
   postsForm: FormGroup;
   post: Posts;
   submitted = false;
+  imageUrl: string = "../../assets/images/picture.svg";
+  selectedFile: File = null;
+  arrayImages: File[] = [];
+  images: string[] = [];
 
   types: IType[] = [
     { value: "stan", viewValue: "Stan" },
@@ -38,6 +42,11 @@ export class PostEditComponent implements OnInit {
     this.postService.getUserPostDetails(id).subscribe(post => {
       console.log("POST: ", post);
       this.post = post;
+      for (let im = 0; im < post.images.length; im++) {
+        this.images.push((<any>post.images[im]).image);
+      }
+      console.log("post.images: ", post.images);
+      console.log("Images: ", this.images);
     });
 
     this.postsForm = this.fb.group({
@@ -61,6 +70,30 @@ export class PostEditComponent implements OnInit {
     });
   }
 
+  onFileSelected(file: FileList) {
+    this.selectedFile = file.item(0); // get first image
+    //this.arrayImages.push(this.selectedFile);
+
+    //show image preview
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imageUrl = event.target.result;
+      console.log("imageUrl2: ", this.imageUrl);
+      this.images.push(this.imageUrl);
+      //console.log("reader.result: ", reader.result);
+    };
+    reader.readAsDataURL(this.selectedFile);
+
+    console.log("images: ", this.images);
+  }
+
+  deleteImage(image) {
+    //console.log("image: ", image);
+    this.images.splice(this.images.indexOf(image), 1);
+
+    console.log("Images: ", this.images);
+  }
+
   onSubmit() {
     this.submitted = true;
 
@@ -75,7 +108,7 @@ export class PostEditComponent implements OnInit {
   }
 
   private save() {
-    this.postService.addPost(this.post).subscribe();
+    //this.postService.addPost(this.post).subscribe();
   }
 
   get status() {

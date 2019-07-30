@@ -18,6 +18,12 @@
   background-color: #f6f6f6;
 }
 
+.mat-raised-button {
+  float: none !important;
+  display: block;
+  margin: auto;
+}
+
 /*::ng-deep .mat-form-field.mat-focused .mat-form-field-label{
   color: #ff4081;
 }
@@ -97,10 +103,10 @@ form {
   flex-direction: column;
 }
 
-.mat-raised-button {
+/*.mat-raised-button {
   float: right;
   position: relative;
-}
+}*/
 
 .later {
   float: left;
@@ -111,4 +117,17 @@ form {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 10px;
+}
+
+.scale {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }

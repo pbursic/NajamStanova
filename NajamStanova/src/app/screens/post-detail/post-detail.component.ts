@@ -45,7 +45,7 @@ export class PostDetailComponent implements OnInit {
       this.post = post;
 
       //for (var po = 0; po < Object.keys(post).length; po++) {
-      for (var im = 0; im < post.images.length; im++) {
+      for (let im = 0; im < post.images.length; im++) {
         this.tiles[im].text = (<any>post.images[im]).image;
       }
 

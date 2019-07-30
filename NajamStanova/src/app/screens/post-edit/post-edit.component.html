@@ -259,13 +259,54 @@
             >
             </mat-progress-bar>
 
-            <form class="container" [formGroup]="postsForm">
+            <form class="" [formGroup]="postsForm">
+              <div class="grid">
+                <div style="position: relative;" *ngFor="let image of images">
+                  <button
+                    mat-button
+                    style="position: absolute; right: 0;"
+                    (click)="deleteImage(image)"
+                  >
+                    <mat-icon>highlight_off</mat-icon>
+                  </button>
+                  <div
+                    style="margin-top: 15%; width: 250px; height: 220px; position: relative;"
+                  >
+                    <img [src]="image" class="scale" />
+                  </div>
+                </div>
+              </div>
               <div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  style="display: none;"
+                  #image
+                  name="image"
+                  (change)="onFileSelected($event.target.files)"
+                />
+                <button
+                  mat-stroked-button
+                  color="accent"
+                  style="display: block; margin: auto; margin-top: 2%; margin-bottom: 2%;"
+                  (click)="image.click()"
+                >
+                  Učitaj sliku
+                </button>
+              </div>
+              <div style="position: relative;">
                 <button mat-button color="accent" matStepperPrevious>
+                  <mat-icon>arrow_back</mat-icon>
                   Natrag
                 </button>
-                <button mat-raised-button color="accent" matStepperNext>
+                <button
+                  style="position: absolute; right: 0;"
+                  mat-button
+                  color="accent"
+                  matStepperNext
+                >
                   Sljedeće
+                  <mat-icon>arrow_forward</mat-icon>
                 </button>
               </div>
             </form>
@@ -300,11 +341,16 @@
                 />
               </mat-form-field>
 
-              <div>
+              <div style="position: relative;">
                 <button mat-button color="accent" matStepperPrevious>
                   Natrag
                 </button>
-                <button mat-raised-button color="accent" matStepperNext>
+                <button
+                  style="position: absolute; right: 0;"
+                  mat-raised-button
+                  color="accent"
+                  matStepperNext
+                >
                   Sljedeće
                 </button>
               </div>
@@ -373,8 +419,10 @@
         </mat-horizontal-stepper>
       </mat-step>
     </mat-horizontal-stepper>
-    <button mat-raised-button color="accent" type="submit" class="center">
-      Spremi
-    </button>
+    <div>
+      <button mat-raised-button color="accent" type="submit" class="center">
+        Spremi sve promjene na oglasu
+      </button>
+    </div>
   </div>
 </form>
