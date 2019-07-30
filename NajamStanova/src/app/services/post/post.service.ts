@@ -41,6 +41,16 @@ export class PostService {
     );
   }
 
+  getUserPostDetails(id: number): Observable<Posts> {
+    return this.http
+      .get<any>(`/api/user-posts/post-detail/${id}/post-edit`)
+      .pipe(
+        map(res => {
+          return res.rows[0];
+        })
+      );
+  }
+
   addPost(post: Posts): Observable<any> {
     return this.http.post<any>(`/api/form`, post).pipe(
       map(res => {

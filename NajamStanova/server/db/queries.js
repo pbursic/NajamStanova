@@ -63,6 +63,11 @@ module.exports = {
                   WHERE posts.id = $1
                   AND posts.user_id = users.id`,
 
+  getUserPostDetails: `SELECT 
+                  * 
+                FROM posts
+                WHERE posts.id = $1`,
+
   postUser: `INSERT INTO users
               ("email", "password", "name", "surname", "birth_date", "country", "city", "phone", "image")
             VALUES

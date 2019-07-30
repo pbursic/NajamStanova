@@ -316,6 +316,7 @@
 
             <div class="grid">
               <div *ngFor="let image of images">
+                <button (click)="deleteImage(image)">x</button>
                 <img [src]="image" style="width: 250px; height: 220px;" />
               </div>
               <!--<div>

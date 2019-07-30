@@ -1,5 +1,5 @@
 <form class="form" [formGroup]="postsForm" (ngSubmit)="onSubmit()">
-  <div *ngFor="let post of posts">
+  <div *ngIf="post">
     <mat-horizontal-stepper id="outer-stepper" labelPosition="bottom">
       <mat-step label="Osnovni podaci">
         <mat-horizontal-stepper id="inner-stepper">

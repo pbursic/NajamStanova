@@ -17,7 +17,7 @@ export interface IType {
 })
 export class PostEditComponent implements OnInit {
   postsForm: FormGroup;
-  posts: Posts;
+  post: Posts;
   submitted = false;
 
   types: IType[] = [
@@ -35,9 +35,9 @@ export class PostEditComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get("id");
 
-    this.postService.getPost(id).subscribe(post => {
+    this.postService.getUserPostDetails(id).subscribe(post => {
       console.log("POST: ", post);
-      this.posts = post;
+      this.post = post;
     });
 
     this.postsForm = this.fb.group({
@@ -68,14 +68,14 @@ export class PostEditComponent implements OnInit {
       return;
     }
 
-    this.posts = this.postsForm.value;
-    console.log(this.posts);
+    this.post = this.postsForm.value;
+    console.log(this.post);
 
     this.save();
   }
 
   private save() {
-    this.postService.addPost(this.posts).subscribe();
+    this.postService.addPost(this.post).subscribe();
   }
 
   get status() {

@@ -68,6 +68,13 @@ export class FormComponent implements OnInit {
       //console.log("reader.result: ", reader.result);
     };
     reader.readAsDataURL(this.selectedFile);
+
+    console.log("images: ", this.images);
+  }
+
+  deleteImage(image) {
+    //console.log("image: ", image);
+    this.images.splice(this.images.indexOf(image), 1);
   }
 
   /*onUpload() {
