@@ -3,7 +3,7 @@ import { PostService } from "../../services/post/post.service";
 import { Posts } from "../../models/posts";
 import { Images } from "../../models/images";
 import { Observable } from "rxjs/Observable";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 export interface Tile {
   color: string;
@@ -23,6 +23,7 @@ export class PostDetailComponent implements OnInit {
   editable: boolean = false;
   contactVisible: boolean = false;
   isLoggedIn;
+  id;
 
   tiles: Tile[] = [
     { text: "", cols: 2, rows: 2, color: "#f9f9f9ff" }, // One
@@ -34,13 +35,14 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private postService: PostService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get("id");
+    this.id = +this.route.snapshot.paramMap.get("id");
 
-    this.postService.getPost(id).subscribe(post => {
+    this.postService.getPost(this.id).subscribe(post => {
       //console.log("POST: ", post);
       this.post = post;
 
@@ -60,5 +62,15 @@ export class PostDetailComponent implements OnInit {
       this.isLoggedIn = localStorage.getItem("user");
       this.contactVisible = true;
     }
+  }
+
+  changeStatus(status) {
+    this.postService.updateStatus(this.id, status).subscribe();
+    this.router.navigate(["/user-posts"]);
+  }
+
+  deletePost() {
+    this.postService.deletePost(this.id).subscribe();
+    this.router.navigate(["/user-posts"]);
   }
 }

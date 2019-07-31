@@ -1,123 +1,121 @@
-<!--<app-login></app-login>-->
 <div>
   <div class="container">
+    <!--<mat-card class="container"
+      >-->
+    <!--<h1>Oglasnik za dugoročan najam stanova</h1>-->
+    <!--</mat-card>-->
     <div class="grid">
-      <mat-card
-        ><h4>Upiši grad</h4>
-        <form
-          [formGroup]="searchForm"
-          (ngSubmit)="search()"
-          style="margin-top: 5%"
-        >
-          <mat-form-field color="accent" appearance="outline">
-            <input
-              matInput
-              type="string"
-              placeholder="Grad"
-              formControlName="city"
-            />
-          </mat-form-field>
-          <button
-            mat-raised-button
-            style="margin-left: 20%"
-            color="accent"
-            type="submit"
+      <div>
+        <mat-card>
+          <h3>Tražiš stan za najam?</h3>
+          <form
+            [formGroup]="searchForm"
+            (ngSubmit)="search()"
+            style="margin-top: 5%"
           >
-            Pretraži
-          </button>
-        </form>
-      </mat-card>
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Upiši grad</mat-label>
+              <input
+                matInput
+                type="string"
+                placeholder="Grad"
+                formControlName="city"
+              />
+            </mat-form-field>
+            <button
+              mat-raised-button
+              style="margin-left: 20%"
+              color="accent"
+              type="submit"
+            >
+              Pretraži ponudu
+            </button>
+          </form>
+          <p style="margin-top: 2%;">
+            Odaberi prostor po svojoj mjeri i
+            <a routerLink="login" style="color: #e91e63ff">prijavi se</a> u
+            sustav za kontaktirati vlasnika.
+          </p>
+        </mat-card>
+        <mat-card>
+          <h3>Imaš prostor za iznajmiti?</h3>
+          <div style="margin-top: 5%;">
+            <mat-icon class="anemities-icon">account_circle</mat-icon>
+            <p class="anemities">Prijavi se</p>
+          </div>
+          <div style="margin-top: 5%;">
+            <mat-icon class="anemities-icon">edit</mat-icon>
+            <p class="anemities">Izradi vlastiti oglas</p>
+          </div>
+          <div style="margin-top: 5%;">
+            <mat-icon class="anemities-icon">check_circle</mat-icon>
+            <p class="anemities">Objavi na tržište po potrebi</p>
+          </div>
+        </mat-card>
+      </div>
       <div>
         <mat-card style="background-color: #e91e63ff; color: whiteSmoke"
           ><h4>Prosječna cijena najma prostora</h4>
           <p style="margin-top: 5%; text-align: end;">{{ avgPrice }}</p>
           <p style="margin-top: 5%; text-align: end;">
-            Prosječna kvadratura: 40 m2
+            Prosječna kvadratura: {{ avgSquares }} m2
           </p>
           <p style="margin-top: 5%; text-align: end;">
             Vrsta prostora: Stan
-          </p>
-          <!--<p style="margin-top: 5%; text-align: end;">
-            Prostori koji primaju kućne ljubimce: 5
-          </p>--></mat-card
+          </p></mat-card
         >
 
         <mat-card
-          ><h4>Prosječna cijena najma prostora</h4>
-          <p style="margin-top: 5%; text-align: end;">3.400,00 kn</p>
-          <p style="margin-top: 5%; text-align: end;">
-            Prosječna kvadratura: 40 m2
-          </p>
-          <p style="margin-top: 5%; text-align: end;">
-            Vrsta prostora: Stan
-          </p>
-          <!--<p style="margin-top: 5%; text-align: end;">
-            Prostori koji primaju kućne ljubimce: 5
-          </p>--></mat-card
-        >
-      </div>
-
-      <!--<div>
-        <div style="margin-top: 50px;">
-          <h1>Iznajmi</h1>
-          <h3 class="subheader">Iznajmi svoju nekretninu</h3>
-          <h1>Unajmi</h1>
-        </div>
-
-        <form>
-          <mat-form-field color="accent" appearance="outline">
-            <input
-              matInput
-              type="string"
-              placeholder="Ime"
-              formControlName="name"
+          ><h4>Oznake oglasa</h4>
+          <div style="margin-top: 5%;">
+            <img
+              src="assets/images/maps-and-flags.svg"
+              alt="Lokacija"
+              class="anemities-icon"
             />
-          </mat-form-field>
-        </form>
+            <p class="anemities">Lokacija prostora</p>
+          </div>
+          <div style="margin-top: 5%;">
+            <img
+              src="assets/images/pawprint.svg"
+              alt="Kucni ljubimci"
+              class="anemities-icon"
+            />
+            <p class="anemities">Dozvoljeni kućni ljubimci</p>
+          </div>
+          <div style="margin-top: 5%;">
+            <mat-icon class="anemities-icon">wifi</mat-icon>
+            <p class="anemities">Wifi dostupan</p>
+          </div>
+          <div style="margin-top: 5%;">
+            <img
+              src="assets/images/bill.svg"
+              alt="Rezije"
+              class="anemities-icon"
+            />
+            <p class="anemities">Režije uključene u cijenu</p>
+          </div>
+          <div style="margin-top: 5%;">
+            <img
+              src="assets/images/couch.svg"
+              alt="Namijesten prostor"
+              class="anemities-icon"
+            />
+            <p class="anemities">Namiješten prostor</p>
+          </div>
+          <div style="margin-top: 5%;">
+            <img
+              src="assets/images/parking.svg"
+              alt="Parking mjesto"
+              class="anemities-icon"
+            />
+            <p class="anemities">Parking mjesto</p>
+          </div>
+        </mat-card>
       </div>
-      <app-login></app-login>-->
     </div>
   </div>
   <div style="margin: auto; width: 50%;">
     <p style="margin: auto; width: 150px;">Copyright 2019</p>
   </div>
 </div>
-
-<!--  <div>
-    <h1>Header</h1>
-  </div>
-  <div class="span-row-3">
-    <!--<img src="assets/images/GroupMap.png" width="694" height="524"/>
-    <img src="assets/images/GroupMap3.png" class="imagemap"/>
-  </div>
-  <div>
-    <p class="subheader">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
-  </div>
-  <div>
-    <button mat-raised-button color="accent">Postani iznajmljivač</button>
-  </div>
-  <div>
-    <button mat-raised-button color="accent">Pretraži</button>
-  </div>
-</div> -->
-
-<!--<div class="container">
-  <!--<img src="assets/images/pula.jpg" class="heroPoster"/>
-  <p class="subheader">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </p>
-</div>-->
-
-<!--<div class="container">
-
-  <div>
-    <button mat-raised-button color="accent">Postani iznajmljivač</button>
-  </div>
-  <div>
-    <button mat-raised-button color="accent">Pretraži</button>
-  </div>
-
-  <!--<img src="assets/images/back.jpg" class="heroPoster"/>
-</div>-->

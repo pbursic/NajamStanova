@@ -51,6 +51,17 @@ export class PostService {
       );
   }
 
+  updatePost(post: Posts): Observable<any> {
+    return this.http
+      .post<any>(`/api/user-posts/post-detail/${post.id}/post-edit`, post)
+      .pipe(
+        map(res => {
+          console.log(res);
+          return res.rows;
+        })
+      );
+  }
+
   addPost(post: Posts): Observable<any> {
     return this.http.post<any>(`/api/form`, post).pipe(
       map(res => {
@@ -62,6 +73,24 @@ export class PostService {
 
   getImages(id: number): Observable<any> {
     return this.http.get<any>(`/api/view/post-detail/${id}`).pipe(
+      map(res => {
+        return res.rows;
+      })
+    );
+  }
+
+  updateStatus(id: number, status: boolean): Observable<any> {
+    return this.http
+      .put<any>(`/api/user-posts/post-detail/${id}`, { id, status })
+      .pipe(
+        map(res => {
+          return res.rows;
+        })
+      );
+  }
+
+  deletePost(id: number): Observable<any> {
+    return this.http.delete<any>(`/api/user-posts/post-detail/${id}`).pipe(
       map(res => {
         return res.rows;
       })

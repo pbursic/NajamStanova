@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   client
     .connect()
     .then(() => {
-      return client.query(queries.getAvgPrice);
+      return client.query(queries.getAvgPost);
     })
     .then(results => {
       //res.send(results);

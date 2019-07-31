@@ -35,7 +35,8 @@ module.exports = {
   getLoginUser: `SELECT 
             id,
             email,
-            password
+            password,
+            image 
           FROM users
           WHERE email = $1`,
 
@@ -92,6 +93,16 @@ module.exports = {
               $10, $11, $12, $13, $14, $15, $16)
               RETURNING id`, // "available_date", "walkout_date", , $17, $18
   // "status", , $16
+
+  updatePost: `UPDATE posts
+              SET "title" = $2, "description" = $3, "bills_included" = $4, "country" = $5, "city" = $6, "address" = $7, "price" = $8,
+              "squares" = $9, "type" = $10, "furnished" = $11, "bed" = $12, "room" = $13, "pet" = $14, "parking" = $15
+              WHERE "id" = $1
+              RETURNING id`, // "available_date", "walkout_date", , $17, $18
+  // "status", , $16
+
+  deletePost: `DELETE FROM posts WHERE id = $1`,
+
   getImages: `SELECT * FROM images WHERE post_id = $1`,
 
   insertImages: `INSERT INTO images
@@ -99,7 +110,9 @@ module.exports = {
                   VALUES
                   %L`,
 
-  deleteImages: ``,
+  deleteImages: `DELETE FROM images WHERE id IN (%L)`,
 
-  getAvgPrice: `SELECT ROUND(AVG(price::numeric), 2) avg_price FROM posts WHERE posts.status = true`
+  getAvgPost: `SELECT ROUND(AVG(price::numeric), 2) avg_price, ROUND(AVG(squares::numeric), 0) avg_squares FROM posts WHERE posts.status = true`,
+
+  updateStatus: `UPDATE posts SET status = $2 WHERE id = $1`
 };

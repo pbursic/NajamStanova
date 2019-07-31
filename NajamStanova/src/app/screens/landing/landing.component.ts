@@ -12,11 +12,13 @@ import { StatsService } from "../../services/stats/stats.service";
 export class LandingComponent implements OnInit {
   searchForm: FormGroup;
   avgPrice: string;
+  avgSquares: number;
 
   constructor(private statsService: StatsService, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.statsService.getAvgStats().subscribe(stats => {
+      this.avgSquares = stats[0].avg_squares;
       this.avgPrice =
         parseFloat(stats[0].avg_price)
           .toFixed(2)

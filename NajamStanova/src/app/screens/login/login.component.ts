@@ -49,8 +49,9 @@ export class LoginComponent implements OnInit {
   }
 
   private save(): void {
-    this.loginService.getUser(this.person).subscribe(() => {
+    this.loginService.getUser(this.person).subscribe(user => {
       localStorage.setItem("user", this.person.email);
+      localStorage.setItem("user_image", user[0].image);
       //this.router.navigate(["/user-posts/" + this.person.id]);
       this.router.navigate(["/view"]);
     });

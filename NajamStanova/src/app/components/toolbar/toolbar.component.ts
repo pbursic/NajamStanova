@@ -20,6 +20,7 @@ import {
 export class ToolbarComponent implements OnInit {
   person: Person;
   submitted = false;
+  image: string = "../../../assets/images/UserIcon@2x.svg";
   //isLoggedIn;
 
   constructor(
@@ -30,9 +31,11 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
     //this.isLoggedIn = localStorage.getItem("user");
+    //this.image = localStorage.getItem("user_image");
   }
 
   isLoggedIn() {
+    this.image = localStorage.getItem("user_image");
     return localStorage.getItem("user");
   }
 

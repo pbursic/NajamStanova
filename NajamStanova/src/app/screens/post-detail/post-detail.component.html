@@ -258,8 +258,9 @@
         color="warn"
         matTooltip="Izbriši"
         style="margin-left: 3%; float: right;"
+        (click)="deletePost()"
       >
-        Obriši
+        <mat-icon>delete</mat-icon>
       </button>
     </div>
 
@@ -270,7 +271,7 @@
         style="background-color: whitesmoke; color: black; margin-left: 3%; float: right;"
         matTooltip="Uredi"
       >
-        Uredi
+        <mat-icon>edit</mat-icon>
       </button>
     </div>
 
@@ -279,8 +280,9 @@
         mat-mini-fab
         matTooltip="{{ post.status ? 'Deaktiviraj' : 'Aktiviraj' }}"
         style="margin-left: 3%; float: right;"
+        (click)="changeStatus(post.status)"
       >
-        {{ post.status ? "Deaktiviraj" : "Aktiviraj" }}
+        <mat-icon>{{ post.status ? "cancel" : "check_circle" }} </mat-icon>
       </button>
     </div>
   </div>

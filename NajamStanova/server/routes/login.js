@@ -11,6 +11,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 var jsonParser = bodyParser.json();
 
 router.post("/", jsonParser, (req, res, next) => {
+  let person;
   if (middleware.validUser(req.body)) {
     transaction
       .getPool()
@@ -27,6 +28,7 @@ router.post("/", jsonParser, (req, res, next) => {
             if (user.rowCount === 0) {
               next(new Error("Invalid login!"));
             } else {
+              person = user;
               bcrypt
                 .compare(req.body.password, user.rows[0].password)
                 .then(result => {
@@ -46,7 +48,7 @@ router.post("/", jsonParser, (req, res, next) => {
                 })
                 .then(results => {
                   console.log(results);
-                  res.status(200).json(results);
+                  res.status(200).json(person);
 
                   transaction.commit(client);
                 });

@@ -22,4 +22,5 @@ export class Posts {
   parking: boolean;
   image: string;
   images: string[];
+  deletedImages: any[];
 }

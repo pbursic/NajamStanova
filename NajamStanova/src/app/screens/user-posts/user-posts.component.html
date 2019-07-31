@@ -10,6 +10,7 @@
         mat-card-image
         [src]="post.image == null ? image : post.image"
         alt="Slika prostora"
+        style="position: relative"
       />
       <mat-card-header>
         <div class="grid2">
@@ -22,6 +23,12 @@
           >
         </div>
       </mat-card-header>
+      <mat-icon
+        *ngIf="post.status"
+        color="accent"
+        style="position: absolute; right: 0; margin-right: 5%; margin-top: -2%;"
+        >check_circle</mat-icon
+      >
     </mat-card>
   </div>
 </div>

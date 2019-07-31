@@ -22,7 +22,9 @@ export class PostEditComponent implements OnInit {
   imageUrl: string = "../../assets/images/picture.svg";
   selectedFile: File = null;
   arrayImages: File[] = [];
-  images: string[] = [];
+  images: any[] = [];
+  deletedImages: any[] = [];
+  newImages: string[] = [];
 
   types: IType[] = [
     { value: "stan", viewValue: "Stan" },
@@ -42,9 +44,10 @@ export class PostEditComponent implements OnInit {
     this.postService.getUserPostDetails(id).subscribe(post => {
       console.log("POST: ", post);
       this.post = post;
-      for (let im = 0; im < post.images.length; im++) {
-        this.images.push((<any>post.images[im]).image);
-      }
+      this.images = post.images;
+      /*for (let im = 0; im < post.images.length; im++) {
+        this.images.push((<any>post.images[im]).image); // (<any>post.images[im]).image
+      }*/
       console.log("post.images: ", post.images);
       console.log("Images: ", this.images);
     });
@@ -79,12 +82,12 @@ export class PostEditComponent implements OnInit {
     reader.onload = (event: any) => {
       this.imageUrl = event.target.result;
       console.log("imageUrl2: ", this.imageUrl);
-      this.images.push(this.imageUrl);
+      this.newImages.push(this.imageUrl);
       //console.log("reader.result: ", reader.result);
     };
     reader.readAsDataURL(this.selectedFile);
 
-    console.log("images: ", this.images);
+    console.log("images: ", this.newImages);
   }
 
   deleteImage(image) {
@@ -92,9 +95,14 @@ export class PostEditComponent implements OnInit {
     this.images.splice(this.images.indexOf(image), 1);
 
     console.log("Images: ", this.images);
+    console.log("Image: ", image);
+    console.log("Image id: ", image.id);
+    this.deletedImages.push(image.id);
+    console.log("this.deletedImages: ", this.deletedImages);
   }
 
   onSubmit() {
+    const id = +this.route.snapshot.paramMap.get("id");
     this.submitted = true;
 
     if (this.postsForm.invalid) {
@@ -102,6 +110,9 @@ export class PostEditComponent implements OnInit {
     }
 
     this.post = this.postsForm.value;
+    this.post.id = id;
+    this.post.images = this.newImages;
+    this.post.deletedImages = this.deletedImages;
     console.log(this.post);
 
     this.save();
@@ -109,6 +120,7 @@ export class PostEditComponent implements OnInit {
 
   private save() {
     //this.postService.addPost(this.post).subscribe();
+    this.postService.updatePost(this.post).subscribe();
   }
 
   get status() {

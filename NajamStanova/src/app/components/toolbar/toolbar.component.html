@@ -11,7 +11,10 @@
       <mat-list-item class="list-item" routerLink="view"
         >Pregledaj ponudu</mat-list-item
       >
-      <mat-list-item class="list-item" routerLink="form"
+      <mat-list-item *ngIf="!isLoggedIn()" class="list-item" routerLink="login"
+        >Objavi oglas</mat-list-item
+      >
+      <mat-list-item *ngIf="isLoggedIn()" class="list-item" routerLink="form"
         >Objavi oglas</mat-list-item
       >
       <mat-list-item
@@ -27,21 +30,29 @@
     <span class="example-spacer"></span>
 
     <mat-nav-list *ngIf="!isLoggedIn()">
-      <mat-card class="user list-item">
+      <!--<mat-card class="user list-item">
         <mat-card-header>
           <div mat-card-avatar class="header-image"></div>
         </mat-card-header>
-      </mat-card>
+      </mat-card>-->
 
-      <mat-list-item class="list-item" routerLink="login">Prijava</mat-list-item
-      ><!--routerLink="login"-->
+      <!--<mat-list-item class="list-item" routerLink="login"
+        >Prijava</mat-list-item
+      >-->
+      <button mat-raised-button color="accent" routerLink="login">
+        Prijava
+      </button>
     </mat-nav-list>
 
-    <mat-card class="user" [matMenuTriggerFor]="menu" *ngIf="isLoggedIn()">
+    <div [matMenuTriggerFor]="menu" *ngIf="isLoggedIn()">
+      <img mat-card-avatar [src]="image" class="header-image" />
+    </div>
+
+    <!--<mat-card class="user" [matMenuTriggerFor]="menu" *ngIf="isLoggedIn()">
       <mat-card-header>
-        <div mat-card-avatar class="header-image"></div>
+        <div mat-card-avatar [src]="image" class="header-image"></div>
       </mat-card-header>
-    </mat-card>
+    </mat-card>-->
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="profile/{{ isLoggedIn() }}">
         Profil
