@@ -19,7 +19,7 @@ export interface IType {
 export class ViewComponent implements OnInit {
   posts: Posts;
   postsForm: FormGroup;
-  image: string = "assets/images/picture.svg";
+  image: string; // = "assets/images/picture.svg";
   array: Posts[] = [];
 
   types: IType[] = [
@@ -37,6 +37,10 @@ export class ViewComponent implements OnInit {
   ngOnInit() {
     this.postService.getAllPosts().subscribe(posts => {
       this.posts = posts;
+      //this.image = posts[0].image;
+
+      console.log("posts: ", posts);
+      console.log("this.posts: ", this.posts);
 
       let keys = Object.keys(posts);
 

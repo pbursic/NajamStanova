@@ -26,7 +26,7 @@ module.exports = {
                   DISTINCT ON (p.id)  p.*, i.id image_id, i.post_id, i.image
                   FROM 
                     posts p
-                LEFT OUTER JOIN images i
+                LEFT OUTER JOIN (SELECT DISTINCT ON (post_id, id) * from images) i
                 on p.id = i.post_id,
                     users u
                   WHERE p.user_id = $1 
@@ -54,7 +54,7 @@ module.exports = {
 	            DISTINCT ON (p.id) p.*, i.id image_id, i.post_id, i.image 
               FROM
                 posts p
-                LEFT OUTER JOIN images i
+                LEFT OUTER JOIN (SELECT DISTINCT ON (post_id, id) * from images) i
                 on p.id = i.post_id
               WHERE p.status = true`,
 

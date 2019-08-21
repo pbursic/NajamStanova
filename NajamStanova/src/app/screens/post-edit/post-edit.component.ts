@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PostService } from "../../services/post/post.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Posts } from "../../models/posts";
-import { ActivatedRoute, Params } from "@angular/router";
+import { Router, ActivatedRoute, Params } from "@angular/router";
 
 export interface IType {
   value: String;
@@ -35,21 +35,22 @@ export class PostEditComponent implements OnInit {
   constructor(
     private postService: PostService,
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get("id");
 
     this.postService.getUserPostDetails(id).subscribe(post => {
-      console.log("POST: ", post);
+      //console.log("POST: ", post);
       this.post = post;
-      this.images = post.images;
+      if (post.images.length != 0) this.images = post.images;
       /*for (let im = 0; im < post.images.length; im++) {
         this.images.push((<any>post.images[im]).image); // (<any>post.images[im]).image
       }*/
-      console.log("post.images: ", post.images);
-      console.log("Images: ", this.images);
+      //console.log("post.images: ", post.images);
+      //console.log("Images: ", this.images);
     });
 
     this.postsForm = this.fb.group({
@@ -81,24 +82,25 @@ export class PostEditComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageUrl = event.target.result;
-      console.log("imageUrl2: ", this.imageUrl);
+      //console.log("imageUrl2: ", this.imageUrl);
+      this.images.push({ image: this.imageUrl });
       this.newImages.push(this.imageUrl);
       //console.log("reader.result: ", reader.result);
     };
     reader.readAsDataURL(this.selectedFile);
 
-    console.log("images: ", this.newImages);
+    //console.log("images: ", this.images);
   }
 
   deleteImage(image) {
     //console.log("image: ", image);
     this.images.splice(this.images.indexOf(image), 1);
 
-    console.log("Images: ", this.images);
-    console.log("Image: ", image);
-    console.log("Image id: ", image.id);
+    //console.log("Images: ", this.images);
+    //console.log("Image: ", image);
+    //console.log("Image id: ", image.id);
     this.deletedImages.push(image.id);
-    console.log("this.deletedImages: ", this.deletedImages);
+    //console.log("this.deletedImages: ", this.deletedImages);
   }
 
   onSubmit() {
@@ -113,14 +115,16 @@ export class PostEditComponent implements OnInit {
     this.post.id = id;
     this.post.images = this.newImages;
     this.post.deletedImages = this.deletedImages;
-    console.log(this.post);
+    //console.log(this.post);
 
     this.save();
   }
 
   private save() {
     //this.postService.addPost(this.post).subscribe();
-    this.postService.updatePost(this.post).subscribe();
+    this.postService.updatePost(this.post).subscribe(() => {
+      this.router.navigate(["/user-posts"]);
+    });
   }
 
   get status() {
@@ -190,16 +194,4 @@ export class PostEditComponent implements OnInit {
   get parking() {
     return this.postsForm.get("parking");
   }
-
-  /*onSubmit(){
-    this.submitted = true;
-    if(this.postService.form.valid){
-      if(this.postService.form.get('$key').value == null)
-        //insert
-        this.postService.insertPost(this.postService.form.value);
-      //else
-        //update
-    this.submitted = false;
-    }
-  }*/
 }

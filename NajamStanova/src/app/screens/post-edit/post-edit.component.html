@@ -39,9 +39,19 @@
                 />
               </mat-form-field>
 
-              <div>
-                <button mat-raised-button color="accent" matStepperNext>
+              <div style="position: relative;">
+                <!--<button mat-button color="accent" matStepperPrevious>
+                  <mat-icon>arrow_back</mat-icon>
+                  Natrag
+                </button>-->
+                <button
+                  style="position: absolute; right: 0;"
+                  mat-button
+                  color="accent"
+                  matStepperNext
+                >
                   Sljedeće
+                  <mat-icon>arrow_forward</mat-icon>
                 </button>
               </div>
             </form>
@@ -87,12 +97,19 @@
                 >Primam kućne kljubimce</mat-checkbox
               >-->
 
-              <div>
+              <div style="position: relative;">
                 <button mat-button color="accent" matStepperPrevious>
+                  <mat-icon>arrow_back</mat-icon>
                   Natrag
                 </button>
-                <button mat-raised-button color="accent" matStepperNext>
+                <button
+                  style="position: absolute; right: 0;"
+                  mat-button
+                  color="accent"
+                  matStepperNext
+                >
                   Sljedeće
+                  <mat-icon>arrow_forward</mat-icon>
                 </button>
               </div>
             </form>
@@ -125,12 +142,19 @@
                 >Namještaj</mat-checkbox
               >
 
-              <div>
+              <div style="position: relative;">
                 <button mat-button color="accent" matStepperPrevious>
+                  <mat-icon>arrow_back</mat-icon>
                   Natrag
                 </button>
-                <button mat-raised-button color="accent" matStepperNext>
+                <button
+                  style="position: absolute; right: 0;"
+                  mat-button
+                  color="accent"
+                  matStepperNext
+                >
                   Sljedeće
+                  <mat-icon>arrow_forward</mat-icon>
                 </button>
               </div>
             </form>
@@ -186,12 +210,19 @@
                 </tr>
               </table>
 
-              <div>
+              <div style="position: relative;">
                 <button mat-button color="accent" matStepperPrevious>
+                  <mat-icon>arrow_back</mat-icon>
                   Natrag
                 </button>
-                <button mat-raised-button color="accent" matStepperNext>
+                <button
+                  style="position: absolute; right: 0;"
+                  mat-button
+                  color="accent"
+                  matStepperNext
+                >
                   Sljedeće
+                  <mat-icon>arrow_forward</mat-icon>
                 </button>
               </div>
             </form>
@@ -239,14 +270,36 @@
                 <mat-datepicker touchUi #picker2></mat-datepicker>
               </mat-form-field>
 
-              <div>
+              <div style="position: relative;">
                 <button mat-button color="accent" matStepperPrevious>
+                  <mat-icon>arrow_back</mat-icon>
                   Natrag
                 </button>
+                <!--<button
+                  style="position: absolute; right: 0;"
+                  mat-button
+                  color="accent"
+                  matStepperNext
+                >
+                  Sljedeće
+                  <mat-icon>arrow_forward</mat-icon>
+                </button>-->
               </div>
             </form>
           </mat-step>
         </mat-horizontal-stepper>
+        <div style="position: relative;">
+          <button
+            style="position: absolute; right: 0;"
+            mat-button
+            color="accent"
+            matStepperNext
+            type="button"
+          >
+            Uređenje prostora
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+        </div>
       </mat-step>
       <mat-step label="Uređenje prostora">
         <mat-horizontal-stepper id="inner-stepper">
@@ -295,10 +348,10 @@
                 </button>
               </div>
               <div style="position: relative;">
-                <button mat-button color="accent" matStepperPrevious>
+                <!--<button mat-button color="accent" matStepperPrevious>
                   <mat-icon>arrow_back</mat-icon>
                   Natrag
-                </button>
+                </button>-->
                 <button
                   style="position: absolute; right: 0;"
                   mat-button
@@ -343,20 +396,29 @@
 
               <div style="position: relative;">
                 <button mat-button color="accent" matStepperPrevious>
+                  <mat-icon>arrow_back</mat-icon>
                   Natrag
-                </button>
-                <button
-                  style="position: absolute; right: 0;"
-                  mat-raised-button
-                  color="accent"
-                  matStepperNext
-                >
-                  Sljedeće
                 </button>
               </div>
             </form>
           </mat-step>
         </mat-horizontal-stepper>
+        <div style="position: relative;">
+          <button mat-button color="accent" matStepperPrevious>
+            <mat-icon>arrow_back</mat-icon>
+            Osnovni podaci
+          </button>
+          <button
+            type="button"
+            style="position: absolute; right: 0;"
+            mat-button
+            color="accent"
+            matStepperNext
+          >
+            Postavke za najam
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+        </div>
       </mat-step>
       <mat-step label="Postavke za najam">
         <mat-horizontal-stepper id="inner-stepper">
@@ -384,7 +446,7 @@
 
               <mat-checkbox>Režije uključene u cijenu</mat-checkbox>
 
-              <table>
+              <!--<table>
                 <tr>
                   <td><p>Režija</p></td>
                   <td><p>Iznos</p></td>
@@ -394,11 +456,23 @@
                     </button>
                   </td>
                 </tr>
-              </table>
+              </table>-->
+
+              <div style="position: relative;">
+                <button
+                  style="position: absolute; right: 0;"
+                  mat-button
+                  color="accent"
+                  matStepperNext
+                >
+                  Sljedeće
+                  <mat-icon>arrow_forward</mat-icon>
+                </button>
+              </div>
             </form>
           </mat-step>
 
-          <mat-step label="Ugovor">
+          <mat-step label="Polog">
             <mat-progress-bar
               [color]="accent"
               [mode]="determinate"
@@ -408,15 +482,27 @@
             </mat-progress-bar>
 
             <form class="container" [formGroup]="postsForm">
-              <h3>Kapara</h3>
+              <h3>Polog</h3>
 
               <mat-form-field color="accent" appearance="outline">
-                <mat-label>Kapara</mat-label>
+                <!--<mat-label>Polog</mat-label>-->
                 <input matInput placeholder="0,00kn" />
               </mat-form-field>
             </form>
+            <div style="position: relative;">
+              <button mat-button color="accent" matStepperPrevious>
+                <mat-icon>arrow_back</mat-icon>
+                Natrag
+              </button>
+            </div>
           </mat-step>
         </mat-horizontal-stepper>
+        <div style="position: relative;">
+          <button mat-button color="accent" matStepperPrevious>
+            <mat-icon>arrow_back</mat-icon>
+            Uređenje prostora
+          </button>
+        </div>
       </mat-step>
     </mat-horizontal-stepper>
     <div>

@@ -30,15 +30,6 @@
     <span class="example-spacer"></span>
 
     <mat-nav-list *ngIf="!isLoggedIn()">
-      <!--<mat-card class="user list-item">
-        <mat-card-header>
-          <div mat-card-avatar class="header-image"></div>
-        </mat-card-header>
-      </mat-card>-->
-
-      <!--<mat-list-item class="list-item" routerLink="login"
-        >Prijava</mat-list-item
-      >-->
       <button mat-raised-button color="accent" routerLink="login">
         Prijava
       </button>
@@ -48,16 +39,14 @@
       <img mat-card-avatar [src]="image" class="header-image" />
     </div>
 
-    <!--<mat-card class="user" [matMenuTriggerFor]="menu" *ngIf="isLoggedIn()">
-      <mat-card-header>
-        <div mat-card-avatar [src]="image" class="header-image"></div>
-      </mat-card-header>
-    </mat-card>-->
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="profile/{{ isLoggedIn() }}">
+        <mat-icon>account_circle</mat-icon>
         Profil
       </button>
+
       <button mat-menu-item (click)="logoutUser()">
+        <mat-icon>arrow_right_alt</mat-icon>
         Odjava
       </button>
     </mat-menu>

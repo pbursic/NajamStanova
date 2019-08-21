@@ -3,6 +3,12 @@ import { PostService } from "../../services/post/post.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Posts } from "../../models/posts";
 import { Images } from "../../models/images";
+import {
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  ActivatedRouteSnapshot
+} from "@angular/router";
 
 export interface IType {
   value: String;
@@ -30,7 +36,11 @@ export class FormComponent implements OnInit {
     { value: "kuca", viewValue: "Kuća" }
   ];
 
-  constructor(private postService: PostService, private fb: FormBuilder) {}
+  constructor(
+    private postService: PostService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
   //formControls = this.postService.form.controls;
 
   ngOnInit() {
@@ -63,13 +73,13 @@ export class FormComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageUrl = event.target.result;
-      console.log("imageUrl2: ", this.imageUrl);
+      //console.log("imageUrl2: ", this.imageUrl);
       this.images.push(this.imageUrl);
       //console.log("reader.result: ", reader.result);
     };
     reader.readAsDataURL(this.selectedFile);
 
-    console.log("images: ", this.images);
+    //console.log("images: ", this.images);
   }
 
   deleteImage(image) {
@@ -85,15 +95,7 @@ export class FormComponent implements OnInit {
   }*/
 
   onSubmit() {
-    //console.log("imeges: ", this.arrayImages);
-    //console.log("imeges.length: ", this.arrayImages.length);
-    console.log("imeges: ", this.images);
-    //console.log("imeges.values: ", this.arrayImages.values);
-
-    /*for(let im of this.arrayImages){
-      this.images = this.arrayImages[im];
-    }*/
-    //this.images = this.arrayImages;
+    //console.log("imeges: ", this.images);
 
     this.submitted = true;
 
@@ -103,15 +105,15 @@ export class FormComponent implements OnInit {
 
     this.posts = this.postsForm.value;
     this.posts.images = this.images;
-    console.log("POSTS + IMAGES: ", this.posts);
+    //console.log("POSTS + IMAGES: ", this.posts);
 
     this.save();
   }
 
   private save() {
-    this.postService.addPost(this.posts).subscribe();
-    //this.postService.addImages(this.images).subscribe();
-    //this.postService.addImages(this.arrayImages).subscribe();
+    this.postService.addPost(this.posts).subscribe(() => {
+      this.router.navigate(["/user-posts"]);
+    });
   }
 
   get status() {
@@ -181,16 +183,4 @@ export class FormComponent implements OnInit {
   get parking() {
     return this.postsForm.get("parking");
   }
-
-  /*onSubmit(){
-    this.submitted = true;
-    if(this.postService.form.valid){
-      if(this.postService.form.get('$key').value == null)
-        //insert
-        this.postService.insertPost(this.postService.form.value);
-      //else
-        //update
-    this.submitted = false;
-    }
-  }*/
 }

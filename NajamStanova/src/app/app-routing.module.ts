@@ -9,6 +9,7 @@ import { PostDetailComponent } from "./screens/post-detail/post-detail.component
 import { ProfileComponent } from "./screens/profile/profile.component";
 import { AuthGuardService } from "./services/auth-guard/auth-guard.service";
 import { LoginComponent } from "./screens/login/login.component";
+import { RegistrationComponent } from "./screens/registration/registration.component";
 import { PostEditComponent } from "./screens/post-edit/post-edit.component";
 
 const routes: Routes = [
@@ -54,6 +55,10 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent
+  },
+  {
+    path: "login/registration",
+    component: RegistrationComponent
   }
 ];
 
