@@ -132,7 +132,9 @@
 
               <h3>Što sve sadrži vaš smještaj?</h3>
 
-              <mat-checkbox>Wi-Fi</mat-checkbox>
+              <mat-checkbox formControlName="wifi" [(ngModel)]="post.wifi"
+                >Wi-Fi</mat-checkbox
+              >
               <mat-checkbox formControlName="parking" [(ngModel)]="post.parking"
                 >Parking mjesto</mat-checkbox
               >

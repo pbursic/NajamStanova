@@ -70,7 +70,8 @@ export class PostEditComponent implements OnInit {
       bed: [],
       room: [],
       pet: [false],
-      parking: [false]
+      parking: [false],
+      wifi: [false]
     });
   }
 

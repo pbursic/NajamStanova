@@ -3,7 +3,7 @@ import { RegistrationComponent } from "../../screens/registration/registration.c
 import { LoginComponent } from "../../screens/login/login.component";
 import { Person } from "../../models/person";
 import { MatDialog } from "@angular/material";
-import { LoginService } from "../../services/login/login.service";
+import { LogoutService } from "../../services/logout/logout.service";
 import {
   CanActivate,
   Router,
@@ -15,7 +15,7 @@ import {
   selector: "app-toolbar",
   templateUrl: "./toolbar.component.html",
   styleUrls: ["./toolbar.component.scss"],
-  providers: [LoginService]
+  providers: [LogoutService]
 })
 export class ToolbarComponent implements OnInit {
   person: Person;
@@ -24,10 +24,10 @@ export class ToolbarComponent implements OnInit {
   //isLoggedIn;
 
   constructor(
-    private logoutService: LoginService,
+    private logoutService: LogoutService,
     public dialog: MatDialog,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     //this.isLoggedIn = localStorage.getItem("user");
@@ -43,11 +43,11 @@ export class ToolbarComponent implements OnInit {
     localStorage.clear();
     this.router.navigate([""]);
 
-    /*this.submitted = true;
+    this.submitted = true;
 
     console.log(this.person);
 
-    this.save();*/
+    this.save();
   }
 
   private save(): void {

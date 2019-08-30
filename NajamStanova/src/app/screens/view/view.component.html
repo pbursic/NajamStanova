@@ -56,7 +56,7 @@
     >
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <h4>Pojedinosti</h4>
+          <h4>Koje su pojedinosti?</h4>
         </mat-panel-title>
       </mat-expansion-panel-header>
 
@@ -108,7 +108,7 @@
       </mat-expansion-panel-header>
 
       <div>
-        <mat-checkbox>Wi-Fi</mat-checkbox>
+        <mat-checkbox formControlName="wifi">Wi-Fi</mat-checkbox>
       </div>
       <div>
         <mat-checkbox formControlName="parking">Parking mjesto</mat-checkbox>
@@ -158,7 +158,10 @@
               >
               <mat-card-subtitle>{{ post.price }}</mat-card-subtitle>
               <mat-card-subtitle
-                >{{ post.city }}, {{ post.address }}</mat-card-subtitle
+                >{{ post.city }}
+                <p style="display: inline;" *ngIf="isLoggedIn">
+                  , {{ post.address }}
+                </p></mat-card-subtitle
               >
             </div>
           </mat-card-header>

@@ -21,6 +21,7 @@ export class ViewComponent implements OnInit {
   postsForm: FormGroup;
   image: string; // = "assets/images/picture.svg";
   array: Posts[] = [];
+  isLoggedIn;
 
   types: IType[] = [
     { value: "stan", viewValue: "Stan" },
@@ -49,6 +50,10 @@ export class ViewComponent implements OnInit {
       }
 
       if (window.location.href.indexOf("?") > -1) this.getParams();
+
+      if (localStorage.getItem("user")) {
+        this.isLoggedIn = localStorage.getItem("user");
+      }
     });
 
     this.postsForm = this.fb.group({
@@ -65,7 +70,8 @@ export class ViewComponent implements OnInit {
       bed: [],
       room: [],
       pet: [],
-      parking: []
+      parking: [],
+      wifi: []
     });
   }
 
@@ -77,6 +83,7 @@ export class ViewComponent implements OnInit {
   readonly furnished = "furnished";
   readonly parking = "parking";
   readonly pet = "pet";
+  readonly wifi = "wifi";
   noDataFound = false;
 
   getParams() {
@@ -92,7 +99,8 @@ export class ViewComponent implements OnInit {
           this.getFilteredParam(params, this.room, post.room) &&
           this.getBoolParam(params, this.furnished) &&
           this.getBoolParam(params, this.parking) &&
-          this.getBoolParam(params, this.pet)
+          this.getBoolParam(params, this.pet) &&
+          this.getBoolParam(params, this.wifi)
         );
       });
       if (this.array.length == 0) this.noDataFound = true;
@@ -120,6 +128,7 @@ export class ViewComponent implements OnInit {
     this.setControlValue(params, this.furnished);
     this.setControlValue(params, this.parking);
     this.setControlValue(params, this.pet);
+    this.setControlValue(params, this.wifi);
   }
 
   setControlValue(params, key) {
@@ -158,6 +167,7 @@ export class ViewComponent implements OnInit {
     params = this.checkFormValue(params, this.furnished, formValue.furnished);
     params = this.checkFormValue(params, this.parking, formValue.parking);
     params = this.checkFormValue(params, this.pet, formValue.pet);
+    params = this.checkFormValue(params, this.wifi, formValue.wifi);
     return params;
   }
 

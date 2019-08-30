@@ -49,10 +49,7 @@
 }
 
 #inner-stepper ::ng-deep .mat-horizontal-stepper-header .mat-step-icon,
-#inner-stepper
-  ::ng-deep
-  .mat-horizontal-stepper-header
-  .mat-step-icon-not-touched {
+#inner-stepper ::ng-deep .mat-horizontal-stepper-header .mat-step-icon-not-touched {
   display: none;
 }
 

@@ -8,10 +8,10 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class LogoutService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   logoutUser(person: Person): Observable<any> {
-    return this.http.post<any>("/api/", person).pipe(
+    return this.http.post<any>("/api/logout", person).pipe(
       map(res => {
         console.log(res);
         return res.rows;

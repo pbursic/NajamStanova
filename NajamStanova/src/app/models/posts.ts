@@ -20,6 +20,7 @@ export class Posts {
   room: number;
   pet: boolean;
   parking: boolean;
+  wifi: boolean;
   image: string;
   images: string[];
   deletedImages: any[];

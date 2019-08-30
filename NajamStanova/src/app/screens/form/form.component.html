@@ -3,12 +3,7 @@
     <mat-step label="Osnovni podaci">
       <mat-horizontal-stepper id="inner-stepper">
         <mat-step label="Vrtsa prostora">
-          <mat-progress-bar
-            [color]="accent"
-            [mode]="determinate"
-            [value]="20"
-            [bufferValue]="75"
-          >
+          <mat-progress-bar [color]="accent" [mode]="determinate" [value]="20" [bufferValue]="75">
           </mat-progress-bar>
 
           <form class="container" [formGroup]="postsForm">
@@ -25,12 +20,7 @@
             <p>Površina m2</p>
 
             <mat-form-field color="accent" appearance="outline">
-              <input
-                matInput
-                type="number"
-                placeholder="Površina"
-                formControlName="squares"
-              />
+              <input matInput type="number" placeholder="Površina" formControlName="squares" />
             </mat-form-field>
 
             <!--<div>
@@ -40,12 +30,7 @@
             </div>-->
 
             <div style="position: relative;">
-              <button
-                style="position: absolute; right: 0;"
-                mat-button
-                color="accent"
-                matStepperNext
-              >
+              <button style="position: absolute; right: 0;" mat-button color="accent" matStepperNext>
                 Sljedeće
                 <mat-icon>arrow_forward</mat-icon>
               </button>
@@ -54,54 +39,32 @@
         </mat-step>
 
         <mat-step label="Pojedinosti">
-          <mat-progress-bar
-            [color]="primary"
-            [mode]="determinate"
-            [value]="40"
-            [bufferValue]="75"
-          >
+          <mat-progress-bar [color]="primary" [mode]="determinate" [value]="40" [bufferValue]="75">
           </mat-progress-bar>
 
           <form class="container" [formGroup]="postsForm">
             <p>Koliko je spavačih soba na raspolaganju?</p>
 
             <mat-form-field color="accent" appearance="outline">
-              <input
-                matInput
-                type="number"
-                placeholder="Sobe"
-                formControlName="room"
-              />
+              <input matInput type="number" placeholder="Sobe" formControlName="room" />
             </mat-form-field>
 
             <h3>Koliko je kreveta?</h3>
 
             <mat-form-field color="accent" appearance="outline">
-              <input
-                matInput
-                type="number"
-                placeholder="Kreveti"
-                formControlName="bed"
-              />
+              <input matInput type="number" placeholder="Kreveti" formControlName="bed" />
             </mat-form-field>
 
             <h3>Da li primate kućne ljubimce?</h3>
 
-            <mat-checkbox formControlName="pet"
-              >Primam kućne kljubimce</mat-checkbox
-            >
+            <mat-checkbox formControlName="pet">Primam kućne kljubimce</mat-checkbox>
 
             <div style="position: relative;">
               <button mat-button color="accent" matStepperPrevious>
                 <mat-icon>arrow_back</mat-icon>
                 Natrag
               </button>
-              <button
-                style="position: absolute; right: 0;"
-                mat-button
-                color="accent"
-                matStepperNext
-              >
+              <button style="position: absolute; right: 0;" mat-button color="accent" matStepperNext>
                 Sljedeće
                 <mat-icon>arrow_forward</mat-icon>
               </button>
@@ -109,21 +72,14 @@
           </form>
         </mat-step>
         <mat-step label="Sadržaj">
-          <mat-progress-bar
-            [color]="primary"
-            [mode]="determinate"
-            [value]="60"
-            [bufferValue]="75"
-          >
+          <mat-progress-bar [color]="primary" [mode]="determinate" [value]="60" [bufferValue]="75">
           </mat-progress-bar>
 
           <form class="container" [formGroup]="postsForm">
             <h3>Što sve sadrži vaš smještaj?</h3>
 
-            <mat-checkbox>Wi-Fi</mat-checkbox>
-            <mat-checkbox formControlName="parking"
-              >Parking mjesto</mat-checkbox
-            >
+            <mat-checkbox formControlName="wifi">Wi-Fi</mat-checkbox>
+            <mat-checkbox formControlName="parking">Parking mjesto</mat-checkbox>
             <mat-checkbox formControlName="furnished">Namještaj</mat-checkbox>
 
             <div style="position: relative;">
@@ -131,12 +87,7 @@
                 <mat-icon>arrow_back</mat-icon>
                 Natrag
               </button>
-              <button
-                style="position: absolute; right: 0;"
-                mat-button
-                color="accent"
-                matStepperNext
-              >
+              <button style="position: absolute; right: 0;" mat-button color="accent" matStepperNext>
                 Sljedeće
                 <mat-icon>arrow_forward</mat-icon>
               </button>
@@ -144,12 +95,7 @@
           </form>
         </mat-step>
         <mat-step label="Lokacija">
-          <mat-progress-bar
-            [color]="primary"
-            [mode]="determinate"
-            [value]="80"
-            [bufferValue]="75"
-          >
+          <mat-progress-bar [color]="primary" [mode]="determinate" [value]="80" [bufferValue]="75">
           </mat-progress-bar>
 
           <form class="container" [formGroup]="postsForm">
@@ -158,11 +104,7 @@
 
             <mat-form-field color="accent" appearance="outline">
               <mat-label>Država</mat-label>
-              <input
-                matInput
-                placeholder="Hrvatska"
-                formControlName="country"
-              />
+              <input matInput placeholder="Hrvatska" formControlName="country" />
               <mat-hint>npr. Ulica Jurja Dobrile 1</mat-hint>
             </mat-form-field>
 
@@ -178,11 +120,7 @@
                   <p>
                     <mat-form-field color="accent" appearance="outline">
                       <mat-label>Mjesto</mat-label>
-                      <input
-                        matInput
-                        placeholder="Grad"
-                        formControlName="city"
-                      />
+                      <input matInput placeholder="Grad" formControlName="city" />
                       <mat-hint>npr. Vodnjan</mat-hint>
                     </mat-form-field>
                   </p>
@@ -195,12 +133,7 @@
                 <mat-icon>arrow_back</mat-icon>
                 Natrag
               </button>
-              <button
-                style="position: absolute; right: 0;"
-                mat-button
-                color="accent"
-                matStepperNext
-              >
+              <button style="position: absolute; right: 0;" mat-button color="accent" matStepperNext>
                 Sljedeće
                 <mat-icon>arrow_forward</mat-icon>
               </button>
@@ -208,12 +141,7 @@
           </form>
         </mat-step>
         <mat-step label="Dostupnost">
-          <mat-progress-bar
-            [color]="primary"
-            [mode]="determinate"
-            [value]="100"
-            [bufferValue]="75"
-          >
+          <mat-progress-bar [color]="primary" [mode]="determinate" [value]="100" [bufferValue]="75">
           </mat-progress-bar>
 
           <form class="container" [formGroup]="postsForm">
@@ -221,30 +149,15 @@
             <mat-checkbox>Peko cijele godine</mat-checkbox>
 
             <mat-form-field color="accent" class="example-full-width">
-              <input
-                matInput
-                [matDatepicker]="picker"
-                placeholder="Datum dostupnosti"
-                formControlName="available_date"
-              />
-              <mat-datepicker-toggle
-                matSuffix
-                [for]="picker"
-              ></mat-datepicker-toggle>
+              <input matInput [matDatepicker]="picker" placeholder="Datum dostupnosti"
+                formControlName="available_date" />
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker touchUi #picker></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field color="accent" class="example-full-width">
-              <input
-                matInput
-                [matDatepicker]="picker2"
-                placeholder="Datum odlaska"
-                formControlName="walkout_date"
-              />
-              <mat-datepicker-toggle
-                matSuffix
-                [for]="picker2"
-              ></mat-datepicker-toggle>
+              <input matInput [matDatepicker]="picker2" placeholder="Datum odlaska" formControlName="walkout_date" />
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
               <mat-datepicker touchUi #picker2></mat-datepicker>
             </mat-form-field>
 
@@ -267,12 +180,7 @@
         </mat-step>
       </mat-horizontal-stepper>
       <div style="position: relative;">
-        <button
-          style="position: absolute; right: 0;"
-          mat-button
-          color="accent"
-          matStepperNext
-        >
+        <button style="position: absolute; right: 0;" mat-button type="button" color="accent" matStepperNext>
           Uređenje prostora
           <mat-icon>arrow_forward</mat-icon>
         </button>
@@ -281,47 +189,26 @@
     <mat-step label="Uređenje prostora">
       <mat-horizontal-stepper id="inner-stepper">
         <mat-step label="Fotografije">
-          <mat-progress-bar
-            [color]="accent"
-            [mode]="determinate"
-            [value]="50"
-            [bufferValue]="75"
-          >
+          <mat-progress-bar [color]="accent" [mode]="determinate" [value]="50" [bufferValue]="75">
           </mat-progress-bar>
 
           <form class="" [formGroup]="postsForm">
             <div class="grid">
               <div style="position: relative;" *ngFor="let image of images">
-                <button
-                  mat-button
-                  style="position: absolute; right: 0;"
-                  (click)="deleteImage(image)"
-                >
+                <button mat-button style="position: absolute; right: 0;" (click)="deleteImage(image)">
                   <mat-icon>highlight_off</mat-icon>
                 </button>
-                <div
-                  style="margin-top: 15%; width: 250px; height: 220px; position: relative;"
-                >
+                <div style="margin-top: 15%; width: 250px; height: 220px; position: relative;">
                   <img [src]="image" class="scale" />
                 </div>
               </div>
             </div>
             <div>
-              <input
-                type="file"
-                accept="image/*"
-                style="display: none;"
-                #image
-                name="image"
-                (change)="onFileSelected($event.target.files)"
-              />
+              <input type="file" accept="image/*" style="display: none;" #image name="image"
+                (change)="onFileSelected($event.target.files)" />
 
-              <button
-                mat-stroked-button
-                color="accent"
-                style="display: block; margin: auto; margin-top: 2%; margin-bottom: 2%;"
-                (click)="image.click()"
-              >
+              <button mat-stroked-button color="accent"
+                style="display: block; margin: auto; margin-top: 2%; margin-bottom: 2%;" (click)="image.click()">
                 Učitaj sliku
               </button>
             </div>
@@ -331,12 +218,7 @@
                 <mat-icon>arrow_back</mat-icon>
                 Natrag
               </button>-->
-              <button
-                style="position: absolute; right: 0;"
-                mat-button
-                color="accent"
-                matStepperNext
-              >
+              <button style="position: absolute; right: 0;" mat-button color="accent" matStepperNext>
                 Sljedeće
                 <mat-icon>arrow_forward</mat-icon>
               </button>
@@ -345,12 +227,7 @@
         </mat-step>
 
         <mat-step label="Oglas">
-          <mat-progress-bar
-            [color]="accent"
-            [mode]="determinate"
-            [value]="100"
-            [bufferValue]="75"
-          >
+          <mat-progress-bar [color]="accent" [mode]="determinate" [value]="100" [bufferValue]="75">
           </mat-progress-bar>
 
           <form class="container" [formGroup]="postsForm">
@@ -360,11 +237,7 @@
             </mat-form-field>
             <mat-form-field color="accent" appearance="outline">
               <mat-label>Uredite opis</mat-label>
-              <input
-                matInput
-                placeholder="Opis"
-                formControlName="description"
-              />
+              <input matInput placeholder="Opis" formControlName="description" />
             </mat-form-field>
 
             <div style="position: relative;">
@@ -390,12 +263,7 @@
           <mat-icon>arrow_back</mat-icon>
           Osnovni podaci
         </button>
-        <button
-          style="position: absolute; right: 0;"
-          mat-button
-          color="accent"
-          matStepperNext
-        >
+        <button style="position: absolute; right: 0;" mat-button type="button" color="accent" matStepperNext>
           Postavke za najam
           <mat-icon>arrow_forward</mat-icon>
         </button>
@@ -404,12 +272,7 @@
     <mat-step label="Postavke za najam">
       <mat-horizontal-stepper id="inner-stepper">
         <mat-step label="Najamnina">
-          <mat-progress-bar
-            [color]="accent"
-            [mode]="determinate"
-            [value]="50"
-            [bufferValue]="75"
-          >
+          <mat-progress-bar [color]="accent" [mode]="determinate" [value]="50" [bufferValue]="75">
           </mat-progress-bar>
 
           <form class="container" [formGroup]="postsForm">
@@ -433,12 +296,7 @@
             </table>-->
 
             <div style="position: relative;">
-              <button
-                style="position: absolute; right: 0;"
-                mat-button
-                color="accent"
-                matStepperNext
-              >
+              <button style="position: absolute; right: 0;" mat-button color="accent" matStepperNext>
                 Sljedeće
                 <mat-icon>arrow_forward</mat-icon>
               </button>
@@ -447,12 +305,7 @@
         </mat-step>
 
         <mat-step label="Polog">
-          <mat-progress-bar
-            [color]="accent"
-            [mode]="determinate"
-            [value]="100"
-            [bufferValue]="75"
-          >
+          <mat-progress-bar [color]="accent" [mode]="determinate" [value]="100" [bufferValue]="75">
           </mat-progress-bar>
 
           <form class="container" [formGroup]="postsForm">
@@ -474,7 +327,7 @@
       </mat-horizontal-stepper>
 
       <div style="position: relative;">
-        <button mat-button color="accent" matStepperPrevious>
+        <button mat-button color="accent" type="button" matStepperPrevious>
           <mat-icon>arrow_back</mat-icon>
           Uređenje prostora
         </button>

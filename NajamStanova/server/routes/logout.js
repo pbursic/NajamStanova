@@ -9,7 +9,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 var jsonParser = bodyParser.json();
 
 router.post("/", jsonParser, (req, res, next) => {
-  res.clearCookie("user_email");
+  res.clearCookie("user_id");
   //const client = new Client();
 
   transaction.getPool().connect((err, client, done) => {

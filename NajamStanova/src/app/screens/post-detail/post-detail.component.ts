@@ -37,7 +37,7 @@ export class PostDetailComponent implements OnInit {
     private postService: PostService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.id = +this.route.snapshot.paramMap.get("id");
@@ -54,11 +54,11 @@ export class PostDetailComponent implements OnInit {
       //}
     });
 
-    if (window.location.href.length > 40) {
+    if (window.location.href.indexOf("user-posts") > -1) { // window.location.href.length > 40
       this.editable = true;
     }
 
-    if (localStorage.getItem("user") && window.location.href.length <= 40) {
+    if (localStorage.getItem("user") && window.location.href.indexOf("view") > -1) { // window.location.href.length <= 40
       this.isLoggedIn = localStorage.getItem("user");
       this.contactVisible = true;
     }

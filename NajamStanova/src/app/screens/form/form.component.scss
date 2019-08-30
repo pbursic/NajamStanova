@@ -48,11 +48,8 @@
   height: 50px !important;
 }
 
-#inner-stepper ::ng-deep .mat-horizontal-stepper-header .mat-step-icon,
-#inner-stepper
-  ::ng-deep
-  .mat-horizontal-stepper-header
-  .mat-step-icon-not-touched {
+#inner-stepper ::ng-deep .mat-horizontal-stepper-header .mat-step-icon, 
+#inner-stepper ::ng-deep .mat-horizontal-stepper-header .mat-step-icon-not-touched {
   display: none;
 }
 
@@ -79,7 +76,7 @@
   padding-left: 16px !important;
   padding-right: 16px !important;
 }
-::ng-deep .mat-horizontal-stepper-header .mat-step-icon,
+::ng-deep .mat-horizontal-stepper-header .mat-step-icon, 
 ::ng-deep .mat-horizontal-stepper-header .mat-step-icon-not-touched {
   margin-top: 24px;
   margin-right: 0 !important;

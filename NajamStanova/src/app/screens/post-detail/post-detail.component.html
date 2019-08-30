@@ -61,7 +61,10 @@
             class="anemities-icon"
           />
           <div class="center anemities">
-            <p class="anemities">{{ post.city }}, {{ post.address }}</p>
+            <p class="anemities">{{ post.city }}</p>
+            <p style="display: inline;" *ngIf="isLoggedIn">
+              , {{ post.address }}
+            </p>
           </div>
         </div>
 
@@ -82,22 +85,23 @@
           </div>
         </div>
 
-        <!--<div style="margin-bottom:3%;"></div>
+        <div style="margin-bottom:3%;"></div>
 
         <div *ngIf="post.wifi">
           <div class="center anemities">
-            <img
+            <mat-icon class="anemities-icon">wifi</mat-icon>
+            <!--<img
               src="assets/images/wifi.svg"
-              alt="Rezije"
+              alt="Wifi"
               class="anemities-icon"
-            />
+            />-->
           </div>
           <div class="center anemities">
             <p class="anemities">
               Wifi
             </p>
           </div>
-        </div>-->
+        </div>
 
         <div style="margin-bottom:3%;"></div>
 
@@ -116,24 +120,23 @@
           </div>
         </div>
 
-        <!--<div style="margin-bottom:3%;"></div>
+        <div style="margin-bottom:3%;"></div>
 
         <div *ngIf="post.room">
           <div class="center anemities">
-            <img
+            <mat-icon class="anemities-icon">meeting_room</mat-icon>
+            <!--<img
               src="assets/images/room.svg"
               alt="Rezije"
               class="anemities-icon"
-            />
+            />-->
           </div>
           <div class="center anemities">
-            <p class="anemities">
-              {{ post.room }} soba
-            </p>
+            <p class="anemities">{{ post.room }} spavaćih soba</p>
           </div>
-        </div>-->
+        </div>
 
-        <!--<div style="margin-bottom:3%;"></div>
+        <div style="margin-bottom:3%;"></div>
 
         <div *ngIf="post.bed">
           <div class="center anemities">
@@ -144,11 +147,9 @@
             />
           </div>
           <div class="center anemities">
-            <p class="anemities">
-              {{ post.bed }} kreveta
-            </p>
+            <p class="anemities">{{ post.bed }} kreveta</p>
           </div>
-        </div>-->
+        </div>
 
         <div style="margin-bottom:3%;"></div>
 
@@ -162,7 +163,7 @@
           </div>
           <div class="center anemities">
             <p class="anemities">
-              Kućni ljubimci
+              Prima kućne ljubimce
             </p>
           </div>
         </div>
@@ -179,26 +180,34 @@
           </div>
           <div class="center anemities">
             <p class="anemities">
-              Parking
+              Dostupno parking mjesto
             </p>
           </div>
         </div>
 
         <div style="margin-bottom:3%;"></div>
 
-        <p>
+        <!--<p>
           {{ post.bed }}
           {{ post.room }}
-        </p>
+        </p>-->
       </div>
 
       <h3>Dostupnost:</h3>
       <div style="margin-bottom:3%;"></div>
-      <mat-checkbox>Peko cijele godine</mat-checkbox>
+      <div class="anemities">
+        <mat-icon class="anemities-icon">calendar_today</mat-icon>
+        <p class="anemities">Peko cijele godine</p>
+      </div>
+
       <div style="margin-bottom:3%;"></div>
-      <div class="date-grid">
-        <p>Datum dostupnosti</p>
-        <div>
+      <div class="date-grid" *ngIf="post.available_date">
+        <div class="anemities">
+          <mat-icon class="anemities-icon">calendar_today</mat-icon>
+          <p class="anemities">Datum dostupnosti</p>
+        </div>
+
+        <div class="anemities">
           <input
             matInput
             placeholder="Datum dostupnosti"
@@ -211,9 +220,13 @@
       </div>
       <div style="margin-bottom:3%;"></div>
 
-      <div class="date-grid">
-        <p>Datum odlaska</p>
-        <div>
+      <div class="date-grid" *ngIf="post.walkout_date">
+        <div class="anemities">
+          <mat-icon class="anemities-icon">calendar_today</mat-icon>
+          <p class="anemities">Datum odlaska</p>
+        </div>
+
+        <div class="anemities">
           <input
             matInput
             placeholder="Datum odlaska"

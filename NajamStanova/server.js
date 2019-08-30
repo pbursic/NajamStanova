@@ -55,11 +55,11 @@ app.use("/api/user-posts/post-detail", middleware.isLoggedIn, postDetail);
 app.use("/api/registration", registration);
 app.use("/api/profile", registration);
 app.use("/api/login", login);
-//app.use("/", logout);
+app.use("/api/logout", logout);
 app.use("/api/form", middleware.isLoggedIn, form);
 app.use("/api/", stats);
 
-app.use(function(error, req, res, next) {
+app.use(function (error, req, res, next) {
   console.log("USEERRRORRRRRR!!!!!!!!!", error);
   res.status(500).json(error.message);
 });

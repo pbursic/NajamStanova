@@ -172,7 +172,8 @@ router.post("/:id/post-edit", jsonParser, (req, res, next) => {
             req.body.bed,
             req.body.room,
             req.body.pet,
-            req.body.parking
+            req.body.parking,
+            req.body.wifi
           ];
 
           return client.query(sql, params);

@@ -29,7 +29,7 @@ router.post("/", jsonParser, (req, res, next) => {
           return client.query(sql, params);
         })
         .then(() => {
-          /*const sql = queries.insertPost;
+          const sql = queries.updatePost;
           let params = [
             user_id,
             false,
@@ -49,10 +49,11 @@ router.post("/", jsonParser, (req, res, next) => {
             req.body.bed,
             req.body.room,
             req.body.pet,
-            req.body.parking
+            req.body.parking,
+            req.body.wifi
           ];
 
-          return client.query(sql, params);*/
+          return client.query(sql, params);
         })
         .then(results => {
           let post_id = results.rows[0].id;

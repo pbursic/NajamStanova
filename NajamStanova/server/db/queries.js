@@ -56,7 +56,8 @@ module.exports = {
                 posts p
                 LEFT OUTER JOIN (SELECT DISTINCT ON (post_id, id) * from images) i
                 on p.id = i.post_id
-              WHERE p.status = true`,
+              WHERE p.status = true
+              order by p.id desc`,
 
   getPostDetails: `SELECT 
                     * 
@@ -87,16 +88,16 @@ module.exports = {
 
   insertPost: `INSERT INTO posts
               ("user_id", "status", "title", "description", "bills_included", "country", "city", "address", "price",
-              "squares", "type", "furnished", "bed", "room", "pet", "parking")
+              "squares", "type", "furnished", "bed", "room", "pet", "parking", "wifi")
               VALUES
               ($1, $2, $3, $4, $5, $6, $7, $8, $9,
-              $10, $11, $12, $13, $14, $15, $16)
+              $10, $11, $12, $13, $14, $15, $16, $17)
               RETURNING id`, // "available_date", "walkout_date", , $17, $18
   // "status", , $16
 
   updatePost: `UPDATE posts
               SET "title" = $2, "description" = $3, "bills_included" = $4, "country" = $5, "city" = $6, "address" = $7, "price" = $8,
-              "squares" = $9, "type" = $10, "furnished" = $11, "bed" = $12, "room" = $13, "pet" = $14, "parking" = $15
+              "squares" = $9, "type" = $10, "furnished" = $11, "bed" = $12, "room" = $13, "pet" = $14, "parking" = $15, "wifi" = $16
               WHERE "id" = $1
               RETURNING id`, // "available_date", "walkout_date", , $17, $18
   // "status", , $16
