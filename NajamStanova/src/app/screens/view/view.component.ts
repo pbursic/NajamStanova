@@ -33,7 +33,7 @@ export class ViewComponent implements OnInit {
     private postService: PostService,
     private fb: FormBuilder,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.postService.getAllPosts().subscribe(posts => {
@@ -93,7 +93,7 @@ export class ViewComponent implements OnInit {
 
         return (
           this.getFilteredParam(params, this.price, post.price) &&
-          this.getFilteredParam(params, this.city, post.city) &&
+          this.caseInsensitiveFilter(params, this.city, post.city) &&
           this.getFilteredParam(params, this.type, post.type) &&
           this.getFilteredParam(params, this.bed, post.bed) &&
           this.getFilteredParam(params, this.room, post.room) &&
@@ -109,6 +109,10 @@ export class ViewComponent implements OnInit {
 
   getParamValue(params, key) {
     return params[key];
+  }
+
+  caseInsensitiveFilter(params, key: string, element) {
+    return params[key] != null ? element.localeCompare(params[key], undefined, { sensitivity: 'accent' }) == 0 : true;
   }
 
   getFilteredParam(params, key: string, element) {
@@ -151,7 +155,7 @@ export class ViewComponent implements OnInit {
     } else if (this.postsForm.touched) window.location.href = href;
   }
 
-  clearFilter() {}
+  clearFilter() { }
 
   setHttpParams(params, formValue) {
     if (formValue.price != "" && formValue.price != null)
@@ -190,13 +194,13 @@ export class ViewComponent implements OnInit {
       hasDot && isFormated
         ? price
         : hasDecimal && hasDot
-        ? price + " kn"
-        : hasDot
-        ? price + ",00 kn"
-        : parseFloat(price)
-            .toFixed(2)
-            .replace(".", ",")
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") + " kn";
+          ? price + " kn"
+          : hasDot
+            ? price + ",00 kn"
+            : parseFloat(price)
+              .toFixed(2)
+              .replace(".", ",")
+              .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") + " kn";
 
     return formatPrice;
   }

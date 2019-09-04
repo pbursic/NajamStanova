@@ -120,7 +120,15 @@
                   <p>
                     <mat-form-field color="accent" appearance="outline">
                       <mat-label>Mjesto</mat-label>
-                      <input matInput placeholder="Grad" formControlName="city" />
+                      <input type="text" matInput placeholder="Grad" formControlName="cityGroup"
+                        [matAutocomplete]="autoGroup">
+                      <mat-autocomplete #autoGroup="matAutocomplete">
+                        <mat-optgroup *ngFor="let group of cityGroupOptions | async" [label]="group.letter">
+                          <mat-option *ngFor="let name of group.names" [value]="name">
+                            {{name}}
+                          </mat-option>
+                        </mat-optgroup>
+                      </mat-autocomplete>
                       <mat-hint>npr. Vodnjan</mat-hint>
                     </mat-form-field>
                   </p>
