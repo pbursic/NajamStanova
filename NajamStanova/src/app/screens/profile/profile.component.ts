@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private registrationService: RegistrationService,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.isLoggedIn = localStorage.getItem("user");
@@ -87,18 +87,20 @@ export class ProfileComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    if (this.registrationForm.invalid) {
+    /*if (this.registrationForm.invalid) {
       return;
-    }
+    }*/
 
     this.person = this.registrationForm.value;
     this.person.image = this.imageUrl;
+
+    //console.log("this.person", this.person);
 
     this.save();
   }
 
   private save(): void {
-    this.registrationService.addPerson(this.person).subscribe();
+    this.registrationService.updatePerson(this.person).subscribe();
   }
 
   get name() {

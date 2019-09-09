@@ -1,8 +1,4 @@
-<form
-  [formGroup]="registrationForm"
-  enctype="multipart/form-data"
-  (ngSubmit)="onSubmit()"
->
+<form [formGroup]="registrationForm" enctype="multipart/form-data" (ngSubmit)="onSubmit()">
   <div class="grid" *ngIf="person">
     <!--*ngFor="let person of person"-->
     <div class="center">
@@ -15,22 +11,9 @@
           <img [src]="imageUrl" style="width: 150px; height: 120px;" />
         </div>
         <div>
-          <input
-            type="file"
-            accept="image/*"
-            style="display: none;"
-            #image
-            name="image"
-            (change)="onFileSelected($event.target.files)"
-            formControlName="image"
-            required
-          />
-          <button
-            mat-stroked-button
-            color="accent"
-            style="width: 100%;"
-            (click)="image.click()"
-          >
+          <input type="file" accept="image/*" style="display: none;" #image name="image"
+            (change)="onFileSelected($event.target.files)" formControlName="image" required />
+          <button mat-stroked-button type="button" color="accent" style="width: 100%;" (click)="image.click()">
             Učitaj sliku
           </button>
         </div>
@@ -43,43 +26,19 @@
       <div class="">
         <h4>Osobni podaci</h4>
         <mat-form-field color="accent" appearance="outline">
-          <input
-            matInput
-            type="string"
-            placeholder="Ime"
-            formControlName="name"
-            [(ngModel)]="person.name"
-          />
+          <input matInput type="string" placeholder="Ime" formControlName="name" [(ngModel)]="person.name" />
         </mat-form-field>
         <mat-form-field color="accent" appearance="outline">
-          <input
-            matInput
-            type="string"
-            placeholder="Prezime"
-            formControlName="surname"
-            [(ngModel)]="person.surname"
-          />
+          <input matInput type="string" placeholder="Prezime" formControlName="surname" [(ngModel)]="person.surname" />
         </mat-form-field>
       </div>
 
       <div class="">
         <mat-form-field color="accent" appearance="outline">
-          <input
-            matInput
-            type="string"
-            placeholder="Grad"
-            formControlName="city"
-            [(ngModel)]="person.city"
-          />
+          <input matInput type="string" placeholder="Grad" formControlName="city" [(ngModel)]="person.city" />
         </mat-form-field>
         <mat-form-field color="accent" appearance="outline">
-          <input
-            matInput
-            type="string"
-            placeholder="Država"
-            formControlName="country"
-            [(ngModel)]="person.country"
-          />
+          <input matInput type="string" placeholder="Država" formControlName="country" [(ngModel)]="person.country" />
         </mat-form-field>
       </div>
 
@@ -87,26 +46,15 @@
 
       <div class="big-field">
         <mat-form-field color="accent" appearance="outline">
-          <input
-            matInput
-            type="string"
-            placeholder="Broj telefona"
-            formControlName="phone"
-            [(ngModel)]="person.phone"
-          />
+          <input matInput type="string" placeholder="Broj telefona" formControlName="phone"
+            [(ngModel)]="person.phone" />
         </mat-form-field>
       </div>
 
       <div class="big-field">
         <mat-form-field color="accent" appearance="outline">
-          <input
-            matInput
-            type="string"
-            placeholder="E-mail"
-            formControlName="email"
-            [readonly]="true"
-            [(ngModel)]="person.email"
-          />
+          <input matInput type="string" placeholder="E-mail" formControlName="email" [readonly]="true"
+            [(ngModel)]="person.email" />
           <mat-error *ngIf="email.invalid && email.touched">
             Neispravan e-mail!
           </mat-error>

@@ -24,6 +24,7 @@ export class PostDetailComponent implements OnInit {
   contactVisible: boolean = false;
   isLoggedIn;
   id;
+  image: string = "../../../assets/images/UserIcon@2x.svg";
 
   tiles: Tile[] = [
     { text: "", cols: 2, rows: 2, color: "#f9f9f9ff" }, // One
@@ -37,7 +38,7 @@ export class PostDetailComponent implements OnInit {
     private postService: PostService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.id = +this.route.snapshot.paramMap.get("id");
@@ -54,14 +55,25 @@ export class PostDetailComponent implements OnInit {
       //}
     });
 
-    if (window.location.href.indexOf("user-posts") > -1) { // window.location.href.length > 40
+    if (window.location.href.indexOf("user-posts") > -1) {
+      // window.location.href.length > 40
       this.editable = true;
     }
 
-    if (localStorage.getItem("user") && window.location.href.indexOf("view") > -1) { // window.location.href.length <= 40
-      this.isLoggedIn = localStorage.getItem("user");
+    if (
+      localStorage.getItem("user") &&
+      window.location.href.indexOf("view") > -1
+    ) {
+      // window.location.href.length <= 40
+      //this.isLoggedIn = localStorage.getItem("user");
+      this.isLoggedIn = this.getLoggedIn();
       this.contactVisible = true;
     }
+  }
+
+  getLoggedIn() {
+    this.image = localStorage.getItem("user_image");
+    return localStorage.getItem("user");
   }
 
   changeStatus(status) {

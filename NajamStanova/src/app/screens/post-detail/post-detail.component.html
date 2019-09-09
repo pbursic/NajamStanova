@@ -13,7 +13,8 @@
         class="zoom"
         [src]="tile.text"
         alt="Slika prostora"
-      /><!--images.image assets/images/house.jpg-->
+      />
+      <!--images.image assets/images/house.jpg-->
     </div>
   </mat-grid-tile>
 </mat-grid-list>
@@ -243,9 +244,9 @@
   <div *ngIf="isLoggedIn">
     <mat-card class="user">
       <mat-card-header class="user-grid center">
-        <div mat-card-avatar class="header-image"></div>
-        <mat-card-title
-          ><!--<div class="center anemities">
+        <img mat-card-avatar [src]="image" class="header-image" />
+        <mat-card-title>
+          <!--<div class="center anemities">
             <img
               src="assets/images/call-answer.svg"
               alt="Telefon"
