@@ -109,7 +109,8 @@ module.exports = {
   insertImages: `INSERT INTO images
                   ("post_id", "image")
                   VALUES
-                  %L`,
+                  %L
+                  RETURNING post_id`,
 
   deleteImages: `DELETE FROM images WHERE id IN (%L)`,
 

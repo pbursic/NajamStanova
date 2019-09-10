@@ -364,8 +364,11 @@ export class FormComponent implements OnInit {
     this.save();
   }
 
+  arrayPosts = [];
   private save() {
-    this.postService.addPost(this.posts).subscribe(() => {
+    this.postService.addPost(this.posts).subscribe(post => {
+      this.arrayPosts.push(post[0].post_id);
+      localStorage.setItem("post_id", "" + JSON.stringify(this.arrayPosts));
       this.router.navigate(["/user-posts"]);
     });
   }

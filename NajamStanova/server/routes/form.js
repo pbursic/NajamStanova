@@ -62,9 +62,16 @@ router.post("/", jsonParser, (req, res, next) => {
           return client.query(sql);
         })
         .then(results2 => {
+          console.log(results2.rows[0].post_id);
+          const sql = "select * from posts where id = $1";
+          //let params = [results2]
           res.status(200).json(results2);
           transaction.commit(client);
         })
+        /*.then(result => {
+          console.log("result: ", result);
+          res.status(200).json(result);
+        })*/
         .catch(err => {
           console.log("error", err);
           client.query(queries.end);

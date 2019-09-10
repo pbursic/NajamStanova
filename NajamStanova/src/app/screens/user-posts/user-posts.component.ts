@@ -12,6 +12,7 @@ import { ActivatedRoute, Params } from "@angular/router";
 export class UserPostsComponent implements OnInit {
   posts: Posts;
   image: string = "assets/images/picture.svg";
+  newPost = false;
 
   constructor(
     private postService: PostService,
@@ -22,5 +23,15 @@ export class UserPostsComponent implements OnInit {
     this.postService.getUserPosts().subscribe(posts => {
       this.posts = posts;
     });
+  }
+
+  arrayPosts = [];
+  getNewPosts(posts) {
+    const newPosts = JSON.parse(localStorage.getItem("post_id"));
+
+    if (newPosts.includes("" + posts.id)) {
+      return true;
+    }
+    return false;
   }
 }

@@ -39,6 +39,11 @@
         style="position: absolute; right: 0; margin-right: 5%; margin-top: -2%;"
         >check_circle</mat-icon
       >
+      <mat-icon
+        *ngIf="getNewPosts(post) && !post.status"
+        style="position: absolute; right: 0; margin-right: 5%; margin-top: -2%; color: #23cba7"
+        >stars</mat-icon
+      >
     </mat-card>
   </div>
 </div>
