@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  apiKey: "AIzaSyBF3WYXdZkLPu12n-v2lscMeybJYFBRSc8",
   database: "petra",
   username: "postgres",
   password: "postgres",

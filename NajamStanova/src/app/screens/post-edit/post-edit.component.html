@@ -161,7 +161,7 @@
               </div>
             </form>
           </mat-step>
-          <mat-step label="Regija">
+          <mat-step label="Lokacija">
             <mat-progress-bar
               [color]="primary"
               [mode]="determinate"
@@ -175,10 +175,11 @@
               <p>Država/regija</p>
 
               <mat-form-field color="accent" appearance="outline">
+                <!--<mat-label>Država</mat-label>-->
                 <input
                   matInput
-                  type="number"
-                  placeholder="Država"
+                  [readonly]="true"
+                  placeholder="Hrvatska"
                   formControlName="country"
                   [(ngModel)]="post.country"
                 />
@@ -188,7 +189,7 @@
                 <mat-label>Ulica i kućni broj</mat-label>
                 <input
                   matInput
-                  placeholder="Placeholder"
+                  placeholder="Adresa"
                   formControlName="address"
                   [(ngModel)]="post.address"
                 />
@@ -202,10 +203,24 @@
                         <mat-label>Mjesto</mat-label>
                         <input
                           matInput
-                          placeholder="Placeholder"
-                          formControlName="city"
+                          placeholder="Grad"
+                          formControlName="cityGroup"
+                          [matAutocomplete]="autoGroup"
                           [(ngModel)]="post.city"
                         />
+                        <mat-autocomplete #autoGroup="matAutocomplete">
+                          <mat-optgroup
+                            *ngFor="let group of cityGroupOptions | async"
+                            [label]="group.letter"
+                          >
+                            <mat-option
+                              *ngFor="let name of group.names"
+                              [value]="name"
+                            >
+                              {{ name }}
+                            </mat-option>
+                          </mat-optgroup>
+                        </mat-autocomplete>
                       </mat-form-field>
                     </p>
                   </td>
