@@ -42,7 +42,7 @@
     "pg-hstore": "^2.3.2",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.4.0",
-    "sequelize": "^5.1.0",
+    "sequelize": "^5.15.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
